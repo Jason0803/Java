@@ -48,43 +48,40 @@ public class FileChooserDemo extends JPanel
         textField.setBounds(81, 6, 512, 17);
         buttonPanel.add(textField);
         textField.setColumns(10);
-        
-                       openButton = new JButton("Open a File...");
-                       openButton.setBounds(622, 4, 109, 23);
-                       buttonPanel.add(openButton);
-                       
-                       lblTag = new JLabel("Tag");
-                       lblTag.setBounds(22, 50, 36, 19);
-                       buttonPanel.add(lblTag);
-                       
-                       textField_1 = new JTextField();
-                       textField_1.setBounds(81, 50, 512, 18);
-                       buttonPanel.add(textField_1);
-                       textField_1.setColumns(10);
-                       
-                       btnSearch = new JButton("Search");
-                      
-                       btnSearch.setBounds(622, 49, 109, 23);
-                       buttonPanel.add(btnSearch);
-                       
-                       openButton.addActionListener(this);
-                       btnSearch.addActionListener(this);
-                       
-                       JPanel panel = new JPanel();
-                       panel.setBounds(12, 137, 758, 207);
-                       add(panel);
-                       panel.setLayout(null);
-                       scrollPane.setBounds(0, 0, 758, 207);
-                       panel.add(scrollPane);
-                       
-                       textArea = new JTextArea();
-                       textArea.setEditable(false);
-                       scrollPane.setViewportView(textArea);
-                       
-                       JLabel lblResult = new JLabel("Result :");
-                       lblResult.setBounds(22, 109, 57, 15);
-                       add(lblResult);
-                       
+	        
+        openButton = new JButton("Open a File...");
+        openButton.setBounds(622, 4, 109, 23);
+		buttonPanel.add(openButton);
+		 
+		lblTag = new JLabel("Tag");
+		lblTag.setBounds(22, 50, 36, 19);
+		buttonPanel.add(lblTag);
+		                       
+		textField_1 = new JTextField();
+		buttonPanel.add(textField_1);
+		textField_1.setColumns(10);
+		                       
+		btnSearch = new JButton("Search");
+		btnSearch.setBounds(622, 49, 109, 23);
+		buttonPanel.add(btnSearch);
+		                       
+		openButton.addActionListener(this);
+		btnSearch.addActionListener(this);
+		                       
+		JPanel panel = new JPanel();
+		panel.setBounds(12, 137, 758, 207);
+		add(panel);
+		panel.setLayout(null);
+		scrollPane.setBounds(0, 0, 758, 207);
+		panel.add(scrollPane);
+		                       
+		textArea = new JTextArea();
+		textArea.setEditable(false);
+		scrollPane.setViewportView(textArea);
+		                       
+		JLabel lblResult = new JLabel("Result :");
+		lblResult.setBounds(22, 109, 57, 15);
+	    add(lblResult);        
     }
  
     public void actionPerformed(ActionEvent e) 
