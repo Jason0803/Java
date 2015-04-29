@@ -58,6 +58,7 @@ public class FileChooserDemo extends JPanel
 		buttonPanel.add(lblTag);
 		                       
 		textField_1 = new JTextField();
+		textField_1.setBounds(83, 49, 510, 20);
 		buttonPanel.add(textField_1);
 		textField_1.setColumns(10);
 		                       
