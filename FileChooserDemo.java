@@ -9,7 +9,7 @@ import javax.swing.filechooser.*;
 
 public class FileChooserDemo extends JPanel
                              implements ActionListener 
-                             {
+{
     static private final String newline = "\n";
     JButton openButton;
     JButton btnSearch;
@@ -78,9 +78,10 @@ public class FileChooserDemo extends JPanel
                        panel.add(scrollPane);
                        
                        textArea = new JTextArea();
+                       textArea.setEditable(false);
                        scrollPane.setViewportView(textArea);
                        
-                       JLabel lblResult = new JLabel("Result:");
+                       JLabel lblResult = new JLabel("Result :");
                        lblResult.setBounds(22, 109, 57, 15);
                        add(lblResult);
                        
@@ -109,6 +110,7 @@ public class FileChooserDemo extends JPanel
         {
         	try
         	{
+        		int segmentCount = 0;
         		textArea.setText("");
         		tag = textField_1.getText() ;
         		
@@ -118,9 +120,18 @@ public class FileChooserDemo extends JPanel
         		String line = br.readLine();
         		while( line != null )
         		{
-        			if( (line.indexOf("<" + tag + ">") != -1) || (line.indexOf("</" + tag + ">")!= -1) )
+        			if( line.indexOf("<Segment>")!= -1 ) // for each segment
         			{
-        				textArea.append(line + newline);
+        				segmentCount++;
+
+        				while( line.indexOf("</Target") == -1 )
+        				{
+	        				if( (line.indexOf("<" + tag + ">") != -1) || (line.indexOf("</" + tag + ">")!= -1) )
+		        			{
+		        				textArea.append(line + newline);
+		        			}
+	        				line = br.readLine();
+        				}
         			}
         			line = br.readLine(); 
         		}
@@ -153,9 +164,13 @@ public class FileChooserDemo extends JPanel
         //creating and showing this application's GUI.
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                //Turn off metal's use of bold fonts
-                UIManager.put("swing.boldMetal", Boolean.FALSE); 
-                createAndShowGUI();
+            	try {
+            		//Windows UI
+                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                    createAndShowGUI();
+            	} catch(Exception e) {
+            		e.printStackTrace();
+            	}
             }
         });
     }
