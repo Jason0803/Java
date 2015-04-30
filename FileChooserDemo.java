@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.filechooser.*;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
@@ -24,7 +25,7 @@ public class FileChooserDemo extends JPanel
     JButton openButton;
     JButton btnSearch;
     JFileChooser fc;
-    JTextPane textPane;
+    JEditorPane txtpnabc;
     private JTextField textField;
     private JLabel lblTag;
     private JTextField textField_1;
@@ -62,6 +63,7 @@ public class FileChooserDemo extends JPanel
         buttonPanel.add(lblFile);
         
         textField = new JTextField();
+        textField.setEditable(false);
         textField.setBounds(81, 6, 512, 17);
         buttonPanel.add(textField);
         textField.setColumns(10);
@@ -95,8 +97,10 @@ public class FileChooserDemo extends JPanel
 		scrollPane.setBounds(0, 0, 1029, 278);
 		panel.add(scrollPane);
 		
-		textPane = new JTextPane();
-		scrollPane.setViewportView(textPane);
+		txtpnabc = new JEditorPane();
+		txtpnabc.setContentType("text/html");
+		txtpnabc.setText("dd");
+		scrollPane.setViewportView(txtpnabc);
 		                       
 		JLabel lblResult = new JLabel("Result :");
 		lblResult.setBounds(22, 109, 57, 15);
@@ -105,6 +109,13 @@ public class FileChooserDemo extends JPanel
  // --------------------------------------------------------------------------------------------//
     public void actionPerformed(ActionEvent e) 
     {
+        /*StyledDocument doc = txtpnabc.getStyledDocument();
+        
+        Style style = txtpnabc.addStyle("I'm a Style", null);
+        StyleConstants.setForeground(style, Color.red);
+        Style style_2 = txtpnabc.addStyle("I'm a Style", null);
+        StyleConstants.setForeground(style_2, Color.black);
+        */
         //Handle open button action.
         if (e.getSource() == openButton)
         {
@@ -114,13 +125,15 @@ public class FileChooserDemo extends JPanel
             {
                 file = fc.getSelectedFile();         
                 //This is where a real application would open the file.
-                textField.setText(file.getName());
-               
+                textField.setText(file.getName());                
+                
                 try
                 {
+                	
+                	
             		br = new BufferedReader(new InputStreamReader
             				(new FileInputStream(file.getPath()), Charset.forName("UTF-16")));
-
+            		 
                 		String line = br.readLine();
                 		while( line != null )
                 		{
@@ -141,32 +154,35 @@ public class FileChooserDemo extends JPanel
         	try
         	{
         		int i = 0;
-        		textPane.setText("");
+        		txtpnabc.setText("");
         		tag = textField_1.getText();
-        		tag = "<" + tag;
+        		String _tag = "<" + tag;
+        		String tag_ = "</" + tag;
+        		
         		while(i < segments.size() )
         		{
-        			if( segments.get(i).getSource().indexOf(tag)!= -1 && segments.get(i).getTarget().indexOf(tag) == -1)
-        			{
+        			if( segments.get(i).getSource().indexOf(_tag)!= -1 && segments.get(i).getTarget().indexOf(_tag) == -1)
+        			{	
         				// tag in source, but not in target
-        				System.out.println( segments.get(i).getSegment() );
-        				System.out.println("--" + "Souce :" +  segments.get(i).getSource() + "</span>" );
-        				System.out.println( "-" + "Target :" + segments.get(i).getTarget() );
+        				appendString( segments.get(i).getSegment() + "\n");
+        				appendString( "--" + "Source : "+ segments.get(i).getSource() + "\n");
+        				appendString( "-" + "Target :" + segments.get(i).getTarget() + "\n\n");
+        				
         			}
-        			else if( segments.get(i).getTarget().indexOf(tag)!= -1 && segments.get(i).getSource().indexOf(tag) == -1)
+        			else if( segments.get(i).getTarget().indexOf(_tag)!= -1 && segments.get(i).getSource().indexOf(_tag) == -1)
         			{
         				// tag in target, but not in source
-        				System.out.println( segments.get(i).getSegment() );
-        				System.out.println( "-" + "Source : "+ segments.get(i).getSource() );
-        				System.out.println( "--" + "Target :" + segments.get(i).getTarget() );
+        				appendString( segments.get(i).getSegment() + "\n");
+        				appendString( "-" + "Source : "+ segments.get(i).getSource() + "\n");
+        				appendString( "--" + "Target :" + segments.get(i).getTarget() + "\n\n");
         			}
-        			else if( segments.get(i).getSource().indexOf(tag)!= -1 &&
-        					segments.get(i).getTarget().indexOf(tag)!= -1)
+        			else if( segments.get(i).getSource().indexOf(_tag)!= -1 &&
+        					segments.get(i).getTarget().indexOf(_tag)!= -1)
         			{
         				// tag in both source and target
-        				System.out.println( segments.get(i).getSegment() );
-        				System.out.println( "--" + "Source :" + segments.get(i).getSource() );
-        				System.out.println( "--" + "Target :" + segments.get(i).getTarget() );
+        				appendString( segments.get(i).getSegment() + "\n");
+        				appendString( "--" + "Source :" + segments.get(i).getSource() + "\n");
+        				appendString( "--" + "Target :" + segments.get(i).getTarget() + "\n\n");
         			}
         			
         			i++;
@@ -178,15 +194,9 @@ public class FileChooserDemo extends JPanel
 // --------------------------------------------------------------------------------------------//
     public void appendString(String str) throws Exception
     {
-         StyledDocument document = (StyledDocument) textPane.getDocument();
+         StyledDocument document = (StyledDocument) txtpnabc.getDocument();
          document.insertString(document.getLength(), str, null);
      }
-    /**
-     * Create the GUI and show it.  For thread safety,
-     * this method should be invoked from the
-     * event dispatch thread.
-     */
-
  // --------------------------------------------------------------------------------------------//
     private static void createAndShowGUI() {
         //Create and set up the window.'
