@@ -1,31 +1,48 @@
 import java.io.*;
+import java.util.*;
 import java.nio.charset.Charset;
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.filechooser.*;
- 
+import javax.swing.text.AttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 
+
+//--------------------------------------------------------------------------------------------//
+@SuppressWarnings("serial")
 public class FileChooserDemo extends JPanel
                              implements ActionListener 
 {
+	ArrayList<String> entire = new ArrayList<String>();
+	ArrayList<Segment> segments = new ArrayList<Segment>();
     static private final String newline = "\n";
     JButton openButton;
     JButton btnSearch;
     JFileChooser fc;
+    JTextPane textPane;
     private JTextField textField;
     private JLabel lblTag;
     private JTextField textField_1;
-    private JTextArea textArea;
-    private JScrollBar bar;
+	private JScrollBar bar;
     private static File file;
     private String tag;
-    
+    private static final String seg = "<Segment>";
+	private static final String src = "<Source>";
+	private static final String  trg = "<Target>";
+	Segment tmpSeg = new Segment();
+	int segmentCount = 0;
     BufferedReader br;
     private final JScrollPane scrollPane = new JScrollPane();
-    
-    public FileChooserDemo() {
+
+
+// --------------------------------------------------------------------------------------------//
+    public FileChooserDemo()  // Constructor
+    {
  
         //Create a file chooser
         fc = new JFileChooser();
@@ -70,21 +87,22 @@ public class FileChooserDemo extends JPanel
 		btnSearch.addActionListener(this);
 		                       
 		JPanel panel = new JPanel();
-		panel.setBounds(12, 137, 758, 207);
+		panel.setBounds(12, 137, 1029, 278);
 		add(panel);
 		panel.setLayout(null);
-		scrollPane.setBounds(0, 0, 758, 207);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.setBounds(0, 0, 1029, 278);
 		panel.add(scrollPane);
-		                       
-		textArea = new JTextArea();
-		textArea.setEditable(false);
-		scrollPane.setViewportView(textArea);
+		
+		textPane = new JTextPane();
+		scrollPane.setViewportView(textPane);
 		                       
 		JLabel lblResult = new JLabel("Result :");
 		lblResult.setBounds(22, 109, 57, 15);
 	    add(lblResult);        
     }
- 
+ // --------------------------------------------------------------------------------------------//
     public void actionPerformed(ActionEvent e) 
     {
         //Handle open button action.
@@ -97,10 +115,24 @@ public class FileChooserDemo extends JPanel
                 file = fc.getSelectedFile();         
                 //This is where a real application would open the file.
                 textField.setText(file.getName());
+               
+                try
+                {
+            		br = new BufferedReader(new InputStreamReader
+            				(new FileInputStream(file.getPath()), Charset.forName("UTF-16")));
+
+                		String line = br.readLine();
+                		while( line != null )
+                		{
+                			entire.add(line);
+                			line = br.readLine();
+                		}
+                		findSegment(entire);
+                }
+                catch(Exception error) { error.printStackTrace(); } 
             } 
             else 
             {
-                //log.append("Open command cancelled by user." + newline);
             	textField.setText("File Choose Cancelled by user");
             }
         }
@@ -108,42 +140,32 @@ public class FileChooserDemo extends JPanel
         {
         	try
         	{
-        		int segmentCount = 0;
-        		textArea.setText("");
-        		tag = textField_1.getText() ;
+        		int i = 0;
+        		textPane.setText("");
+        		tag = textField_1.getText();
         		
-        		br = new BufferedReader(new InputStreamReader
-    				(new FileInputStream(file.getPath()), Charset.forName("UTF-16")));
-        		
-        		String line = br.readLine();
-        		while( line != null )
+        		while(i < segments.size() )
         		{
-        			if( line.indexOf("<Segment>")!= -1 ) // for each segment
-        			{
-        				segmentCount++;
-
-        				while( line.indexOf("</Target") == -1 )
-        				{
-	        				if( (line.indexOf("<" + tag + ">") != -1) || (line.indexOf("</" + tag + ">")!= -1) )
-		        			{
-		        				textArea.append(line + newline);
-		        			}
-	        				line = br.readLine();
-        				}
-        			}
-        			line = br.readLine(); 
+        			segments.get(i).printSegment();
+        			i++;
         		}
         	}
         	catch( Exception error ) {error.printStackTrace();}
         }
     }
- 
- 
+// --------------------------------------------------------------------------------------------//
+    public void appendString(String str) throws Exception
+    {
+         StyledDocument document = (StyledDocument) textPane.getDocument();
+         document.insertString(document.getLength(), str, null);
+     }
     /**
      * Create the GUI and show it.  For thread safety,
      * this method should be invoked from the
      * event dispatch thread.
      */
+
+ // --------------------------------------------------------------------------------------------//
     private static void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("FileChooserDemo");
@@ -156,8 +178,91 @@ public class FileChooserDemo extends JPanel
         frame.pack();
         frame.setVisible(true);
     }
- 
-    public static void main(String[] args) {
+// --------------------------------------------------------------------------------------------//
+void findSegment(ArrayList<String> entire) throws Exception 
+	{
+		Segment tempSeg = new Segment();
+		StringBuilder sb = new StringBuilder();
+		String temp;
+		
+		for (int i=0; i < entire.size(); i++)
+		{
+			if( entire.get(i).indexOf(seg) != -1 ) // a line with 'segment' found
+			{
+				tempSeg.setSegment( entire.get(i).substring(9));
+				//find source and target
+			}
+			if( entire.get(i).indexOf(src) != -1 )
+			{
+				if( entire.get(i).indexOf("</Source>") != -1)
+				{
+					tempSeg.setSource( entire.get(i).substring(
+							8, entire.get(i).indexOf("</Source>")));
+				}
+				else
+				{
+					int j = i;
+					while(true)
+					{
+						if (entire.get(j).indexOf("</Source>") == -1)
+						{
+							sb.append(entire.get(j));
+						}
+						else
+						{
+							sb.append(entire.get(j));
+							break;
+						}
+						j++;
+					}
+					temp = sb.toString();
+					tempSeg.setSource( temp.substring(8, temp.indexOf("</Source>")));
+				}
+			}
+			if( entire.get(i).indexOf(trg) != -1 )
+			{
+				if( entire.get(i).indexOf("</Target>") != -1)
+				{
+					tempSeg.setTarget( entire.get(i).substring(
+							8, entire.get(i).indexOf("</Target>")));
+				}
+				else
+				{
+					int j = i;
+					while(true)
+					{
+						if (entire.get(j).indexOf("</Target>") == -1)
+						{
+							sb.append(entire.get(j));
+						}
+						else
+						{
+							sb.append(entire.get(j));
+							break;
+						}
+						j++;
+					}
+					temp = sb.toString();
+					tempSeg.setTarget( temp.substring(8, temp.indexOf("</Target>")));
+				}
+				segments.add(tempSeg);
+				tempSeg = new Segment();
+				segments.get(segmentCount).printSegment();
+				segmentCount++;
+			}
+			
+		}
+		
+	}
+// --------------------------------------------------------------------------------------------//
+void findSpecificSegmentWithTag(Segment s, String tag )
+{
+	String currentLine = null;
+	
+}
+//--------------------------------------------------------------------------------------------//
+    public static void main(String[] args) 
+    {
         //Schedule a job for the event dispatch thread:
         //creating and showing this application's GUI.
         SwingUtilities.invokeLater(new Runnable() {
@@ -172,4 +277,5 @@ public class FileChooserDemo extends JPanel
             }
         });
     }
+// --------------------------------------------------------------------------------------------//
 }
