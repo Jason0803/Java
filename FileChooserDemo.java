@@ -143,10 +143,32 @@ public class FileChooserDemo extends JPanel
         		int i = 0;
         		textPane.setText("");
         		tag = textField_1.getText();
-        		
+        		tag = "<" + tag;
         		while(i < segments.size() )
         		{
-        			segments.get(i).printSegment();
+        			if( segments.get(i).getSource().indexOf(tag)!= -1 && segments.get(i).getTarget().indexOf(tag) == -1)
+        			{
+        				// tag in source, but not in target
+        				System.out.println( segments.get(i).getSegment() );
+        				System.out.println("--" + "Souce :" +  segments.get(i).getSource() + "</span>" );
+        				System.out.println( "-" + "Target :" + segments.get(i).getTarget() );
+        			}
+        			else if( segments.get(i).getTarget().indexOf(tag)!= -1 && segments.get(i).getSource().indexOf(tag) == -1)
+        			{
+        				// tag in target, but not in source
+        				System.out.println( segments.get(i).getSegment() );
+        				System.out.println( "-" + "Source : "+ segments.get(i).getSource() );
+        				System.out.println( "--" + "Target :" + segments.get(i).getTarget() );
+        			}
+        			else if( segments.get(i).getSource().indexOf(tag)!= -1 &&
+        					segments.get(i).getTarget().indexOf(tag)!= -1)
+        			{
+        				// tag in both source and target
+        				System.out.println( segments.get(i).getSegment() );
+        				System.out.println( "--" + "Source :" + segments.get(i).getSource() );
+        				System.out.println( "--" + "Target :" + segments.get(i).getTarget() );
+        			}
+        			
         			i++;
         		}
         	}
@@ -167,7 +189,7 @@ public class FileChooserDemo extends JPanel
 
  // --------------------------------------------------------------------------------------------//
     private static void createAndShowGUI() {
-        //Create and set up the window.
+        //Create and set up the window.'
         JFrame frame = new JFrame("FileChooserDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
@@ -255,11 +277,19 @@ void findSegment(ArrayList<String> entire) throws Exception
 		
 	}
 // --------------------------------------------------------------------------------------------//
-void findSpecificSegmentWithTag(Segment s, String tag )
+void findTag(String line, String tag)
 {
-	String currentLine = null;
+	String left = "<" + tag;
+	String right = "</" + tag;
 	
+	//left = Colouring( line.substring()  )
 }
+//--------------------------------------------------------------------------------------------//
+String Colouring(String s)
+{
+	return "<html><font color='red'>" + s + "</font></html>";
+}
+
 //--------------------------------------------------------------------------------------------//
     public static void main(String[] args) 
     {
