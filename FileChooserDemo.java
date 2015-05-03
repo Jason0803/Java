@@ -16,7 +16,7 @@ import javax.swing.text.StyledDocument;
 
 //--------------------------------------------------------------------------------------------//
 @SuppressWarnings("serial")
-public class FileChooserDemo extends JPanel
+public class ReadAndParseFile extends JPanel
                              implements ActionListener 
 {
 	ArrayList<String> entire = new ArrayList<String>();
@@ -25,6 +25,8 @@ public class FileChooserDemo extends JPanel
     JButton openButton;
     JButton btnSearch;
     JFileChooser fc;
+    FileNameExtensionFilter filter = new FileNameExtensionFilter(".EXP Files", "exp", "exp");
+
     JEditorPane txtpnabc;
     private JTextField textField;
     private JLabel lblTag;
@@ -42,11 +44,12 @@ public class FileChooserDemo extends JPanel
 
 
 // --------------------------------------------------------------------------------------------//
-    public FileChooserDemo()  // Constructor
+    public ReadAndParseFile()  // Constructor
     {
  
         //Create a file chooser
         fc = new JFileChooser();
+        fc.setFileFilter(filter);
         setLayout(null);
  
 
@@ -119,7 +122,7 @@ public class FileChooserDemo extends JPanel
         //Handle open button action.
         if (e.getSource() == openButton)
         {
-            int returnVal = fc.showOpenDialog(FileChooserDemo.this);
+            int returnVal = fc.showOpenDialog(ReadAndParseFile.this);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
@@ -157,7 +160,6 @@ public class FileChooserDemo extends JPanel
         		txtpnabc.setText("");
         		tag = textField_1.getText();
         		String _tag = "<" + tag;
-        		String tag_ = "</" + tag;
         		
         		while(i < segments.size() )
         		{
@@ -204,7 +206,7 @@ public class FileChooserDemo extends JPanel
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         //Add content to the window.
-        frame.getContentPane().add(new FileChooserDemo());
+        frame.getContentPane().add(new ReadAndParseFile());
  
         //Display the window.
         frame.pack();
@@ -309,7 +311,8 @@ String Colouring(String s)
             public void run() {
             	try {
             		//Windows UI
-                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                    UIManager.setLookAndFeel(
+            	            UIManager.getCrossPlatformLookAndFeelClassName());
                     createAndShowGUI();
             	} catch(Exception e) {
             		e.printStackTrace();
