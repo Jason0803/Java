@@ -16,7 +16,7 @@ import javax.swing.text.StyledDocument;
 
 //--------------------------------------------------------------------------------------------//
 @SuppressWarnings("serial")
-public class ReadAndParseFile extends JPanel
+public class FileChooserDemo extends JPanel
                              implements ActionListener 
 {
 	ArrayList<String> entire = new ArrayList<String>();
@@ -25,8 +25,6 @@ public class ReadAndParseFile extends JPanel
     JButton openButton;
     JButton btnSearch;
     JFileChooser fc;
-    FileNameExtensionFilter filter = new FileNameExtensionFilter(".EXP Files", "exp", "exp");
-
     JEditorPane txtpnabc;
     private JTextField textField;
     private JLabel lblTag;
@@ -44,12 +42,11 @@ public class ReadAndParseFile extends JPanel
 
 
 // --------------------------------------------------------------------------------------------//
-    public ReadAndParseFile()  // Constructor
+    public FileChooserDemo()  // Constructor
     {
  
         //Create a file chooser
         fc = new JFileChooser();
-        fc.setFileFilter(filter);
         setLayout(null);
  
 
@@ -102,9 +99,11 @@ public class ReadAndParseFile extends JPanel
 		
 		txtpnabc = new JEditorPane();
 		txtpnabc.setContentType("text/html");
-		txtpnabc.setText("dd");
 		scrollPane.setViewportView(txtpnabc);
-		                       
+		//txtpnabc.setText("<html><font color='red'><b></font>\uC77C\uBC18 \uAC80\uC0C9<font color='red'></b></font></html>");
+        // to check whether HTML Source works
+		
+		
 		JLabel lblResult = new JLabel("Result :");
 		lblResult.setBounds(22, 109, 57, 15);
 	    add(lblResult);        
@@ -112,8 +111,9 @@ public class ReadAndParseFile extends JPanel
  // --------------------------------------------------------------------------------------------//
     public void actionPerformed(ActionEvent e) 
     {
-        /*StyledDocument doc = txtpnabc.getStyledDocument();
+        StyledDocument doc = (StyledDocument) txtpnabc.getDocument();
         
+        /*
         Style style = txtpnabc.addStyle("I'm a Style", null);
         StyleConstants.setForeground(style, Color.red);
         Style style_2 = txtpnabc.addStyle("I'm a Style", null);
@@ -122,7 +122,7 @@ public class ReadAndParseFile extends JPanel
         //Handle open button action.
         if (e.getSource() == openButton)
         {
-            int returnVal = fc.showOpenDialog(ReadAndParseFile.this);
+            int returnVal = fc.showOpenDialog(FileChooserDemo.this);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
@@ -132,8 +132,6 @@ public class ReadAndParseFile extends JPanel
                 
                 try
                 {
-                	
-                	
             		br = new BufferedReader(new InputStreamReader
             				(new FileInputStream(file.getPath()), Charset.forName("UTF-16")));
             		 
@@ -157,38 +155,59 @@ public class ReadAndParseFile extends JPanel
         	try
         	{
         		int i = 0;
+        		StringBuilder contents = new StringBuilder();
         		txtpnabc.setText("");
         		tag = textField_1.getText();
         		String _tag = "<" + tag;
+        		String tag_ = "</" + tag;
         		
         		while(i < segments.size() )
         		{
         			if( segments.get(i).getSource().indexOf(_tag)!= -1 && segments.get(i).getTarget().indexOf(_tag) == -1)
         			{	
+        				// <b style=\"color: #ff0000;\">abc</b>
         				// tag in source, but not in target
-        				appendString( segments.get(i).getSegment() + "\n");
-        				appendString( "--" + "Source : "+ segments.get(i).getSource() + "\n");
-        				appendString( "-" + "Target :" + segments.get(i).getTarget() + "\n\n");
+        				
+        				contents.append("Segment: " + segments.get(i).getSegment() + "\n");
+        				contents.append( "Source: " + tagColouring(segments.get(i).getSource(), tag) + "\n");
+        				contents.append( "Target: " + segments.get(i).getTarget() + "\n\n");
+        				
+        				//doc.insertString( doc.getLength(), "\nSource :" + tagColouring( segments.get(i).getSource(), tag), null);
+        				//doc.insertString( doc.getLength(), "\nTarget :" + segments.get(i).getTarget() + "\n\n", null);
+        				
+        				//appendString( "--" + "Source : "+ segments.get(i).getSource() + "\n");
+        				//appendString( "-" + "Target :" + segments.get(i).getTarget() + "\n\n");
         				
         			}
         			else if( segments.get(i).getTarget().indexOf(_tag)!= -1 && segments.get(i).getSource().indexOf(_tag) == -1)
         			{
         				// tag in target, but not in source
-        				appendString( segments.get(i).getSegment() + "\n");
-        				appendString( "-" + "Source : "+ segments.get(i).getSource() + "\n");
-        				appendString( "--" + "Target :" + segments.get(i).getTarget() + "\n\n");
+        				contents.append("Segment: " +  segments.get(i).getSegment() + "\n");
+        				contents.append(" Source: " + segments.get(i).getSource() + "\n");
+        				contents.append(" Target: " + tagColouring( segments.get(i).getTarget(), tag) + "\n\n");
+        				
+        				//doc.insertString(doc.getLength(), "\nSource :" + segments.get(i).getSource() + "\n", null);
+        				//doc.insertString(doc.getLength(), "\nTarget :" + tagColouring( segments.get(i).getTarget(), tag) + "\n\n", null);
+        				
+        				//appendString( "-" + "Source : "+ segments.get(i).getSource() + "\n");
+        				//appendString( "--Target :" + segments.get(i).getTarget() + "\n\n");
         			}
         			else if( segments.get(i).getSource().indexOf(_tag)!= -1 &&
         					segments.get(i).getTarget().indexOf(_tag)!= -1)
         			{
         				// tag in both source and target
-        				appendString( segments.get(i).getSegment() + "\n");
-        				appendString( "--" + "Source :" + segments.get(i).getSource() + "\n");
-        				appendString( "--" + "Target :" + segments.get(i).getTarget() + "\n\n");
+        				contents.append("Segment: " +  segments.get(i).getSegment() + "\n");
+        				contents.append(" Source: " + tagColouring(segments.get(i).getSource(), tag) + "\n");
+        				contents.append(" Target: " + tagColouring( segments.get(i).getTarget(), tag) + "\n\n");
+        				
+        				//doc.insertString(doc.getLength(), "\nSource :" + tagColouring( segments.get(i).getSource(), tag) + "\n", null);
+        				//doc.insertString(doc.getLength(), "\nTarget :" + tagColouring( segments.get(i).getTarget(), tag) + "\n\n", null);
+        				
+        				//appendString( "--" + "Source :" + segments.get(i).getSource() + "\n");
+        				//appendString( "--" + "Target :" + segments.get(i).getTarget() + "\n\n");
         			}
-        			
         			i++;
-        		}
+        		} // End of While
         	}
         	catch( Exception error ) {error.printStackTrace();}
         }
@@ -196,17 +215,70 @@ public class ReadAndParseFile extends JPanel
 // --------------------------------------------------------------------------------------------//
     public void appendString(String str) throws Exception
     {
-         StyledDocument document = (StyledDocument) txtpnabc.getDocument();
-         document.insertString(document.getLength(), str, null);
+        StyledDocument document = (StyledDocument) txtpnabc.getDocument();
+ 		SimpleAttributeSet keyWord = new SimpleAttributeSet();
+ 		StyleConstants.setForeground(keyWord, Color.RED);   
+        document.insertString(document.getLength(), str, null);
      }
  // --------------------------------------------------------------------------------------------//
+    public String tagColouring( String line, String tag ) 
+    {
+    	// This method is being used without 'tag' exists in the 'line'
+    	// as this method will be used where already checked for that case
+    	
+    	StringBuilder sb = new StringBuilder();
+    	String temp;
+    	String result;
+    	if( line.indexOf(tag) == 0 )																			// 1. In case the tag located at the beginning of the line
+    	{	
+    		sb.append("<html><font color='red'>");
+    		temp = line.substring(0, line.indexOf(">")+1);														// Colouring opening tag
+    		sb.append(temp + "</font></html>");
+    		
+    		temp = line.substring( line.indexOf(">")+1, line.indexOf( "</"+ tag ) );							// Content_1
+    		sb.append(temp);
+    		
+    		temp = line.substring( line.indexOf( "</" + tag), line.indexOf(">", line.indexOf("</" + tag))+1 );	// Colouring closing tag
+    		sb.append("<html><font color='red'>");
+    		sb.append(temp);
+    		sb.append("</font></html>");
+    		
+    		temp = line.substring( line.indexOf(">", line.indexOf("</" + tag)) );								// Content_2
+    		sb.append(temp); // this could be just "" in case there is no more content in current line
+    	}
+    	else																									// 2. In case the tag located between contents of the line
+    	{		
+    		temp = line.substring(0, line.indexOf("<"+tag));													// Content_1				
+    		sb.append(temp);
+    		
+    		temp = line.substring( line.indexOf("<"+tag), line.indexOf(">", line.indexOf(tag))+1 );				// Colouring opening tag
+    		sb.append("<html><font color='red'>");
+    		sb.append(temp);
+    		sb.append("</font></html>");
+    		
+    		temp = line.substring( line.indexOf(">", line.indexOf(tag))+1, line.indexOf("</" + tag) );			// Content_2
+    		sb.append(temp);
+    		
+    		temp = line.substring( line.indexOf("</" + tag), line.indexOf(">", line.indexOf("</"+tag))+1);		// Colouring closing tag
+    		sb.append("<html><font color='red'>");
+    		sb.append(temp);
+    		sb.append("</font></html>");
+    		
+    		temp = line.substring( line.indexOf(">", line.indexOf("</"+tag))+1 );									// Content_3
+    		sb.append(temp);
+    	}
+    	
+    	result = sb.toString();
+    	return result;
+    }
+// --------------------------------------------------------------------------------------------//   
     private static void createAndShowGUI() {
         //Create and set up the window.'
         JFrame frame = new JFrame("FileChooserDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         //Add content to the window.
-        frame.getContentPane().add(new ReadAndParseFile());
+        frame.getContentPane().add(new FileChooserDemo());
  
         //Display the window.
         frame.pack();
@@ -288,20 +360,6 @@ void findSegment(ArrayList<String> entire) throws Exception
 		}
 		
 	}
-// --------------------------------------------------------------------------------------------//
-void findTag(String line, String tag)
-{
-	String left = "<" + tag;
-	String right = "</" + tag;
-	
-	//left = Colouring( line.substring()  )
-}
-//--------------------------------------------------------------------------------------------//
-String Colouring(String s)
-{
-	return "<html><font color='red'>" + s + "</font></html>";
-}
-
 //--------------------------------------------------------------------------------------------//
     public static void main(String[] args) 
     {
@@ -311,8 +369,7 @@ String Colouring(String s)
             public void run() {
             	try {
             		//Windows UI
-                    UIManager.setLookAndFeel(
-            	            UIManager.getCrossPlatformLookAndFeelClassName());
+                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
                     createAndShowGUI();
             	} catch(Exception e) {
             		e.printStackTrace();
