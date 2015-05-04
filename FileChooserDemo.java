@@ -126,7 +126,12 @@ public class FileChooserDemo extends JPanel
 
             if (returnVal == JFileChooser.APPROVE_OPTION) 
             {
-                file = fc.getSelectedFile();         
+                file = fc.getSelectedFile();
+                if( file.getName().indexOf(".EXP") == -1 )
+                {
+                    JOptionPane.showMessageDialog(scrollPane, "You should choose .EXP File !", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                }
                 //This is where a real application would open the file.
                 textField.setText(file.getName());                
                 
@@ -217,8 +222,8 @@ public class FileChooserDemo extends JPanel
     public void appendString(String str) throws Exception
     {
         StyledDocument document = (StyledDocument) txtpnabc.getDocument();
- 		SimpleAttributeSet keyWord = new SimpleAttributeSet();
- 		StyleConstants.setForeground(keyWord, Color.RED);   
+
+ 
         document.insertString(document.getLength(), str, null);
      }
  // --------------------------------------------------------------------------------------------//
