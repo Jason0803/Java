@@ -208,6 +208,7 @@ public class FileChooserDemo extends JPanel
         			}
         			i++;
         		} // End of While
+        		doc.insertString(doc.getLength(), contents.toString(), null);
         	}
         	catch( Exception error ) {error.printStackTrace();}
         }
