@@ -47,6 +47,8 @@ public class FileChooserDemo extends JPanel
  
         //Create a file chooser
         fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".EXP Files", "EXP");
+        fc.addChoosableFileFilter(filter);
         setLayout(null);
  
 
