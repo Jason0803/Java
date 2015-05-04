@@ -216,6 +216,25 @@ public class FileChooserDemo extends JPanel
         			i++;
         		} // End of While
         		doc.insertString(doc.getLength(), contents.toString(), null);
+        		
+	        	Document document = txtpnabc.getDocument();
+	                try 
+	                {
+	                    String find = "<"+tag;
+	                    for (int index = 0; index + find.length() < document.getLength(); index++) 
+	                    {
+	                        String match = document.getText(index, find.length());
+	                        if (find.equals(match)) 
+	                        {
+	                            javax.swing.text.DefaultHighlighter.DefaultHighlightPainter highlightPainter =
+	                                    new javax.swing.text.DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW);
+	                            
+	                            txtpnabc.getHighlighter().addHighlight(index, index + find.length(),
+	                                    highlightPainter);
+	                        }
+	                    }
+	                } 
+	                catch (BadLocationException ex) { ex.printStackTrace(); }
         	}
         	catch( Exception error ) {error.printStackTrace();}
         }
