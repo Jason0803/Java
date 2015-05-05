@@ -227,7 +227,7 @@ public class ReadAndHighlightTag extends JPanel
 	                    String find_1 = "<" +tag;
 	                    String find_2 = ">";
 	                    String find_3 = "</" + tag;
-	                    
+	                    LOOP:
 	                    for (int index = 0; index + find_1.length() < document.getLength(); index++) 
 	                    {
 	                    	DefaultHighlighter.DefaultHighlightPainter highlightPainter =
@@ -236,18 +236,43 @@ public class ReadAndHighlightTag extends JPanel
 	                        String match = document.getText(index, find_1.length());
 	                        if(find_1.equals(match)) 
 	                        {   
-	                        	for(int idx = index; idx + find_2.length() < document.getLength(); idx++)
+	                        	int idx = index;			// From the beginning of tag to an end
+	                        	while(true)
 	                        	{
 	                        		match = document.getText(idx, find_2.length());
-	                        		if(find_2.equals(match)) // From the beginning of tag to an end
+	                        		if(find_2.equals(match)) 
 	                        		{
-	                        			txtpnabc.getHighlighter().addHighlight(index, idx, highlightPainter);
+	                        			txtpnabc.getHighlighter().addHighlight(index, idx+1, highlightPainter);
 	                        			break;
 	                        		}
+	                        		idx++;
+	                        	}
+	                        	int idx_2 = idx;
+
+	                        	while(true)					// From the beginning of closing tag to an end
+	                        	{
+	                        		match = document.getText(idx_2, find_3.length());
+	                        		if(find_3.equals(match))
+	                        		{
+	                        			int idx_3 = idx_2;
+	                        			while(true)
+	                        			{
+	                        				match = document.getText(idx_3, find_2.length());
+	                        				if(find_2.equals(match))
+	                        				{
+	                        					txtpnabc.getHighlighter().addHighlight(idx_2, idx_3+1, highlightPainter);
+	                        					continue LOOP;
+	                        				}
+	                        				idx_3++;
+	                        			}
+	                        		}
+	                        		idx_2++;
 	                        	}
 	                            //txtpnabc.getHighlighter().addHighlight(index, index + find_1.length(),
 	                            //        highlightPainter);
+	                        	
 	                        }
+	                       
 	                    }
 	                } 
 	                catch (BadLocationException ex) { ex.printStackTrace(); }
