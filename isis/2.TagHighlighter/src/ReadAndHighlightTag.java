@@ -39,7 +39,7 @@ public class ReadAndHighlightTag extends JPanel
     JEditorPane txtpnabc;
     private JTextField textField;
     private JLabel lblTag;
-    private JTextField textField_1;
+    private JTextField txtTagtag;
     private static File file;
     private String tag;
     private String anotherTag;						// For extension: 'Searching 2 tags'
@@ -89,10 +89,11 @@ public class ReadAndHighlightTag extends JPanel
 		lblTag.setBounds(22, 50, 36, 19);
 		buttonPanel.add(lblTag);
 		                       
-		textField_1 = new JTextField();
-		textField_1.setBounds(83, 49, 510, 20);
-		buttonPanel.add(textField_1);
-		textField_1.setColumns(10);
+		txtTagtag = new JTextField();
+		txtTagtag.setText("tag1,tag2, ...\r\n");
+		txtTagtag.setBounds(83, 49, 510, 20);
+		buttonPanel.add(txtTagtag);
+		txtTagtag.setColumns(10);
 		                       
 		btnSearch = new JButton("Search");
 		btnSearch.setBounds(622, 49, 109, 23);
@@ -122,7 +123,7 @@ public class ReadAndHighlightTag extends JPanel
 	    add(lblResult);        
     }
 // -------------------------------------------------------------------------------------------------------------------//
-    public void actionPerformed(ActionEvent e) 
+    public void actionPerformed(ActionEvent e)
     {
         StyledDocument doc = (StyledDocument) txtpnabc.getDocument();
 
@@ -154,11 +155,14 @@ public class ReadAndHighlightTag extends JPanel
                 			line = br.readLine();
                 		}
                 		findSegment(entire);
+                		
+                		br.close();
                 }
                 catch(Exception error) { error.printStackTrace(); } 
             } 
             else 
             {
+            	
             	textField.setText("File Choose Cancelled by user");
             }
         }
@@ -169,7 +173,7 @@ public class ReadAndHighlightTag extends JPanel
         		int i = 0;
         		StringBuilder contents = new StringBuilder();
         		txtpnabc.setText("");
-        		tag = textField_1.getText();
+        		tag = txtTagtag.getText();
         		String _tag = "<" + tag;
         		
         		while(i < segments.size() )
@@ -341,6 +345,11 @@ public class ReadAndHighlightTag extends JPanel
 // -------------------------------------------------------------------------------------------------------------------//   
     void findSegment(ArrayList<String> entire) throws Exception 
 	{
+    	/* FOUND THREATENING EXCEPTION !! */
+    	/*
+    	 * 
+    	 *
+    	 */
 		Segment tempSeg = new Segment();
 		StringBuilder sb = new StringBuilder();
 		String temp;
@@ -368,7 +377,7 @@ public class ReadAndHighlightTag extends JPanel
 						{
 							sb.append(entire.get(j));
 						}
-						else
+						else if( entire.get(j).indexOf("</Source>") != -1)
 						{
 							sb.append(entire.get(j));
 							break;
@@ -407,12 +416,11 @@ public class ReadAndHighlightTag extends JPanel
 				}
 				segments.add(tempSeg);
 				tempSeg = new Segment();
+				sb = new StringBuilder();
 				segments.get(segmentCount).printSegment();
 				segmentCount++;
 			}
-			
 		}
-		
 	}
 // -------------------------------------------------------------------------------------------------------------------//   
     public static void main(String[] args) 
