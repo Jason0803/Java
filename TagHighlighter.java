@@ -17,6 +17,15 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 
+/*
+ * 
+ *	This application is made for following purposes:
+ *	1. Browse ".EXP" file(s) (now extension on progress)
+ *	2. Find all of 'Segments'
+ *	3. Find segments contain specific tag(s) e.g. <b> or <keyword>	(on progress to find multiple tags)
+ *	4. Highlight the tags" <b> and </b> OR <keyword="blahh"></keyword>
+ *
+ */
 //--------------------------------------------------------------------------------------------------------------------//
 @SuppressWarnings("serial")
 public class ReadAndHighlightTag extends JPanel
@@ -24,7 +33,6 @@ public class ReadAndHighlightTag extends JPanel
 {
 	ArrayList<String> entire = new ArrayList<String>();
 	ArrayList<Segment> segments = new ArrayList<Segment>();
-    static private final String newline = "\n";
     JButton openButton;
     JButton btnSearch;
     JFileChooser fc;
@@ -32,9 +40,9 @@ public class ReadAndHighlightTag extends JPanel
     private JTextField textField;
     private JLabel lblTag;
     private JTextField textField_1;
-	private JScrollBar bar;
     private static File file;
     private String tag;
+    private String anotherTag;						// For extension: 'Searching 2 tags'
     private static final String seg = "<Segment>";
 	private static final String src = "<Source>";
 	private static final String  trg = "<Target>";
@@ -117,13 +125,7 @@ public class ReadAndHighlightTag extends JPanel
     public void actionPerformed(ActionEvent e) 
     {
         StyledDocument doc = (StyledDocument) txtpnabc.getDocument();
-        
-        /*
-        Style style = txtpnabc.addStyle("I'm a Style", null);
-        StyleConstants.setForeground(style, Color.red);
-        Style style_2 = txtpnabc.addStyle("I'm a Style", null);
-        StyleConstants.setForeground(style_2, Color.black);
-        */
+
         //Handle open button action.
         if (e.getSource() == openButton)
         {
@@ -169,24 +171,16 @@ public class ReadAndHighlightTag extends JPanel
         		txtpnabc.setText("");
         		tag = textField_1.getText();
         		String _tag = "<" + tag;
-        		String tag_ = "</" + tag;
         		
         		while(i < segments.size() )
         		{
         			if( segments.get(i).getSource().indexOf(_tag)!= -1 && segments.get(i).getTarget().indexOf(_tag) == -1)
         			{	
-        				// <b style=\"color: #ff0000;\">abc</b>
         				// tag in source, but not in target
-        				
         				contents.append("Segment: " + segments.get(i).getSegment() + "\n");
         				contents.append( "Source: " + segments.get(i).getSource() + "\n");
         				contents.append( "Target: " + segments.get(i).getTarget() + "\n\n");
         				
-        				//doc.insertString( doc.getLength(), "\nSource :" + tagColouring( segments.get(i).getSource(), tag), null);
-        				//doc.insertString( doc.getLength(), "\nTarget :" + segments.get(i).getTarget() + "\n\n", null);
-        				
-        				//appendString( "--" + "Source : "+ segments.get(i).getSource() + "\n");
-        				//appendString( "-" + "Target :" + segments.get(i).getTarget() + "\n\n");
         				
         			}
         			else if( segments.get(i).getTarget().indexOf(_tag)!= -1 && segments.get(i).getSource().indexOf(_tag) == -1)
@@ -196,11 +190,6 @@ public class ReadAndHighlightTag extends JPanel
         				contents.append(" Source: " + segments.get(i).getSource() + "\n");
         				contents.append(" Target: " + segments.get(i).getTarget() + "\n\n");
         				
-        				//doc.insertString(doc.getLength(), "\nSource :" + segments.get(i).getSource() + "\n", null);
-        				//doc.insertString(doc.getLength(), "\nTarget :" + tagColouring( segments.get(i).getTarget(), tag) + "\n\n", null);
-        				
-        				//appendString( "-" + "Source : "+ segments.get(i).getSource() + "\n");
-        				//appendString( "--Target :" + segments.get(i).getTarget() + "\n\n");
         			}
         			else if( segments.get(i).getSource().indexOf(_tag)!= -1 &&
         					segments.get(i).getTarget().indexOf(_tag)!= -1)
@@ -209,29 +198,22 @@ public class ReadAndHighlightTag extends JPanel
         				contents.append("Segment: " + segments.get(i).getSegment() + "\n");
         				contents.append(" Source: " + segments.get(i).getSource() + "\n");
         				contents.append(" Target: " + segments.get(i).getTarget()+ "\n\n");
-        				
-        				//doc.insertString(doc.getLength(), "\nSource :" + tagColouring( segments.get(i).getSource(), tag) + "\n", null);
-        				//doc.insertString(doc.getLength(), "\nTarget :" + tagColouring( segments.get(i).getTarget(), tag) + "\n\n", null);
-        				
-        				//appendString( "--" + "Source :" + segments.get(i).getSource() + "\n");
-        				//appendString( "--" + "Target :" + segments.get(i).getTarget() + "\n\n");
+
         			}
         			i++;
         		} // End of While
-        		doc.insertString(doc.getLength(), contents.toString(), null);
-        		
+        		doc.insertString(doc.getLength(), contents.toString(), null);		// put entire 'contents' on txtpnabc
+
 	        	Document document = txtpnabc.getDocument();
-	            
-	        	highlighter(document);
+	        	tagHighlighter(document);
         	}
         	catch( Exception error ) {error.printStackTrace();}
         }
     }
 // -------------------------------------------------------------------------------------------------------------------//
-	void highlighter(Document document) {
+	void tagHighlighter(Document document) {
 	try 
 	{
-		//StringBuilder 
 	    String find_1 = "<" +tag;
 	    String find_2 = ">";
 	    String find_3 = "</" + tag;
@@ -240,11 +222,10 @@ public class ReadAndHighlightTag extends JPanel
 	    {
 	    	DefaultHighlighter.DefaultHighlightPainter highlightPainter =
 	                new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW);
-	    	String temp;
 	        String match = document.getText(index, find_1.length());
 	        if(find_1.equals(match)) 
 	        {   
-	        	int idx = index;			// From the beginning of tag to an end
+	        	int idx = index;												// From the beginning of tag to an end
 	        	while(true)
 	        	{
 	        		match = document.getText(idx, find_2.length());
@@ -257,7 +238,7 @@ public class ReadAndHighlightTag extends JPanel
 	        	}
 	        	int idx_2 = idx;
 
-	        	while(true)					// From the beginning of closing tag to an end
+	        	while(true)														// From the beginning of closing tag to an end
 	        	{
 	        		match = document.getText(idx_2, find_3.length());
 	        		if(find_3.equals(match))
