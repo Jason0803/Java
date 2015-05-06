@@ -17,9 +17,11 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 
-					/* 	LAST UPDATED: 06/05/2015 2:45PM 	*/
+					/* 	LAST UPDATED: 06/05/2015 4:34PM 	*/
 					/* 		Algorithm Updated 		*/
 					/*		 Fastened Work			*/
+					/*	      All Found Errors Gone		*/
+
 
 /*
  * 
@@ -397,6 +399,7 @@ public class ReadAndHighlightTag extends JPanel
 						j++;
 					}
 					temp = sb.toString();
+					sb = new StringBuilder();
 					tempSeg.setSource( temp.substring(8, temp.indexOf("</Source>")));
 				}
 			}
