@@ -16,7 +16,9 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-
+	/* 	LAST UPDATED: 06/05/2015 12:45PM 	*/
+	/* 		Algorithm Updated 		*/
+	/*		 Fastened Work			*/
 /*
  * 
  *	This application is made for following purposes:
