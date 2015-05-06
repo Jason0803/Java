@@ -17,7 +17,7 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 
-					/* 	LAST UPDATED: 06/05/2015 2:31PM 	*/
+					/* 	LAST UPDATED: 06/05/2015 2:45PM 	*/
 					/* 		Algorithm Updated 		*/
 					/*		 Fastened Work			*/
 
@@ -54,6 +54,7 @@ public class ReadAndHighlightTag extends JPanel
 	int segmentCount = 0;
     BufferedReader br;
     private final JScrollPane scrollPane = new JScrollPane();
+	private boolean CHECK;
 
 
 // -------------------------------------------------------------------------------------------------------------------//
@@ -148,6 +149,8 @@ public class ReadAndHighlightTag extends JPanel
                 {
                     JOptionPane.showMessageDialog(scrollPane, "You should choose .EXP File !", "Warning",
                             JOptionPane.WARNING_MESSAGE);
+                    
+                    System.exit(0);
                 }
                 //This is where a real application would open the file.
                 textField.setText(file.getName());                
@@ -187,7 +190,7 @@ public class ReadAndHighlightTag extends JPanel
         		
         		while(i < segments.size() )
         		{
-        			if( segments.get(i).getSource().indexOf(_tag)!= -1 && segments.get(i).getTarget().indexOf(_tag) == -1)
+        			if( (segments.get(i).getSource().indexOf(_tag+">")!= -1||segments.get(i).getSource().indexOf(_tag+" ")!=-1) && segments.get(i).getTarget().indexOf(_tag) == -1)
         			{	
         				// tag in source, but not in target
         				contents.append("Segment: " + segments.get(i).getSegment() + "\n");
@@ -196,7 +199,7 @@ public class ReadAndHighlightTag extends JPanel
         				
         				
         			}
-        			else if( segments.get(i).getTarget().indexOf(_tag)!= -1 && segments.get(i).getSource().indexOf(_tag) == -1)
+        			else if( (segments.get(i).getTarget().indexOf(_tag+">")!= -1 || segments.get(i).getTarget().indexOf(_tag+" ")!= -1) && segments.get(i).getSource().indexOf(_tag) == -1)
         			{
         				// tag in target, but not in source
         				contents.append("Segment: " +  segments.get(i).getSegment() + "\n");
@@ -204,8 +207,8 @@ public class ReadAndHighlightTag extends JPanel
         				contents.append(" Target: " + segments.get(i).getTarget() + "\n\n");
         				
         			}
-        			else if( segments.get(i).getSource().indexOf(_tag)!= -1 &&
-        					segments.get(i).getTarget().indexOf(_tag)!= -1)
+        			else if( (segments.get(i).getSource().indexOf(_tag+">")!= -1 || segments.get(i).getSource().indexOf(_tag+" ")!=-1) &&
+        			( segments.get(i).getTarget().indexOf(_tag+">")!= -1 || segments.get(i).getTarget().indexOf(_tag+" ")!= -1) )
         			{
         				// tag in both source and target
         				contents.append("Segment: " + segments.get(i).getSegment() + "\n");
