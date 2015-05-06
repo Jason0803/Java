@@ -17,8 +17,6 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 
-
-
 					/* 	LAST UPDATED: 06/05/2015 12:45PM 	*/
 					/* 		Algorithm Updated 		*/
 					/*		 Fastened Work			*/
@@ -82,7 +80,7 @@ public class ReadAndHighlightTag extends JPanel
         add(buttonPanel);
         
         JLabel lblFile = new JLabel("File");
-        lblFile.setBounds(22, 4, 36, 20);
+        lblFile.setBounds(22, 12, 36, 20);
         buttonPanel.add(lblFile);
         
         textField = new JTextField();
