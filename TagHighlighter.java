@@ -17,7 +17,7 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 
-//--------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
 @SuppressWarnings("serial")
 public class ReadAndHighlightTag extends JPanel
                              implements ActionListener 
@@ -44,7 +44,7 @@ public class ReadAndHighlightTag extends JPanel
     private final JScrollPane scrollPane = new JScrollPane();
 
 
-// --------------------------------------------------------------------------------------------//
+// -------------------------------------------------------------------------------------------------------------------//
     public ReadAndHighlightTag()  // Constructor
     {
  
@@ -113,7 +113,7 @@ public class ReadAndHighlightTag extends JPanel
 		lblResult.setBounds(22, 109, 57, 15);
 	    add(lblResult);        
     }
- // --------------------------------------------------------------------------------------------//
+// -------------------------------------------------------------------------------------------------------------------//
     public void actionPerformed(ActionEvent e) 
     {
         StyledDocument doc = (StyledDocument) txtpnabc.getDocument();
@@ -221,74 +221,79 @@ public class ReadAndHighlightTag extends JPanel
         		doc.insertString(doc.getLength(), contents.toString(), null);
         		
 	        	Document document = txtpnabc.getDocument();
-	                try 
-	                {
-	                	//StringBuilder 
-	                    String find_1 = "<" +tag;
-	                    String find_2 = ">";
-	                    String find_3 = "</" + tag;
-	                    LOOP:
-	                    for (int index = 0; index + find_1.length() < document.getLength(); index++) 
-	                    {
-	                    	DefaultHighlighter.DefaultHighlightPainter highlightPainter =
-                                    new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW);
-	                    	String temp;
-	                        String match = document.getText(index, find_1.length());
-	                        if(find_1.equals(match)) 
-	                        {   
-	                        	int idx = index;			// From the beginning of tag to an end
-	                        	while(true)
-	                        	{
-	                        		match = document.getText(idx, find_2.length());
-	                        		if(find_2.equals(match)) 
-	                        		{
-	                        			txtpnabc.getHighlighter().addHighlight(index, idx+1, highlightPainter);
-	                        			break;
-	                        		}
-	                        		idx++;
-	                        	}
-	                        	int idx_2 = idx;
-
-	                        	while(true)					// From the beginning of closing tag to an end
-	                        	{
-	                        		match = document.getText(idx_2, find_3.length());
-	                        		if(find_3.equals(match))
-	                        		{
-	                        			int idx_3 = idx_2;
-	                        			while(true)
-	                        			{
-	                        				match = document.getText(idx_3, find_2.length());
-	                        				if(find_2.equals(match))
-	                        				{
-	                        					txtpnabc.getHighlighter().addHighlight(idx_2, idx_3+1, highlightPainter);
-	                        					continue LOOP;
-	                        				}
-	                        				idx_3++;
-	                        			}
-	                        		}
-	                        		idx_2++;
-	                        	}
-	                            //txtpnabc.getHighlighter().addHighlight(index, index + find_1.length(),
-	                            //        highlightPainter);
-	                        	
-	                        }
-	                       
-	                    }
-	                } 
-	                catch (BadLocationException ex) { ex.printStackTrace(); }
+	            
+	        	highlighter(document);
         	}
         	catch( Exception error ) {error.printStackTrace();}
         }
     }
-// --------------------------------------------------------------------------------------------//
-    public void appendString(String str) throws Exception
+// -------------------------------------------------------------------------------------------------------------------//
+	void highlighter(Document document) {
+	try 
+	{
+		//StringBuilder 
+	    String find_1 = "<" +tag;
+	    String find_2 = ">";
+	    String find_3 = "</" + tag;
+	    LOOP:
+	    for (int index = 0; index + find_1.length() < document.getLength(); index++) 
+	    {
+	    	DefaultHighlighter.DefaultHighlightPainter highlightPainter =
+	                new DefaultHighlighter.DefaultHighlightPainter(Color.YELLOW);
+	    	String temp;
+	        String match = document.getText(index, find_1.length());
+	        if(find_1.equals(match)) 
+	        {   
+	        	int idx = index;			// From the beginning of tag to an end
+	        	while(true)
+	        	{
+	        		match = document.getText(idx, find_2.length());
+	        		if(find_2.equals(match)) 
+	        		{
+	        			txtpnabc.getHighlighter().addHighlight(index, idx+1, highlightPainter);
+	        			break;
+	        		}
+	        		idx++;
+	        	}
+	        	int idx_2 = idx;
+
+	        	while(true)					// From the beginning of closing tag to an end
+	        	{
+	        		match = document.getText(idx_2, find_3.length());
+	        		if(find_3.equals(match))
+	        		{
+	        			int idx_3 = idx_2;
+	        			while(true)
+	        			{
+	        				match = document.getText(idx_3, find_2.length());
+	        				if(find_2.equals(match))
+	        				{
+	        					txtpnabc.getHighlighter().addHighlight(idx_2, idx_3+1, highlightPainter);
+	        					continue LOOP;
+	        				}
+	        				idx_3++;
+	        			}
+	        		}
+	        		idx_2++;
+	        	}
+	            //txtpnabc.getHighlighter().addHighlight(index, index + find_1.length(),
+	            //        highlightPainter);
+	        	
+	        }
+	       
+	    }
+	} 
+	catch (BadLocationException ex) { ex.printStackTrace(); }
+}
+//--------------------------------------------------------------------------------------------------------------------//
+    void appendString(String str) throws Exception
     {
         StyledDocument document = (StyledDocument) txtpnabc.getDocument();
 
  
         document.insertString(document.getLength(), str, null);
      }
- // --------------------------------------------------------------------------------------------//
+// -------------------------------------------------------------------------------------------------------------------//
     public String tagColouring( String line, String tag ) 
     {
     	// This method is being used without 'tag' exists in the 'line'
@@ -339,7 +344,7 @@ public class ReadAndHighlightTag extends JPanel
     	result = sb.toString();
     	return result;
     }
-// --------------------------------------------------------------------------------------------//   
+// -------------------------------------------------------------------------------------------------------------------//   
     private static void createAndShowGUI() {
         //Create and set up the window.'
         JFrame frame = new JFrame("FileChooserDemo");
@@ -352,8 +357,8 @@ public class ReadAndHighlightTag extends JPanel
         frame.pack();
         frame.setVisible(true);
     }
-// --------------------------------------------------------------------------------------------//
-void findSegment(ArrayList<String> entire) throws Exception 
+// -------------------------------------------------------------------------------------------------------------------//   
+    void findSegment(ArrayList<String> entire) throws Exception 
 	{
 		Segment tempSeg = new Segment();
 		StringBuilder sb = new StringBuilder();
@@ -428,7 +433,7 @@ void findSegment(ArrayList<String> entire) throws Exception
 		}
 		
 	}
-//--------------------------------------------------------------------------------------------//
+// -------------------------------------------------------------------------------------------------------------------//   
     public static void main(String[] args) 
     {
         //Schedule a job for the event dispatch thread:
@@ -437,8 +442,7 @@ void findSegment(ArrayList<String> entire) throws Exception
             public void run() {
             	try {
             		//Windows UI
-            		UIManager.setLookAndFeel(
-            	            UIManager.getCrossPlatformLookAndFeelClassName());
+            		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
                     createAndShowGUI();
             	} catch(Exception e) {
             		e.printStackTrace();
@@ -446,5 +450,5 @@ void findSegment(ArrayList<String> entire) throws Exception
             }
         });
     }
-// --------------------------------------------------------------------------------------------//
+// -------------------------------------------------------------------------------------------------------------------//   
 }
