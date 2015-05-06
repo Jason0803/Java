@@ -16,9 +16,13 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-	/* 	LAST UPDATED: 06/05/2015 12:45PM 	*/
-	/* 		Algorithm Updated 		*/
-	/*		 Fastened Work			*/
+
+
+
+					/* 	LAST UPDATED: 06/05/2015 12:45PM 	*/
+					/* 		Algorithm Updated 		*/
+					/*		 Fastened Work			*/
+
 /*
  * 
  *	This application is made for following purposes:
@@ -57,6 +61,9 @@ public class ReadAndHighlightTag extends JPanel
 // -------------------------------------------------------------------------------------------------------------------//
     public ReadAndHighlightTag()  // Constructor
     {
+    	setAutoscrolls(true);
+    	setBackground(Color.WHITE);
+    	setPreferredSize(new Dimension(1050, 430));
  
         //Create a file chooser
         fc = new JFileChooser();
@@ -67,7 +74,8 @@ public class ReadAndHighlightTag extends JPanel
 
         //For layout purposes, put the buttons in a separate panel
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setBounds(12, 14, 773, 85);
+        buttonPanel.setBackground(Color.WHITE);
+        buttonPanel.setBounds(12, 14, 1029, 87);
         buttonPanel.setLayout(null);
  
         //Add the buttons and the log to this panel.
@@ -79,12 +87,12 @@ public class ReadAndHighlightTag extends JPanel
         
         textField = new JTextField();
         textField.setEditable(false);
-        textField.setBounds(81, 6, 512, 17);
+        textField.setBounds(81, 11, 819, 23);
         buttonPanel.add(textField);
         textField.setColumns(10);
 	        
         openButton = new JButton("Open a File...");
-        openButton.setBounds(622, 4, 109, 23);
+        openButton.setBounds(908, 10, 109, 23);
 		buttonPanel.add(openButton);
 		 
 		lblTag = new JLabel("Tag");
@@ -93,12 +101,12 @@ public class ReadAndHighlightTag extends JPanel
 		                       
 		txtTagtag = new JTextField();
 		txtTagtag.setText("tag1,tag2, ...\r\n");
-		txtTagtag.setBounds(83, 49, 510, 20);
+		txtTagtag.setBounds(83, 49, 819, 20);
 		buttonPanel.add(txtTagtag);
 		txtTagtag.setColumns(10);
 		                       
 		btnSearch = new JButton("Search");
-		btnSearch.setBounds(622, 49, 109, 23);
+		btnSearch.setBounds(908, 48, 109, 23);
 		buttonPanel.add(btnSearch);
 		                       
 		openButton.addActionListener(this);
@@ -108,6 +116,7 @@ public class ReadAndHighlightTag extends JPanel
 		panel.setBounds(12, 137, 1029, 278);
 		add(panel);
 		panel.setLayout(null);
+		scrollPane.setBackground(Color.WHITE);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBounds(0, 0, 1029, 278);
