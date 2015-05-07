@@ -21,6 +21,7 @@ import javax.swing.text.StyledDocument;
 					/* 		Algorithm Updated 		*/
 					/*		 Fastened Work			*/
 					/*	      All Found Errors Gone		*/
+					/*	Errors gone, just need extenstion	*/
 
 
 /*
