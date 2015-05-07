@@ -1,0 +1,52 @@
+// ----------------------------------------------------------------------------------------------------------------------------------------//
+    public String tagColouring( String line, String tag ) 
+    {
+    	// This method is being used without 'tag' exists in the 'line'
+    	// as this method will be used where already checked for that case
+    	
+    	StringBuilder sb = new StringBuilder();
+    	String temp;
+    	String result;
+    	if( line.indexOf(tag) == 0 )																			// 1. In case the tag located at the beginning of the line
+    	{	
+    		sb.append("<html><font color='red'>");
+    		temp = line.substring(0, line.indexOf(">")+1);														// Colouring opening tag
+    		sb.append(temp + "</font></html>");
+    		
+    		temp = line.substring( line.indexOf(">")+1, line.indexOf( "</"+ tag ) );							// Content_1
+    		sb.append(temp);
+    		
+    		temp = line.substring( line.indexOf( "</" + tag), line.indexOf(">", line.indexOf("</" + tag))+1 );	// Colouring closing tag
+    		sb.append("<html><font color='red'>");
+    		sb.append(temp);
+    		sb.append("</font></html>");
+    		
+    		temp = line.substring( line.indexOf(">", line.indexOf("</" + tag)) );								// Content_2
+    		sb.append(temp); // this could be just "" in case there is no more content in current line
+    	}
+    	else																									// 2. In case the tag located between contents of the line
+    	{		
+    		temp = line.substring(0, line.indexOf("<"+tag));													// Content_1				
+    		sb.append(temp);
+    		
+    		temp = line.substring( line.indexOf("<"+tag), line.indexOf(">", line.indexOf(tag))+1 );				// Colouring opening tag
+    		sb.append("<html><font color='red'>");
+    		sb.append(temp);
+    		sb.append("</font></html>");
+    		
+    		temp = line.substring( line.indexOf(">", line.indexOf(tag))+1, line.indexOf("</" + tag) );			// Content_2
+    		sb.append(temp);
+    		
+    		temp = line.substring( line.indexOf("</" + tag), line.indexOf(">", line.indexOf("</"+tag))+1);		// Colouring closing tag
+    		sb.append("<html><font color='red'>");
+    		sb.append(temp);
+    		sb.append("</font></html>");
+    		
+    		temp = line.substring( line.indexOf(">", line.indexOf("</"+tag))+1 );									// Content_3
+    		sb.append(temp);
+    	}
+    	
+    	result = sb.toString();
+    	return result;
+    }
+// ----------------------------------------------------------------------------------------------------------------------------------------//
