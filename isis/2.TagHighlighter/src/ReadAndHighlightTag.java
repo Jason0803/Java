@@ -6,19 +6,13 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.filechooser.*;
-import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Document;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 
-
-					/* 	LAST UPDATED: 07/05/2015 5:33PM 	*/
+					/* 	LAST UPDATED: 07/05/2015 5:48PM 	*/
 					/* 		Algorithm Updated 		*/
 					/*		 Fastened Work			*/
 					/*	      All Found Errors Gone		*/
@@ -38,7 +32,6 @@ import javax.swing.text.StyledDocument;
 @SuppressWarnings("serial")
 public class ReadAndHighlightTag extends JPanel implements ActionListener 
 {
-
 	ArrayList<String> entire = new ArrayList<String>();
 	ArrayList<Segment> segments = new ArrayList<Segment>();
     JButton openButton;
@@ -57,7 +50,6 @@ public class ReadAndHighlightTag extends JPanel implements ActionListener
 	int segmentCount = 0;
     BufferedReader br;
     private final JScrollPane scrollPane = new JScrollPane();
-
 // -------------------------------------------------------------------------------------------------------------------//
     public ReadAndHighlightTag()  // Constructor
     {
@@ -179,8 +171,6 @@ public class ReadAndHighlightTag extends JPanel implements ActionListener
         {
         	try
         	{
-        		
-        		
         		int i = 0;
         		StringBuilder contents = new StringBuilder();
         		txtpnabc.setText("");
@@ -254,18 +244,15 @@ public class ReadAndHighlightTag extends JPanel implements ActionListener
 	        			}
 	        		}
 	        		idx_2++;
-	        	}
-	            //txtpnabc.getHighlighter().addHighlight(index, index + find_1.length(),
-	            //        highlightPainter);
-	        	
+	        	}	
 	        }
-	       
 	    }
 	} 
 	catch (BadLocationException ex) { ex.printStackTrace(); }
 }
 // -------------------------------------------------------------------------------------------------------------------//   
-    private static void createAndShowGUI() {
+    private static void createAndShowGUI() 
+    {
         //Create and set up the window.'
         JFrame frame = new JFrame("FileChooserDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -280,11 +267,6 @@ public class ReadAndHighlightTag extends JPanel implements ActionListener
 // -------------------------------------------------------------------------------------------------------------------//   
     void findSegment(ArrayList<String> entire) throws Exception 
 	{
-    	/* FOUND THREATENING EXCEPTION !! */
-    	/*
-    	 * 
-    	 *
-    	 */
 		Segment tempSeg = new Segment();
 		StringBuilder sb = new StringBuilder();
 		String temp;
