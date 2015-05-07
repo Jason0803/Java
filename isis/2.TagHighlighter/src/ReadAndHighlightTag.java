@@ -17,6 +17,13 @@ import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 
+
+					/* 	LAST UPDATED: 07/05/2015 5:33PM 	*/
+					/* 		Algorithm Updated 		*/
+					/*		 Fastened Work			*/
+					/*	      All Found Errors Gone		*/
+					/*	Errors gone, just need extenstion	*/
+
 /*
  * 
  *	This application is made for following purposes:
