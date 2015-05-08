@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://ws.apache.org/axis2" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.apache.org/axis2">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2">
+            <xs:element name="addRange">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="lower" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="upper" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="normal" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="addRangeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteRange">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteRangeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="callCount">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="callCountResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="setName">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="oldName" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="newName" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="setNameResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="callCountRequest">
+        <wsdl:part name="parameters" element="ns:callCount"/>
+    </wsdl:message>
+    <wsdl:message name="callCountResponse">
+        <wsdl:part name="parameters" element="ns:callCountResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteRangeRequest">
+        <wsdl:part name="parameters" element="ns:deleteRange"/>
+    </wsdl:message>
+    <wsdl:message name="deleteRangeResponse">
+        <wsdl:part name="parameters" element="ns:deleteRangeResponse"/>
+    </wsdl:message>
+    <wsdl:message name="setNameRequest">
+        <wsdl:part name="parameters" element="ns:setName"/>
+    </wsdl:message>
+    <wsdl:message name="setNameResponse">
+        <wsdl:part name="parameters" element="ns:setNameResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addRangeRequest">
+        <wsdl:part name="parameters" element="ns:addRange"/>
+    </wsdl:message>
+    <wsdl:message name="addRangeResponse">
+        <wsdl:part name="parameters" element="ns:addRangeResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="MyBMIAdminPortType">
+        <wsdl:operation name="callCount">
+            <wsdl:input message="ns:callCountRequest" wsaw:Action="urn:callCount"/>
+            <wsdl:output message="ns:callCountResponse" wsaw:Action="urn:callCountResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteRange">
+            <wsdl:input message="ns:deleteRangeRequest" wsaw:Action="urn:deleteRange"/>
+            <wsdl:output message="ns:deleteRangeResponse" wsaw:Action="urn:deleteRangeResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setName">
+            <wsdl:input message="ns:setNameRequest" wsaw:Action="urn:setName"/>
+            <wsdl:output message="ns:setNameResponse" wsaw:Action="urn:setNameResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addRange">
+            <wsdl:input message="ns:addRangeRequest" wsaw:Action="urn:addRange"/>
+            <wsdl:output message="ns:addRangeResponse" wsaw:Action="urn:addRangeResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="MyBMIAdminSoap11Binding" type="ns:MyBMIAdminPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="callCount">
+            <soap:operation soapAction="urn:callCount" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteRange">
+            <soap:operation soapAction="urn:deleteRange" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setName">
+            <soap:operation soapAction="urn:setName" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addRange">
+            <soap:operation soapAction="urn:addRange" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="MyBMIAdminSoap12Binding" type="ns:MyBMIAdminPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="callCount">
+            <soap12:operation soapAction="urn:callCount" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteRange">
+            <soap12:operation soapAction="urn:deleteRange" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setName">
+            <soap12:operation soapAction="urn:setName" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addRange">
+            <soap12:operation soapAction="urn:addRange" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="MyBMIAdminHttpBinding" type="ns:MyBMIAdminPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="callCount">
+            <http:operation location="callCount"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteRange">
+            <http:operation location="deleteRange"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setName">
+            <http:operation location="setName"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addRange">
+            <http:operation location="addRange"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="MyBMIAdmin">
+        <wsdl:port name="MyBMIAdminHttpSoap11Endpoint" binding="ns:MyBMIAdminSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/MyBMIAdmin"/>
+        </wsdl:port>
+        <wsdl:port name="MyBMIAdminHttpSoap12Endpoint" binding="ns:MyBMIAdminSoap12Binding">
+            <soap12:address location="http://localhost:8080/axis2/services/MyBMIAdmin"/>
+        </wsdl:port>
+        <wsdl:port name="MyBMIAdminHttpEndpoint" binding="ns:MyBMIAdminHttpBinding">
+            <http:address location="http://localhost:8080/axis2/services/MyBMIAdmin"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
