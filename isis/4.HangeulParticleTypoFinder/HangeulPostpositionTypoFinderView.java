@@ -11,11 +11,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JEditorPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Document;
-import javax.swing.text.StyledDocument;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -39,6 +39,7 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
     private JEditorPane editorPane;
     private JFileChooser fc;
     private BufferedReader br;
+    private BufferedWriter bw;
 	ArrayList<String> entire = new ArrayList<String>();
 	Document doc;
     public HangeulPostpositionTypoFinderView(){ 
@@ -92,6 +93,7 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 		buttonPanel.add(btnCheckGrammar);
 		
 		btnSaveFile = new JButton("Save File");
+
 		btnSaveFile.setBounds(468, 8, 97, 26);
 		buttonPanel.add(btnSaveFile);
 		
@@ -150,11 +152,18 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 		btnCheckGrammar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if( e.getSource() == btnCheckGrammar ){
-					
+					//bw = new BufferedWriter(new );
 				}
 			}
 		});
 		
+		btnSaveFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if( e.getSource() == btnSaveFile ){
+					
+				}
+			}
+		});
 	}
 
 	@Override
