@@ -11,12 +11,12 @@ import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Document;
 import javax.swing.text.StyledDocument;
 
-
-					/* 	LAST UPDATED: 07/05/2015 5:48PM 	*/
-					/* 		Algorithm Updated 		*/
-					/*		 Fastened Work			*/
-					/*	      All Found Errors Gone		*/
-					/*	Errors gone, just need extenstion	*/
+			
+								/* 		LAST VIEWED: 08/05/2015 9:01 AM 	*/
+								/* 			Algorithm Updated 				*/
+								/*			 Fastened Work					*/
+								/*		      All Found Errors Gone			*/
+								/*		Errors gone, just need extenstion	*/
 
 /*
  * 
