@@ -1,3 +1,9 @@
+/*
+ * This .java file is to implement the method to find given Strings
+ * that may contain 'tag, then change the colour of it by putting
+ * it between html font tags
+ */
+
 // ----------------------------------------------------------------------------------------------------------------------------------------//
     public String tagColouring( String line, String tag ) 
     {
