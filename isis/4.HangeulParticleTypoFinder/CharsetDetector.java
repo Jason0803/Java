@@ -81,7 +81,7 @@ public class CharsetDetector {
         }
         return true;
     }
- 
+ /*
     public static void main(String[] args) {
         File f = new File("example.txt");
  
@@ -108,4 +108,5 @@ public class CharsetDetector {
             System.out.println("Unrecognized charset.");
         }
     }
+*/
 }
