@@ -1,4 +1,4 @@
-import java.awt.EventQueue;
+\import java.awt.EventQueue;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -173,22 +173,25 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 				if( e.getSource() == btnCheckGrammar ){
 					try{
 						//editorPane.setText("");
-						for(int index = 0; index + 1 < doc.getLength(); index++){
+						for(int index = 0; index + 2 < doc.getLength(); index+=2){
 							String match = doc.getText(index, 2);
 							for(int i = 0; i < particle_1.length; i++){
 								if( match.equals(particle_1[i]) ){ //one of particles should be followed by final
 									String nfd = Normalizer.normalize(doc.getText(index-1,1), Normalizer.Form.NFD); 		// Convert a letter before 'match' to NFD
 									String check=null;
-									for(int n = 0; n < nfd.length(); n++)
+									int n =0;
+									for(n = 0; n < nfd.length(); n++)
 										check = String.format("U+%04X", nfd.codePointAt(n)); 											// Get code of final (Jong-seong)
-									if( check != null ){
-										int found = 0;
+									if( check != null && doc.getText(index-1, 1).equals(" ")==false ){
+
+										
+										int found = 0;		
 										for(int idx=0; idx < finals.length; idx++){
 											if( check.equals(finals[idx]) ){
 												found++;
 											}
 										}
-										if( found == 0 ){
+										if( found == 0 && ( doc.getText(index-1, 1).equals("까")==false ) ){
 											doc.remove(index, 2);
 											doc.insertString(index, particle_2[i], style);
 										}
@@ -197,23 +200,30 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 								else if( match.equals(particle_2[i]) ){ //one of particles should NOT be followed by final
 									String nfd = Normalizer.normalize(doc.getText(index-1,1), Normalizer.Form.NFD); 		// Convert a letter before 'match' to NFD
 									String check=null;
-									for(int n = 0; n < nfd.length(); n++)
+									
+									int n =0;
+									for(n = 0; n < nfd.length(); n++)
 										check = String.format("U+%04X", nfd.codePointAt(n)); 
 									if( check != null){
-										int found = 0;
-										for(int idx =0; idx<finals.length; idx++){
-											if( check.equals(finals[idx])){
-												found++;
-											}
-										}
-										if( found != 0 ){
+										if( n > 2 && (doc.getText(index-1,1).equals("없")==false ) && (doc.getText(index-1, 1).equals("있")==false ) ) {
 											doc.remove(index, 2);
 											doc.insertString(index, particle_1[i], style);
 										}
+//										int found = 0;
+//										for(int idx =0; idx<finals.length; idx++){
+//											if( check.equals(finals[idx])){
+//												found++;
+//											}
+//										}
+//										if( found != 0 && (doc.getText(index-1,1).equals("없")==false ) && (doc.getText(index-1, 1).equals("있")==false ) ) ){
+//											doc.remove(index, 2);
+//											doc.insertString(index, particle_1[i], style);
+//										}
 											
 									}
 								}
 							}
+							match = null;
 						}
 					}catch(Exception ex) {ex.printStackTrace();}
 
