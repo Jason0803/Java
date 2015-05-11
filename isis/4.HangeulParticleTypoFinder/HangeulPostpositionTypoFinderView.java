@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-
+import java.text.Normalizer;
 
 @SuppressWarnings("serial")
 public class HangeulPostpositionTypoFinderView extends JPanel implements ActionListener {
@@ -47,13 +47,13 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public HangeulPostpositionTypoFinderView(){ 
     	
-    	String[] particle_1 = {"은 ","을 ","이 ","과 ","이랑 "};
+    	final String[] particle_1 = {"은 ","을 ","이 ","과 ","이랑 "};
     	//= { "U+C740", "U+C744", "U+C774", "U+ACFC", "U+C774 U+B791" };															// "은-을-이-과-이랑"
-    	String[] particle_2 = {"는 ","를 ","가 ","와 ","랑 "};
+    	final String[] particle_2 = {"는 ","를 ","가 ","와 ","랑 "};
     	//= { "U+B294", "U+B97C", "U+AC00", "U+C640", "U+B791"};																	// "는-를-가-와-랑"
-    	String[] finalls = { "U+11A8", "U+11A9", "U+11AA", "U+11AB", "U+11AC", "U+11AD", "U+11AE", "U+11AF", "U+11B0", 
+    	final String[] finals = { "U+11A8", "U+11A9", "U+11AA", "U+11AB", "U+11AC", "U+11AD", "U+11AE", "U+11AF", "U+11B0", 
     			"U+11B1", "U+11B2", "U+11B3", "U+11B4", "U+11B5", "U+11B6","U+11D9" ,"U+11B7", "U+11B8", "U+11B9", 
-    			"U+11BA", "U+11BB", "U+11BC", "U+3148", "U+314A", "U+11BD", "U+11BF", "U+11C0", "U+11B5", "U+11C2" };				// finalls
+    			"U+11BA", "U+11BB", "U+11BC", "U+3148", "U+314A", "U+11BD", "U+11BF", "U+11C0", "U+11B5", "U+11C2" };				// finals
 
     	final String[] charsetsToBeTested = {"UTF-8", "UTF-16","windows-1253", "ISO-8859-7", "ISO-8859-1"};
     	
@@ -141,14 +141,9 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 				        }else{
 				            System.out.println("Unrecognized charset.");
 				        }
-						
-						//br = new BufferedReader(new InputStreamReader
-            			//	(new FileInputStream(file.getPath()), Charset.forName("UTF-8")));
-				        
 						String line = br.readLine();
 						int i = 0;
 						while(line!=null){
-							System.out.println(line);
 							entire.add(line);
 							doc.insertString(doc.getLength(), entire.get(i).toString()+"\n", null);
 							line = br.readLine();
@@ -161,9 +156,27 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 		});
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		btnCheckGrammar.addActionListener(new ActionListener() {
+			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
 				if( e.getSource() == btnCheckGrammar ){
-					//bw = new BufferedWriter(new );
+					try{
+
+						for(int index = 0; index + 2 < doc.getLength(); index++){
+							String match = doc.getText(index, 2);
+							for(int i = 0; i < particle_1.length; i++){
+								if( match.equals(particle_1[i]) ){ //one of particles should be followed by final
+									String nfd = Normalizer.normalize( doc.getText(index-2,index-1), Normalizer.Form.NFD); 		// Convert a letter before 'match' to NFD
+									for( int j = 0; j < finals.length; j++){
+										
+									}
+								}
+								else if( match.equals(particle_2[i]) ){
+									
+								}
+							}
+						}
+					}catch(Exception ex) {ex.printStackTrace();}
+
 				}
 			}
 		});
@@ -171,7 +184,9 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 		btnSaveFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if( e.getSource() == btnSaveFile ){
-					
+					try{
+						//bw = new BufferedWriter(new );
+					}catch(Exception ex) {ex.printStackTrace();}
 				}
 			}
 		});
