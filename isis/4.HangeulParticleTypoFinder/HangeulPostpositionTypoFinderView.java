@@ -1,4 +1,4 @@
-\import java.awt.EventQueue;
+import java.awt.EventQueue;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -61,7 +61,7 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
     							  "U+11B1", "U+11B2", "U+11B3", "U+11B4", "U+11B5", "U+11B6", "U+11B7", "U+11B8", "U+11B9",
     							  "U+11BA", "U+11BB", "U+11BC", "U+11BD", "U+11BE", "U+11BF", "U+11C0", "U+11C1", "U+11C2"};																	// finals
 
-    	final String[] charsetsToBeTested = {"UTF-8", "UTF-16","windows-1253", "ISO-8859-7", "ISO-8859-1"};
+    	final String[] charsetsToBeTested = {"UTF-8", "UTF-16","windows-1253", "ISO-8859-7"};
     	
 		frame = new JFrame();
 		frame.setMinimumSize(new Dimension(605, 515));
@@ -148,7 +148,7 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 				        Charset charset = cd.detectCharset(file, charsetsToBeTested);
 				 
 				        if (charset != null) {
-				        	InputStreamReader reader = new InputStreamReader(new FileInputStream(file), charset);
+				        	InputStreamReader reader = new InputStreamReader(new FileInputStream(file), getFileEncoding(file));
 				        	br = new BufferedReader(reader);				 
 				        }else{
 				            System.out.println("Unrecognized charset.");
@@ -179,23 +179,29 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 								if( match.equals(particle_1[i]) ){ //one of particles should be followed by final
 									String nfd = Normalizer.normalize(doc.getText(index-1,1), Normalizer.Form.NFD); 		// Convert a letter before 'match' to NFD
 									String check=null;
+									
 									int n =0;
 									for(n = 0; n < nfd.length(); n++)
-										check = String.format("U+%04X", nfd.codePointAt(n)); 											// Get code of final (Jong-seong)
-									if( check != null && doc.getText(index-1, 1).equals(" ")==false ){
-
-										
-										int found = 0;		
-										for(int idx=0; idx < finals.length; idx++){
-											if( check.equals(finals[idx]) ){
-												found++;
-											}
-										}
-										if( found == 0 && ( doc.getText(index-1, 1).equals("까")==false ) ){
+										check = String.format("U+%04X", nfd.codePointAt(n)); 
+										// Get code of final (Jong-seong)
+									if( check!=null){
+										if( n < 2 && ( doc.getText(index-1, 1).equals("까")==false )){
 											doc.remove(index, 2);
 											doc.insertString(index, particle_2[i], style);
 										}
 									}
+//									if( check != null && doc.getText(index-1, 1).equals(" ")==false ){
+//										int found = 0;		
+//										for(int idx=0; idx < finals.length; idx++){
+//											if( check.equals(finals[idx]) ){
+//												found++;
+//											}
+//										}
+//										if( found == 0 && ( doc.getText(index-1, 1).equals("까")==false ) ){
+//											doc.remove(index, 2);
+//											doc.insertString(index, particle_2[i], style);
+//										}
+//									}
 								}
 								else if( match.equals(particle_2[i]) ){ //one of particles should NOT be followed by final
 									String nfd = Normalizer.normalize(doc.getText(index-1,1), Normalizer.Form.NFD); 		// Convert a letter before 'match' to NFD
@@ -252,8 +258,22 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 		String find; 
 	}
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-	public void hasFinal(String s){
-		
+	public String getFileEncoding(File f){
+		try{
+			FileInputStream fis = new FileInputStream(f);
+			
+			byte[] BOM = new byte[4];
+			fis.read(BOM,0,4);
+			fis.close();
+			if((BOM[0] & 0xFF) == 0XEF && (BOM[1] & 0xFF) == 0xBB && (BOM[2] & 0xFF) == 0xBF )
+				return "UTF-8";
+			else if((BOM[0] & 0xFF) == 0xFE && (BOM[1] & 0xFF) == 0xFF )
+				return "UTF-16BE";
+			else if((BOM[0] & 0xFF) == 0xFF && (BOM[1] & 0xFF) == 0xFE )
+				return "UTF-16";
+			else
+				return "EUC-KR";			
+		}catch(Exception e) {e.printStackTrace(); return null;} 
 	}
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     private static void createAndShowGUI() 
