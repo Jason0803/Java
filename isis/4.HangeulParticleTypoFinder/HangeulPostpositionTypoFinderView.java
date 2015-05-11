@@ -18,6 +18,8 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -42,16 +44,19 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
     private BufferedWriter bw;
 	ArrayList<String> entire = new ArrayList<String>();
 	Document doc;
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public HangeulPostpositionTypoFinderView(){ 
     	
     	String[] particle_1 = {"은 ","을 ","이 ","과 ","이랑 "};
-    	//= { "U+C740", "U+C744", "U+C774", "U+ACFC", "U+C774 U+B791" };								// "은-을-이-과-이랑"
+    	//= { "U+C740", "U+C744", "U+C774", "U+ACFC", "U+C774 U+B791" };															// "은-을-이-과-이랑"
     	String[] particle_2 = {"는 ","를 ","가 ","와 ","랑 "};
-    	//= { "U+B294", "U+B97C", "U+AC00", "U+C640", "U+B791"};										// "는-를-가-와-랑"
+    	//= { "U+B294", "U+B97C", "U+AC00", "U+C640", "U+B791"};																	// "는-를-가-와-랑"
     	String[] finalls = { "U+11A8", "U+11A9", "U+11AA", "U+11AB", "U+11AC", "U+11AD", "U+11AE", "U+11AF", "U+11B0", 
     			"U+11B1", "U+11B2", "U+11B3", "U+11B4", "U+11B5", "U+11B6","U+11D9" ,"U+11B7", "U+11B8", "U+11B9", 
     			"U+11BA", "U+11BB", "U+11BC", "U+3148", "U+314A", "U+11BD", "U+11BF", "U+11C0", "U+11B5", "U+11C2" };				// finalls
 
+    	final String[] charsetsToBeTested = {"UTF-8", "UTF-16","windows-1253", "ISO-8859-7", "ISO-8859-1"};
+    	
 		frame = new JFrame();
 		frame.setBounds(100, 100, 605, 513);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -108,32 +113,38 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 		fc = new JFileChooser();
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt Files", "txt");
 	    fc.addChoosableFileFilter(filter);
-
-
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		btnBrowse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if( e.getSource() == btnBrowse ){
 		            int returnVal = fc.showOpenDialog(HangeulPostpositionTypoFinderView.this);
 		            if (returnVal == JFileChooser.APPROVE_OPTION){
 		            	file = fc.getSelectedFile();
-		            	if( file.getName().indexOf(".txt") == -1 ){
-		                    JOptionPane.showMessageDialog(scrollPane, "You should choose .txt File !", "Warning",
-		                            JOptionPane.WARNING_MESSAGE);
-		                    System.exit(0);
-		                }
 		                //This is where a real application would open the file.
 		                textField.setText(file.getName());   
 		            }
 				}
 			}
 		});
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		btnRead.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if( e.getSource() == btnRead ){
 					try{
 						
-						br = new BufferedReader(new InputStreamReader
-            				(new FileInputStream(file.getPath()), Charset.forName("UTF-8")));
+						CharsetDetector cd = new CharsetDetector();
+				        Charset charset = cd.detectCharset(file, charsetsToBeTested);
+				 
+				        if (charset != null) {
+				        	InputStreamReader reader = new InputStreamReader(new FileInputStream(file), charset);
+				        	br = new BufferedReader(reader);				 
+				        }else{
+				            System.out.println("Unrecognized charset.");
+				        }
+						
+						//br = new BufferedReader(new InputStreamReader
+            			//	(new FileInputStream(file.getPath()), Charset.forName("UTF-8")));
+				        
 						String line = br.readLine();
 						int i = 0;
 						while(line!=null){
@@ -148,7 +159,7 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 				}
 			}
 		});
-		
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		btnCheckGrammar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if( e.getSource() == btnCheckGrammar ){
@@ -156,7 +167,7 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 				}
 			}
 		});
-		
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		btnSaveFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if( e.getSource() == btnSaveFile ){
@@ -165,18 +176,21 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 			}
 		});
 	}
-
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	public void findTypo(Document document){
 		String find; 
 	}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	public void hasFinal(String s){
 		
 	}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
