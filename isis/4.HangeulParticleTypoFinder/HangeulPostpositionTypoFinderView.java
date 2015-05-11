@@ -31,6 +31,11 @@ import java.text.Normalizer;
 import java.awt.Color;
 import java.awt.Dimension;
 
+/*
+ *	NOT SURE WHERE I AM...
+ *	THOUGHT I WAS GETTING THERE
+ *	BUT LOST THE WAY I WAS GOING..
+ */
 @SuppressWarnings("serial")
 public class HangeulPostpositionTypoFinderView extends JPanel implements ActionListener {
 	private static JFrame frame;
