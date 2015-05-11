@@ -9,8 +9,12 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JEditorPane;
+import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.Document;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -24,10 +28,12 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.text.Normalizer;
+import java.awt.Color;
+import java.awt.Dimension;
 
 @SuppressWarnings("serial")
 public class HangeulPostpositionTypoFinderView extends JPanel implements ActionListener {
-	private JFrame frame;
+	private static JFrame frame;
 	private JLabel lblFile;
 	private JTextField textField;
     private static File file; 
@@ -43,7 +49,7 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
     private BufferedReader br;
     private BufferedWriter bw;
 	ArrayList<String> entire = new ArrayList<String>();
-	Document doc;
+	StyledDocument doc;
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public HangeulPostpositionTypoFinderView(){ 
     	
@@ -51,13 +57,14 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
     	//= { "U+C740", "U+C744", "U+C774", "U+ACFC", "U+C774 U+B791" };															// "은-을-이-과-이랑"
     	final String[] particle_2 = {"는 ","를 ","가 ","와 ","랑 "};
     	//= { "U+B294", "U+B97C", "U+AC00", "U+C640", "U+B791"};																	// "는-를-가-와-랑"
-    	final String[] finals = { "U+11A8", "U+11A9", "U+11AA", "U+11AB", "U+11AC", "U+11AD", "U+11AE", "U+11AF", "U+11B0", 
-    			"U+11B1", "U+11B2", "U+11B3", "U+11B4", "U+11B5", "U+11B6","U+11D9" ,"U+11B7", "U+11B8", "U+11B9", 
-    			"U+11BA", "U+11BB", "U+11BC", "U+3148", "U+314A", "U+11BD", "U+11BF", "U+11C0", "U+11B5", "U+11C2" };				// finals
+    	final String[] finals = { "U+11A8", "U+11A9", "U+11AA", "U+11AB", "U+11AC", "U+11AD", "U+11AE", "U+11AF", "U+11B0",
+    							  "U+11B1", "U+11B2", "U+11B3", "U+11B4", "U+11B5", "U+11B6", "U+11B7", "U+11B8", "U+11B9",
+    							  "U+11BA", "U+11BB", "U+11BC", "U+11BD", "U+11BE", "U+11BF", "U+11C0", "U+11C1", "U+11C2"};																	// finals
 
     	final String[] charsetsToBeTested = {"UTF-8", "UTF-16","windows-1253", "ISO-8859-7", "ISO-8859-1"};
     	
 		frame = new JFrame();
+		frame.setMinimumSize(new Dimension(605, 515));
 		frame.setBounds(100, 100, 605, 513);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -107,8 +114,13 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 		frame.getContentPane().add(scrollPane);
 		
 		editorPane = new JEditorPane();
+		editorPane.setContentType("text/html");
+		editorPane.setBackground(Color.WHITE);
+		editorPane.setEditable(false);
 		scrollPane.setViewportView(editorPane);
-		doc = editorPane.getDocument();
+		doc = (StyledDocument) editorPane.getDocument();
+		final Style style = doc.addStyle("StyleName", null);
+	    StyleConstants.setForeground(style, Color.red);
 		
 		fc = new JFileChooser();
 	    FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt Files", "txt");
@@ -160,18 +172,46 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 			public void actionPerformed(ActionEvent e) {
 				if( e.getSource() == btnCheckGrammar ){
 					try{
-
-						for(int index = 0; index + 2 < doc.getLength(); index++){
+						//editorPane.setText("");
+						for(int index = 0; index + 1 < doc.getLength(); index++){
 							String match = doc.getText(index, 2);
 							for(int i = 0; i < particle_1.length; i++){
 								if( match.equals(particle_1[i]) ){ //one of particles should be followed by final
-									String nfd = Normalizer.normalize( doc.getText(index-2,index-1), Normalizer.Form.NFD); 		// Convert a letter before 'match' to NFD
-									for( int j = 0; j < finals.length; j++){
-										
+									String nfd = Normalizer.normalize(doc.getText(index-1,1), Normalizer.Form.NFD); 		// Convert a letter before 'match' to NFD
+									String check=null;
+									for(int n = 0; n < nfd.length(); n++)
+										check = String.format("U+%04X", nfd.codePointAt(n)); 											// Get code of final (Jong-seong)
+									if( check != null ){
+										int found = 0;
+										for(int idx=0; idx < finals.length; idx++){
+											if( check.equals(finals[idx]) ){
+												found++;
+											}
+										}
+										if( found == 0 ){
+											doc.remove(index, 2);
+											doc.insertString(index, particle_2[i], style);
+										}
 									}
 								}
-								else if( match.equals(particle_2[i]) ){
-									
+								else if( match.equals(particle_2[i]) ){ //one of particles should NOT be followed by final
+									String nfd = Normalizer.normalize(doc.getText(index-1,1), Normalizer.Form.NFD); 		// Convert a letter before 'match' to NFD
+									String check=null;
+									for(int n = 0; n < nfd.length(); n++)
+										check = String.format("U+%04X", nfd.codePointAt(n)); 
+									if( check != null){
+										int found = 0;
+										for(int idx =0; idx<finals.length; idx++){
+											if( check.equals(finals[idx])){
+												found++;
+											}
+										}
+										if( found != 0 ){
+											doc.remove(index, 2);
+											doc.insertString(index, particle_1[i], style);
+										}
+											
+									}
 								}
 							}
 						}
@@ -206,12 +246,28 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 		
 	}
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    private static void createAndShowGUI() 
+    {
+        //Create and set up the window.'
+        frame = new JFrame("Highlighter");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 
+        //Add content to the window.
+        frame.getContentPane().add(new HangeulPostpositionTypoFinderView());
+ 
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+    }
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HangeulPostpositionTypoFinderView window = new HangeulPostpositionTypoFinderView();
-					window.frame.setVisible(true);
+//					HangeulPostpositionTypoFinderView window = new HangeulPostpositionTypoFinderView();
+//					window.frame.setVisible(true);
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                    createAndShowGUI();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
