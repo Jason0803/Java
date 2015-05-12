@@ -104,6 +104,12 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 			}
 		});
 		
+		btnFindLineNumber.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		}
+		});
+		
+	}
 		
 	}
 	private static void createAndShowGUI(){
