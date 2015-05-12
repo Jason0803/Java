@@ -56,9 +56,9 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public HangeulPostpositionTypoFinderView(){ 
     	
-    	final String[] particle_1 = {"은 ","을 ","이 ","과 "};
+    	final String[] particle_1 = {"은 ","을 ","이 ","과 ","으로"};
     	//= { "U+C740", "U+C744", "U+C774", "U+ACFC", "U+C774 U+B791" };															// "은-을-이-과-이랑"
-    	final String[] particle_2 = {"는 ","를 ","가 ","와 "};
+    	final String[] particle_2 = {"는 ","를 ","가 ","와 ","로"};
     	//= { "U+B294", "U+B97C", "U+AC00", "U+C640", "U+B791"};																	// "는-를-가-와-랑"
     	final String[] finals = { "U+11A8", "U+11A9", "U+11AA", "U+11AB", "U+11AC", "U+11AD", "U+11AE", "U+11AF", "U+11B0",
     							  "U+11B1", "U+11B2", "U+11B3", "U+11B4", "U+11B5", "U+11B6", "U+11B7", "U+11B8", "U+11B9",
