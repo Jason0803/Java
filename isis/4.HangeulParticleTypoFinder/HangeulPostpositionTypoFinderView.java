@@ -111,8 +111,7 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				String tag = textField_1.getText().toString();
 				int occurence = (int) spinner.getValue();
-				
-				
+				System.out.println(tag + occurence);
 			}
 		});
 		
