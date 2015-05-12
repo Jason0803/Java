@@ -31,11 +31,6 @@ import java.text.Normalizer;
 import java.awt.Color;
 import java.awt.Dimension;
 
-/*
- *	NOT SURE WHERE I AM...
- *	THOUGHT I WAS GETTING THERE
- *	BUT LOST THE WAY I WAS GOING..
- */
 @SuppressWarnings("serial")
 public class HangeulPostpositionTypoFinderView extends JPanel implements ActionListener {
 	private static JFrame frame;
@@ -58,9 +53,9 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public HangeulPostpositionTypoFinderView(){ 
     	
-    	final String[] particle_1 = {"은 ","을 ","이 ","과 ","이랑 "};
+    	final String[] particle_1 = {"은 ","을 ","이 ","과 "};
     	//= { "U+C740", "U+C744", "U+C774", "U+ACFC", "U+C774 U+B791" };															// "은-을-이-과-이랑"
-    	final String[] particle_2 = {"는 ","를 ","가 ","와 ","랑 "};
+    	final String[] particle_2 = {"는 ","를 ","가 ","와 "};
     	//= { "U+B294", "U+B97C", "U+AC00", "U+C640", "U+B791"};																	// "는-를-가-와-랑"
     	final String[] finals = { "U+11A8", "U+11A9", "U+11AA", "U+11AB", "U+11AC", "U+11AD", "U+11AE", "U+11AF", "U+11B0",
     							  "U+11B1", "U+11B2", "U+11B3", "U+11B4", "U+11B5", "U+11B6", "U+11B7", "U+11B8", "U+11B9",
@@ -178,44 +173,45 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
 				if( e.getSource() == btnCheckGrammar ){
 					try{
 						//editorPane.setText("");
-						for(int index = 0; index + 2 < doc.getLength(); index+=2){
+						for(int index = 0; index + 1 < doc.getLength(); index++){
 							String match = doc.getText(index, 2);
 							for(int i = 0; i < particle_1.length; i++){
 								if( match.equals(particle_1[i]) ){ //one of particles should be followed by final
 									String nfd = Normalizer.normalize(doc.getText(index-1,1), Normalizer.Form.NFD); 		// Convert a letter before 'match' to NFD
-									String check=null;
 									
+									StringBuilder check = new StringBuilder();
 									int n =0;
 									for(n = 0; n < nfd.length(); n++)
-										check = String.format("U+%04X", nfd.codePointAt(n)); 
-										// Get code of final (Jong-seong)
-									if( check!=null){
-										if( n < 2 && ( doc.getText(index-1, 1).equals("까")==false )){
-											doc.remove(index, 2);
-											doc.insertString(index, particle_2[i], style);
-										}
-									}
-//									if( check != null && doc.getText(index-1, 1).equals(" ")==false ){
-//										int found = 0;		
-//										for(int idx=0; idx < finals.length; idx++){
-//											if( check.equals(finals[idx]) ){
-//												found++;
-//											}
-//										}
-//										if( found == 0 && ( doc.getText(index-1, 1).equals("까")==false ) ){
+										check.append(String.format("U+%04X ", nfd.codePointAt(n))); 
+//										
+//									if( check!=null){
+//										if( n < 2 && ( doc.getText(index-1, 1).equals("까")==false )){
 //											doc.remove(index, 2);
 //											doc.insertString(index, particle_2[i], style);
 //										}
 //									}
+									
+									if( check.toString() != null && (doc.getText(index-1, 1).equals(" ")==false) && (doc.getText(index-1, 1).equals("마")==false)){
+										int found = 0;		
+										for(int idx=0; idx < finals.length; idx++){
+											if( check.toString().indexOf(finals[idx]) != -1 ){
+												found++;
+											}
+										}
+										if( found == 0 && ( doc.getText(index-1, 1).equals("까")==false ) ){
+											doc.remove(index, 2);
+											doc.insertString(index, particle_2[i], style);
+										}
+									}
 								}
 								else if( match.equals(particle_2[i]) ){ //one of particles should NOT be followed by final
 									String nfd = Normalizer.normalize(doc.getText(index-1,1), Normalizer.Form.NFD); 		// Convert a letter before 'match' to NFD
-									String check=null;
+									StringBuilder check = new StringBuilder();
 									
 									int n =0;
 									for(n = 0; n < nfd.length(); n++)
-										check = String.format("U+%04X", nfd.codePointAt(n)); 
-									if( check != null){
+										check.append( String.format("U+%04X", nfd.codePointAt(n)) ); 
+									if( check.toString() != null){
 										if( n > 2 && (doc.getText(index-1,1).equals("없")==false ) && (doc.getText(index-1, 1).equals("있")==false ) ) {
 											doc.remove(index, 2);
 											doc.insertString(index, particle_1[i], style);
