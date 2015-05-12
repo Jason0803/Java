@@ -64,6 +64,7 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
     	final String[] charsetsToBeTested = {"UTF-8", "UTF-16","windows-1253", "ISO-8859-7"};
     	
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setMinimumSize(new Dimension(605, 515));
 		frame.setBounds(100, 100, 605, 513);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
