@@ -51,6 +51,8 @@ public class HangeulPostpositionTypoFinderView extends JPanel implements ActionL
     private BufferedWriter bw;
 	ArrayList<String> entire = new ArrayList<String>();
 	StyledDocument doc;
+	
+	/* INDENT */
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     public HangeulPostpositionTypoFinderView(){ 
     	
