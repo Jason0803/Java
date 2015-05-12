@@ -1,0 +1,18 @@
+1. Read '체언_상세.txt' 
+  1. Store the txt file to a string array
+2. Read '용언_기초.txt'
+  1. Store each line of txt file except '다' at last
+  2. ==> WILL TREAT EXCEPTION MADE PROTOTYPE
+3. 
+PSEUDO-CODE
+
+for( int i = 0; i < entire.size(); i++)
+{
+  if( entire.get[i].indexOf(particle) != -1 )
+  {
+    if( entire.get[i].substring(0, entire.get[i].indexOf(particle)).equals(체언[i]) )
+    {
+    
+    }
+  }
+}
