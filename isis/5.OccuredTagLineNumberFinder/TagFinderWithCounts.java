@@ -43,6 +43,7 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 	private BufferedReader br;
 	private ArrayList<String> entire;
 	private ArrayList<String> result;
+	private ArrayList<Integer> lineNumber;
 	private StyledDocument doc;
 	private Style style;
 	private ProcessBuilder process;
@@ -129,14 +130,12 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				try{
 					// OPEN UP THE FILE THROUGH EDIT PLUS
-					runTime = Runtime.getRuntime();
-					process = new ProcessBuilder("C:/Program Files (x86)/EditPlus 3/editplus.exe", file.getPath());
-					process.start();
 					
 					String tag = textField_1.getText().toString();
 					int occurence = (int) spinner.getValue();
 					entire = new ArrayList<String>();
 					result = new ArrayList<String>();
+					lineNumber = new ArrayList<Integer>();
 					InputStreamReader is = new InputStreamReader(new FileInputStream(file), "UTF-8");
 					br = new BufferedReader(is);
 					
@@ -151,15 +150,10 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 					for(int i = 0; i < entire.size(); i++ ){
 						if( entire.get(i).indexOf("<"+tag)!= -1 ){
 							result.add( (i+1) + ": " + entire.get(i));
+							lineNumber.add(i+1);
 						}
 					}
 					
-					/* TO CATCH AN EXCEPTION OCCURRED WHEN 'SPINNER VALUE' IS HIGHER THAN ACTUAL COUNTS OF THE TAG */
-					if( occurence > result.size() ){
-						doc.insertString(doc.getLength(), "Occurred less than " + occurence +", " +
-														"Actually Occured: " + result.size() + "\n", style);
-											
-					}else{
 						/* Find specific line that contains the tag & matches occerence number */
 								//System.out.println(result.get(occurence-1));  --> WORKS FOR TAG OCCURRED ONCE IN A LINE
 						int j;
@@ -176,8 +170,18 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 								}
 						    }
 						}
-						doc.insertString(doc.getLength(), result.get(j) + "\n", null);
-					}
+						if( occurence > count ){
+							/* TO CATCH AN EXCEPTION OCCURRED WHEN 'SPINNER VALUE' IS HIGHER THAN ACTUAL COUNTS OF THE TAG */
+							doc.insertString(doc.getLength(), "Occurred less than " + occurence +", " +
+															"Actually Occured: " + count + "\n", style);
+						}else{
+							runTime = Runtime.getRuntime();
+							process = new ProcessBuilder("C:/Program Files (x86)/EditPlus 3/editplus.exe", file.getPath(), "-cursor", lineNumber.get(j).toString());
+							process.start();
+							
+							
+							doc.insertString(doc.getLength(), result.get(j) + "\n", null);
+						}
 				}catch(Exception ex){ ex.printStackTrace(); }
 			}
 		});
