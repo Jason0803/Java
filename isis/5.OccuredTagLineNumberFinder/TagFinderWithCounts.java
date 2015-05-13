@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFileChooser;
@@ -12,6 +13,9 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -39,6 +43,9 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 	private BufferedReader br;
 	private ArrayList<String> entire;
 	private ArrayList<String> result;
+	private StyledDocument doc;
+	private Style style;
+	private ProcessBuilder process;
 	public TagFinderWithCounts() {
 		frame = new JFrame();
 		frame.setMinimumSize(new Dimension(460, 330));
@@ -91,8 +98,12 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 		frame.getContentPane().add(scrollPane);
 		
 		editorPane = new JEditorPane();
-		editorPane.setContentType("text/html\r\n");
+		editorPane.setContentType("text/html");
 		scrollPane.setViewportView(editorPane);
+		
+		doc = (StyledDocument) editorPane.getDocument();
+		style = doc.addStyle("error",null);
+		StyleConstants.setForeground(style, Color.red);
 		
 		fc = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(".dita Files", "dita");
@@ -133,27 +144,36 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 					/* Find specific line that contains the tag user specified */
 					for(int i = 0; i < entire.size(); i++ ){
 						if( entire.get(i).indexOf("<"+tag)!= -1 ){
-							result.add( (i+1) + ":" + entire.get(i));
+							result.add( (i+1) + ": " + entire.get(i));
 						}
 					}
 					
-					/* Find specific line that contains the tag & matches occerence number */
-							//System.out.println(result.get(occurence-1));  --> WORKS FOR TAG OCCURRED ONCE IN A LINE
-					int j;
-					int count = 0;
-					FORLOOP:
-					for(j = 0; j < result.size(); j++){
-						int idx = 0;
-						
-						while ((idx = result.get(j).indexOf("<"+tag, idx)) != -1){
-							idx++;
-							count++;
-							if( count == occurence ){
-								break FORLOOP;
-							}
-					    }
+					/* TO CATCH AN EXCEPTION OCCURRED WHEN 'SPINNER VALUE' IS HIGHER THAN ACTUAL COUNTS OF THE TAG */
+					if( occurence > result.size() ){
+						doc.insertString(doc.getLength(), "Occurred less than " + occurence +", " +
+														"Actually Occured: " + result.size() + "\n", style);
+											
+					}else{
+						/* Find specific line that contains the tag & matches occerence number */
+								//System.out.println(result.get(occurence-1));  --> WORKS FOR TAG OCCURRED ONCE IN A LINE
+						int j;
+						int count = 0;
+						FORLOOP:
+						for(j = 0; j < result.size(); j++){
+							int idx = 0;
+							
+							while ((idx = result.get(j).indexOf("<"+tag, idx)) != -1){
+								idx++;
+								count++;
+								if( count == occurence ){
+									break FORLOOP;
+								}
+						    }
+						}
+						doc.insertString(doc.getLength(), result.get(j) + "\n", null);
+//						process = new ProcessBuilder(file.getPath());
+//						process.start();
 					}
-					System.out.println( result.get(j));
 				}catch(Exception ex){ ex.printStackTrace(); }
 			}
 		});
