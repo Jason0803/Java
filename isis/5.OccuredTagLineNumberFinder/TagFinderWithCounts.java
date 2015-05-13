@@ -46,6 +46,7 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 	private StyledDocument doc;
 	private Style style;
 	private ProcessBuilder process;
+	private Runtime runTime;
 	public TagFinderWithCounts() {
 		frame = new JFrame();
 		frame.setMinimumSize(new Dimension(460, 330));
@@ -127,6 +128,11 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 		btnFindLineNumber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
+					// OPEN UP THE FILE THROUGH EDIT PLUS
+					runTime = Runtime.getRuntime();
+					process = new ProcessBuilder("C:/Program Files (x86)/EditPlus 3/editplus.exe", file.getPath());
+					process.start();
+					
 					String tag = textField_1.getText().toString();
 					int occurence = (int) spinner.getValue();
 					entire = new ArrayList<String>();
@@ -171,8 +177,6 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 						    }
 						}
 						doc.insertString(doc.getLength(), result.get(j) + "\n", null);
-//						process = new ProcessBuilder(file.getPath());
-//						process.start();
 					}
 				}catch(Exception ex){ ex.printStackTrace(); }
 			}
