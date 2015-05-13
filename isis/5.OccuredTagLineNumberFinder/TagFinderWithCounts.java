@@ -26,7 +26,7 @@ import java.lang.*;
 
 
 public class TagFinderWithCounts extends JPanel implements ActionListener{
-	private static JFrame frame;
+	private static JFrame frmJasonsTagFinder;
 	private JPanel panel;
 	private JLabel lblFile;
 	private JLabel lblTagToFind;
@@ -49,15 +49,16 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 	private ProcessBuilder process;
 	private Runtime runTime;
 	public TagFinderWithCounts() {
-		frame = new JFrame();
-		frame.setMinimumSize(new Dimension(460, 330));
-		frame.setBounds(100, 100, 456, 330);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmJasonsTagFinder = new JFrame();
+		frmJasonsTagFinder.setTitle("Jason's Tag Finder");
+		frmJasonsTagFinder.setMinimumSize(new Dimension(460, 330));
+		frmJasonsTagFinder.setBounds(100, 100, 456, 330);
+		frmJasonsTagFinder.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmJasonsTagFinder.getContentPane().setLayout(null);
 		
 		panel = new JPanel();
 		panel.setBounds(0, 0, 443, 173);
-		frame.getContentPane().add(panel);
+		frmJasonsTagFinder.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		lblFile = new JLabel("File : ");
@@ -97,7 +98,7 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 174, 443, 118);
-		frame.getContentPane().add(scrollPane);
+		frmJasonsTagFinder.getContentPane().add(scrollPane);
 		
 		editorPane = new JEditorPane();
 		editorPane.setContentType("text/html");
@@ -189,15 +190,15 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 	}
 	private static void createAndShowGUI(){
 		        //Create and set up the window.'
-		        frame = new JFrame("TagFinder");
-		        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		        frmJasonsTagFinder = new JFrame("TagFinder");
+		        frmJasonsTagFinder.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 
 		        //Add content to the window.
-		        frame.getContentPane().add(new TagFinderWithCounts());
+		        frmJasonsTagFinder.getContentPane().add(new TagFinderWithCounts());
 		 
 		        //Display the window.
-		        frame.pack();
-		        frame.setVisible(true);
+		        frmJasonsTagFinder.pack();
+		        frmJasonsTagFinder.setVisible(true);
 	}
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
