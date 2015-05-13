@@ -1,3 +1,4 @@
+
 import java.awt.EventQueue;
 
 import javax.swing.JFileChooser;
@@ -14,7 +15,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
+import java.awt.Dimension;
+import java.lang.*;
 
 
 public class TagFinderWithCounts extends JPanel implements ActionListener{
@@ -32,9 +36,12 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 	private JEditorPane editorPane;
 	private JFileChooser fc;
 	private File file;
-	
+	private BufferedReader br;
+	private ArrayList<String> entire;
+	private ArrayList<String> result;
 	public TagFinderWithCounts() {
 		frame = new JFrame();
+		frame.setMinimumSize(new Dimension(460, 330));
 		frame.setBounds(100, 100, 456, 330);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -91,6 +98,7 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(".dita Files", "dita");
 	    fc.addChoosableFileFilter(filter);
 	    
+	    /* BROWSE FILE */
 		btnBrowse.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			if( e.getSource() == btnBrowse ){
@@ -104,12 +112,51 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 			}
 		});
 		
+		/* SEARCH SPECIFIC TAG */
 		btnFindLineNumber.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-		}
+			public void actionPerformed(ActionEvent e) {
+				try{
+					String tag = textField_1.getText().toString();
+					int occurence = (int) spinner.getValue();
+					entire = new ArrayList<String>();
+					result = new ArrayList<String>();
+					InputStreamReader is = new InputStreamReader(new FileInputStream(file), "UTF-8");
+					br = new BufferedReader(is);
+					
+					/* Read all the lines from given file */
+					String line = br.readLine();
+					while( line != null ){
+						entire.add(line);
+						line = br.readLine();
+					}
+					
+					/* Find specific line that contains the tag user specified */
+					for(int i = 0; i < entire.size(); i++ ){
+						if( entire.get(i).indexOf("<"+tag)!= -1 ){
+							result.add( (i+1) + ":" + entire.get(i));
+						}
+					}
+					
+					/* Find specific line that contains the tag & matches occerence number */
+							//System.out.println(result.get(occurence-1));  --> WORKS FOR TAG OCCURRED ONCE IN A LINE
+					int j;
+					int count = 0;
+					FORLOOP:
+					for(j = 0; j < result.size(); j++){
+						int idx = 0;
+						
+						while ((idx = result.get(j).indexOf("<"+tag, idx)) != -1){
+							idx++;
+							count++;
+							if( count == occurence ){
+								break FORLOOP;
+							}
+					    }
+					}
+					System.out.println( result.get(j));
+				}catch(Exception ex){ ex.printStackTrace(); }
+			}
 		});
-		
-	}
 		
 	}
 	private static void createAndShowGUI(){
@@ -123,18 +170,21 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 		        //Display the window.
 		        frame.pack();
 		        frame.setVisible(true);
-		 }
+	}
 	public static void main(String[] args) {
-	EventQueue.invokeLater(new Runnable() {
-		public void run() {
-			try {
-				UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-                createAndShowGUI();
-			} catch (Exception e) {
-				e.printStackTrace();
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+					createAndShowGUI();
+				} catch (Exception e) {e.printStackTrace();}
 			}
-		}
-	});
-}
+		});
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
