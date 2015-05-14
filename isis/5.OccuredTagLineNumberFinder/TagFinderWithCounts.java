@@ -24,7 +24,14 @@ import java.util.ArrayList;
 import java.awt.Dimension;
 import java.lang.*;
 import javax.swing.SpinnerNumberModel;
-
+/*
+ *	This Application is made for purpose of finding a specific 'tag' from a 'dita'
+ *	(UTF-8) File, with where it's located.
+ *	In case user input of 'occurence' (at spinner) exceeds actually occurred,
+ *	warning message on editorPane comes up with red coloured text
+ *	Else, there is a tag with matching occurence, the app. opens the 'dita' file
+ *	with Editplus and focuses line the user wanted to find
+ */
 
 public class TagFinderWithCounts extends JPanel implements ActionListener{
 	private static JFrame frmJasonsTagFinder;
