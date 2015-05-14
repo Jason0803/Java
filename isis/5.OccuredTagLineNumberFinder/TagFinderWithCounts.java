@@ -23,6 +23,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.awt.Dimension;
 import java.lang.*;
+import javax.swing.SpinnerNumberModel;
 
 
 public class TagFinderWithCounts extends JPanel implements ActionListener{
@@ -50,6 +51,7 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 	private Runtime runTime;
 	public TagFinderWithCounts() {
 		frmJasonsTagFinder = new JFrame();
+		frmJasonsTagFinder.setResizable(false);
 		frmJasonsTagFinder.setTitle("Jason's Tag Finder");
 		frmJasonsTagFinder.setMinimumSize(new Dimension(460, 330));
 		frmJasonsTagFinder.setBounds(100, 100, 456, 330);
@@ -57,7 +59,7 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 		frmJasonsTagFinder.getContentPane().setLayout(null);
 		
 		panel = new JPanel();
-		panel.setBounds(0, 0, 443, 173);
+		panel.setBounds(0, 0, 454, 174);
 		frmJasonsTagFinder.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -74,33 +76,37 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 		panel.add(lblTagCount);
 		
 		textField = new JTextField();
-		textField.setBounds(122, 35, 175, 20);
+		textField.setEditable(false);
+		textField.setBounds(122, 35, 142, 20);
 		panel.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(122, 77, 105, 20);
+		textField_1.setBounds(122, 77, 142, 20);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
 		spinner = new JSpinner();
-		spinner.setBounds(165, 125, 62, 20);
+		spinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
+		spinner.setBounds(202, 126, 62, 20);
 		panel.add(spinner);
 		
 		btnBrowse = new JButton("Browse..");
 
-		btnBrowse.setBounds(307, 34, 97, 23);
+		btnBrowse.setBounds(310, 34, 97, 23);
 		panel.add(btnBrowse);
 		
 		btnFindLineNumber = new JButton("Search");
-		btnFindLineNumber.setBounds(253, 77, 151, 72);
+		btnFindLineNumber.setBounds(310, 80, 97, 65);
 		panel.add(btnFindLineNumber);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 174, 443, 118);
+		scrollPane.setBounds(0, 174, 454, 128);
 		frmJasonsTagFinder.getContentPane().add(scrollPane);
 		
 		editorPane = new JEditorPane();
+		editorPane.setDragEnabled(true);
+		editorPane.setEditable(false);
 		editorPane.setContentType("text/html");
 		scrollPane.setViewportView(editorPane);
 		
@@ -131,7 +137,6 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				try{
 					// OPEN UP THE FILE THROUGH EDIT PLUS
-					
 					String tag = textField_1.getText().toString();
 					int occurence = (int) spinner.getValue();
 					entire = new ArrayList<String>();
@@ -155,34 +160,34 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 						}
 					}
 					
-						/* Find specific line that contains the tag & matches occerence number */
-								//System.out.println(result.get(occurence-1));  --> WORKS FOR TAG OCCURRED ONCE IN A LINE
-						int j;
-						int count = 0;
-						FORLOOP:
-						for(j = 0; j < result.size(); j++){
-							int idx = 0;
+					/* Find specific line that contains the tag & matches occerence number */
+							//System.out.println(result.get(occurence-1));  --> WORKS FOR TAG OCCURRED ONCE IN A LINE
+					int j;
+					int count = 0;
+					FORLOOP:
+					for(j = 0; j < result.size(); j++){
+						int idx = 0;
 							
-							while ((idx = result.get(j).indexOf("<"+tag, idx)) != -1){
-								idx++;
-								count++;
-								if( count == occurence ){
-									break FORLOOP;
-								}
-						    }
-						}
-						if( occurence > count ){
-							/* TO CATCH AN EXCEPTION OCCURRED WHEN 'SPINNER VALUE' IS HIGHER THAN ACTUAL COUNTS OF THE TAG */
-							doc.insertString(doc.getLength(), "Occurred less than " + occurence +", " +
-															"Actually Occured: " + count + "\n", style);
-						}else{
-							runTime = Runtime.getRuntime();
-							process = new ProcessBuilder("C:/Program Files (x86)/EditPlus 3/editplus.exe", file.getPath(), "-cursor", lineNumber.get(j).toString());
-							process.start();
+						while ((idx = result.get(j).indexOf("<"+tag, idx)) != -1){
+							idx++;
+							count++;
+							if( count == occurence ){
+								break FORLOOP;
+							}
+					    }
+					}
+					if( occurence > count ){
+						/* TO CATCH AN EXCEPTION OCCURRED WHEN 'SPINNER VALUE' IS HIGHER THAN ACTUAL COUNTS OF THE TAG */
+						doc.insertString(doc.getLength()," ' " + tag + " ' "+" Occurred less than " + occurence +", " +
+															"Actually Occured: " + count + "times" +"\n\n", style);
+					}else{
+						runTime = Runtime.getRuntime();
+						process = new ProcessBuilder("C:/Program Files (x86)/EditPlus 3/editplus.exe", file.getPath(), "-cursor", lineNumber.get(j).toString());
+						process.start();
 							
 							
-							doc.insertString(doc.getLength(), result.get(j) + "\n", null);
-						}
+						doc.insertString(doc.getLength(), result.get(j) + "\n\n", null);
+					}
 				}catch(Exception ex){ ex.printStackTrace(); }
 			}
 		});
