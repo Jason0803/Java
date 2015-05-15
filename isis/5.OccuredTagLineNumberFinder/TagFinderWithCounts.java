@@ -216,7 +216,8 @@ public class TagFinderWithCounts extends JPanel implements ActionListener{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+					/* NIMBUS UI */
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
 					createAndShowGUI();
 				} catch (Exception e) {e.printStackTrace();}
 			}
