@@ -22,7 +22,8 @@ import java.util.ArrayList;
 import java.awt.Dimension;
 
 import javax.swing.JCheckBox;
-
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class SummaryParser extends JPanel implements ActionListener{
 	private static JFrame frmSummaryFinder;
@@ -38,12 +39,15 @@ public class SummaryParser extends JPanel implements ActionListener{
 	private File[] files;
 	private BufferedReader br;
 	private StringBuilder sb;
+	private HSSFWorkbook workbook;
+	private HSSFSheet sheet;
 	
 	public SummaryParser() {
 		frmSummaryFinder = new JFrame();
+		frmSummaryFinder.setResizable(false);
 		frmSummaryFinder.setTitle("Summary Finder");
-		frmSummaryFinder.setMinimumSize(new Dimension(460, 330));
-		frmSummaryFinder.setBounds(100, 100, 456, 330);
+		frmSummaryFinder.setMinimumSize(new Dimension(450, 320));
+		frmSummaryFinder.setBounds(100, 100, 455, 324);
 		frmSummaryFinder.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSummaryFinder.getContentPane().setLayout(null);
 		
@@ -121,18 +125,25 @@ public class SummaryParser extends JPanel implements ActionListener{
 									while(true){
 										line = br.readLine();
 										
-										if(line.indexOf("</summary>")!=-1)
+										if(line.indexOf("</summary>")!=-1) {
 											break;
-										else
-											sb.append(line+"\n");
+										} else {
+											sb.append(line.substring( line.indexOf("type") ,line.indexOf("/>")-1 ) +"\n");
+										}
 									}
 								}
 								line = br.readLine();
 							}
-							editorPane.setText(editorPane.getText() + files[i].getName() +"\n\n" + sb.toString());
+							editorPane.setText(editorPane.getText() + files[i].getName() +"\n\n" + sb.toString() + "\n");
 							
 						} catch( Exception ex ) {ex.printStackTrace();}
 					}
+					
+					// CREATE NEW EXCEL FILE
+					workbook = new HSSFWorkbook();
+					sheet = workbook.createSheet("SHIT");
+					
+					
 				}
 			}
 		});
