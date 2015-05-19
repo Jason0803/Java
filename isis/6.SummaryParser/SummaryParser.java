@@ -17,13 +17,17 @@ import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.awt.Dimension;
 
 import javax.swing.JCheckBox;
+
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 
 public class SummaryParser extends JPanel implements ActionListener{
 	private static JFrame frmSummaryFinder;
@@ -41,6 +45,7 @@ public class SummaryParser extends JPanel implements ActionListener{
 	private StringBuilder sb;
 	private HSSFWorkbook workbook;
 	private HSSFSheet sheet;
+	private FileOutputStream fos;
 	
 	public SummaryParser() {
 		frmSummaryFinder = new JFrame();
@@ -114,10 +119,17 @@ public class SummaryParser extends JPanel implements ActionListener{
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if( e.getSource() == btnSearch ) {
-					sb = new StringBuilder();
-					for( int i=0; i < files.length; i++ ){
-						try{
+					try{
+						int rowIndex = 0;
+						sb = new StringBuilder();
+						// CREATE NEW EXCEL FILE
+						String fileName = "new.xls";
+						workbook = new HSSFWorkbook();
+						sheet = workbook.createSheet("SHIT");
+						for( int i=0; i < files.length; i++ ){
+							
 							InputStreamReader is = new InputStreamReader(new FileInputStream(files[i]), "UTF-8");
+							fos = new FileOutputStream(fileName);
 							br = new BufferedReader(is);
 							String line = br.readLine();
 							while(line!=null){
@@ -129,21 +141,19 @@ public class SummaryParser extends JPanel implements ActionListener{
 											break;
 										} else {
 											sb.append(line.substring( line.indexOf("type") ,line.indexOf("/>")-1 ) +"\n");
+											Row row = sheet.createRow(rowIndex++);
+											Cell cell_0 = row.createCell(0);
+											cell_0.setCellValue(line);
 										}
 									}
+									rowIndex++;
 								}
 								line = br.readLine();
 							}
 							editorPane.setText(editorPane.getText() + files[i].getName() +"\n\n" + sb.toString() + "\n");
-							
-						} catch( Exception ex ) {ex.printStackTrace();}
-					}
-					
-					// CREATE NEW EXCEL FILE
-					workbook = new HSSFWorkbook();
-					sheet = workbook.createSheet("SHIT");
-					
-					
+						}
+						workbook.write(fos);
+					} catch(Exception ex) {ex.printStackTrace();}
 				}
 			}
 		});
