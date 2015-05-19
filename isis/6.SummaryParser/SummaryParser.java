@@ -90,7 +90,7 @@ public class SummaryParser extends JPanel implements ActionListener{
 		
 		fc = new JFileChooser();
 		fc.setMultiSelectionEnabled(true);
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(".dita Files", "dita");
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(".xml Files", "xml");
 	    fc.addChoosableFileFilter(filter);
 	    
 		btnBrowse.addActionListener(new ActionListener() {
