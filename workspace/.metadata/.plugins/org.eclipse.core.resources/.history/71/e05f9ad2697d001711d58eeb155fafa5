@@ -1,0 +1,13 @@
+package condition.test;
+
+public class GradeTest_1 {
+
+	public static void main(String[] args) {
+		int grade = 89;
+		if( grade > 90 && grade <= 100 ){
+			System.out.println("A Grade....");
+			
+		}
+	}
+
+}
