@@ -37,7 +37,7 @@ public class MyDate {
 			}
 			// 1 ~ 31
 			// case 1: case 3: case 5: case 7: case 8: case 10: case 12: 
-			default: {
+			default:{
 				if(day < 1 || day > 31){
 					errorDisplay();
 				} else 	this.day = day;
