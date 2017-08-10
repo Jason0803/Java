@@ -1,0 +1,15 @@
+package kosta.cons;
+
+public class Engine {
+	String brandName;
+	int life;
+	
+	public Engine(String brandName, int life) {
+		this.brandName = brandName;
+		this.life = life;
+	}
+	
+	
+}
+
+

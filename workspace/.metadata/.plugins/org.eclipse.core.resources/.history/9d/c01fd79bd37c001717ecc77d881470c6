@@ -1,0 +1,8 @@
+package kosta.cons;
+
+public class Engine {
+	String brandName;
+	int life;
+}
+
+

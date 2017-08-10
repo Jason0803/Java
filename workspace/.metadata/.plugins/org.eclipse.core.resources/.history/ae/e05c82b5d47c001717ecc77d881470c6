@@ -1,0 +1,6 @@
+package kosta.cons;
+
+public class Car {
+	String model;
+	
+}

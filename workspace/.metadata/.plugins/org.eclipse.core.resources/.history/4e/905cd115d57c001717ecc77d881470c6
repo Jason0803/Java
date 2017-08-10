@@ -1,0 +1,10 @@
+package kosta.cons;
+
+public class Car {
+	String model;
+	char color;
+	float price;
+	Engine engine;
+	
+	
+}

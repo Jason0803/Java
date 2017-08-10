@@ -1,0 +1,5 @@
+package kosta.banking;
+
+public class Account {
+
+}

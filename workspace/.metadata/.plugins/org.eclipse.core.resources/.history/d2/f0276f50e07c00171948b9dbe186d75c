@@ -1,0 +1,11 @@
+package kosta.banking.test;
+
+import kosta.banking.*;
+
+public class KostaBankingTest {
+	Customer james = new Customer("James", "Gosling", 1993);
+	
+
+	
+
+}

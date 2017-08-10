@@ -1,0 +1,10 @@
+package kosta.banking.test;
+
+public class KostaBankingTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
