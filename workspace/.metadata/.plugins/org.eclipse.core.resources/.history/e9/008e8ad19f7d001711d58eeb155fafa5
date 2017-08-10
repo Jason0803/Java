@@ -1,0 +1,27 @@
+package looping.test;
+
+public class BasicLoopingTest_1 {
+	
+	// println for a String
+	static void display(String text){
+		System.out.println(text);
+	}
+	public static void main(String[] args) {
+		// for statement
+		display("=====For Statement=====")
+		for(int i = 0; i < 10; i++){
+			System.out.println(i + "Hello...");
+		}
+		
+		// while statement
+		int i = 0;
+		while(i < 10){
+			System.out.println(i + "Hello...");
+			i++;
+		}
+		
+		// do-while statement
+		
+	}
+
+}

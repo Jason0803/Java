@@ -1,0 +1,13 @@
+package looping.test;
+
+public class BasicLoopingTest_1 {
+
+	static void print(String text){
+		System.out.println(text);
+	}
+	public static void main(String[] args) {
+		// for statement
+		
+	}
+
+}

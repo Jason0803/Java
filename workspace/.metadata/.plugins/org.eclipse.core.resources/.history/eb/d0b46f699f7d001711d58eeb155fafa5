@@ -1,0 +1,14 @@
+package looping.test;
+
+public class BasicLoopingTest_1 {
+	
+	// println for 
+	static void display(String text){
+		System.out.println(text);
+	}
+	public static void main(String[] args) {
+		// for statement
+		
+	}
+
+}
