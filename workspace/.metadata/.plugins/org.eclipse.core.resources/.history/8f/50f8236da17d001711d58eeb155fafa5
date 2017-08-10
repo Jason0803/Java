@@ -1,0 +1,30 @@
+package looping.test;
+
+public class BasicLoopingTest_1 {
+	
+	public static void main(String[] args) {
+		// for statement
+		System.out.println("===== For Statement =====");
+		for(int i = 0; i < 10; i++){
+			System.out.println(i + "\tfor");
+		}
+		
+		// while statement
+		System.out.println("===== While Statement =====");
+		int i = 0;
+		while(i < 10){
+			System.out.println(i + "\twhile");
+			i++;
+		}
+		
+		// do-while statement
+		System.out.println("===== Do-While Statement =====");
+		int j = 0;
+		do {
+			System.out.println(j + "\tdo-while");
+			j++;
+		} while(j < 10);
+		
+	}
+
+}

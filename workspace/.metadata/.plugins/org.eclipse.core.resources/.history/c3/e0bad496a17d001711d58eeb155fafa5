@@ -1,0 +1,14 @@
+package looping.test;
+
+public class SummaryLoopingTest_2 {
+	
+	static void display(String text){
+		System.out.println(text);
+	}
+	
+	public static void main(String[] args) {
+		// local variable --> not stacked on heap !! : not autumatically initialised.
+		
+	}
+
+}
