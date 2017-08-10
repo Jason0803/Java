@@ -1,0 +1,13 @@
+package looping.test;
+
+public class LoopingScannerConditionTest_5 {
+
+	static void display(String text){
+		System.out.println(text);
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

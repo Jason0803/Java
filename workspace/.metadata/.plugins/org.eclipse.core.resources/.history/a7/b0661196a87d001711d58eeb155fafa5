@@ -1,0 +1,23 @@
+package looping.test;
+
+import java.util.Scanner;
+
+public class DoWhileQBreakTest_4 {
+	
+	static void display(String text){
+		System.out.println(text);
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String inputString = "";
+		
+		display("Input Messages on Console ('Q' to quit) ");
+		do {
+		 	
+		} while ( !inputString.equals("Q") || !inputString.equals(q) );
+		
+
+	}
+
+}

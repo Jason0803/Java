@@ -1,0 +1,32 @@
+package looping.self.test;
+
+public class BreakDiceTest {
+	public static void main(String[] args) {
+		int dice = 1;
+		while(true){
+			// 무작위주사위, 6나오면 반복문 빠짐
+			// 무작위 나오는 숫자들은 다 출
+			dice = (int)(Math.random()*6)+1;
+			if(dice != 6) System.out.println("Dice : " + dice);
+			else break;
+			
+		}//while
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

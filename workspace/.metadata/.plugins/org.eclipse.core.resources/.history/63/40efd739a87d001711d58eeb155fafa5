@@ -1,0 +1,15 @@
+package looping.test;
+
+public class DoWhileQBreakTest_4 {
+	
+	static void display(String text){
+		System.out.println(text);
+	}
+	
+	public static void main(String[] args) {
+		display("Input Messages on Console ('Q' to quit) ");
+		Scanner sc = new Scanner(System.in;
+
+	}
+
+}
