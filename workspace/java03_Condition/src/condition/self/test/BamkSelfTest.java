@@ -5,9 +5,11 @@ public class BamkSelfTest {
 	static void display(Account account) {
 		System.out.println("-Balance : $" + account.getBalance());
 	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Account acc = new Account(10000);
+		
 		acc.deposit(2000);
 		acc.deposit(1500);
 		acc.deposit(100);

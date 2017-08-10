@@ -1,0 +1,9 @@
+package capsulation.test;
+
+public class MyDate {
+	public int month;
+	public int day;
+
+	public MyDate() {
+	}
+}
