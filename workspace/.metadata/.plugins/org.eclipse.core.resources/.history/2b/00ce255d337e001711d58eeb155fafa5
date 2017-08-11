@@ -1,0 +1,10 @@
+package array.primitive.test;
+
+public class ScoreArrayTest_2 {
+
+	public static void main(String[] args) {
+		int sum = 0;
+
+	}
+
+}
