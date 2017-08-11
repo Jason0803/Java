@@ -24,7 +24,12 @@ public class ProductService {
 	public int averagePrice(ProductVO[] products){
 		int count = products.length;
 		int sum = totalPrice(products);
-		int avg = sum / count;
+		int avg = 0;
+		
+		for(ProductVO product : products)
+			count++;
+		
+		avg = sum / count;
 
 		return avg;
 	}
@@ -35,7 +40,7 @@ public class ProductService {
 		
 		for(ProductVO product : products ){
 			if(product.getPrice() >= avg){
-				result = result+product.getModel()+"\t"; 
+				result = result + product.getModel() + "\t"; 
 			}
 		}
 		return result;

@@ -35,7 +35,7 @@ public class ProductService {
 		
 		for(ProductVO product : products ){
 			if(product.getPrice() >= avg){
-				result = result+product.getModel()+"\t"; 
+				result = result+product.getModel()+""\t"; 
 			}
 		}
 		return result;
