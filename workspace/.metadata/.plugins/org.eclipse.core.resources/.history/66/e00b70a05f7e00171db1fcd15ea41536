@@ -1,0 +1,17 @@
+package reference.test;
+
+import reference.vo.ProductVO;
+
+public class ProductArrayTest {
+
+	public static void main(String[] args) {
+		ProductVO[] pros = {
+				new ProductVO(111, "Drum", "DaeWoo", 4000),
+				new ProductVO(231, "Washer", "DaeWoo", 1000),
+				new ProductVO(171, "Drum", "LG", 4500),
+				new ProductVO(281, "Washer", "LG", 1600)
+		};
+		
+	}
+
+}

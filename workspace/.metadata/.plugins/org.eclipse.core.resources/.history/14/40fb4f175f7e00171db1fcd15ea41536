@@ -1,0 +1,10 @@
+package reference.vo;
+
+public class ProductVO {
+	 private int serialNo;
+	 private String model;
+	 private String maker;
+	 private int price;
+	 
+	 
+}
