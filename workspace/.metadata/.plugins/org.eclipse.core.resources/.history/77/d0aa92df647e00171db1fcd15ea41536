@@ -1,0 +1,11 @@
+package reference.vo;
+
+public class ProductService {
+	public int serialNo;
+	public String model;
+	public String maker;
+	public int price;
+
+	public ProductService() {
+	}
+}

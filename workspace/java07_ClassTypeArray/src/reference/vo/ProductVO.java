@@ -46,9 +46,6 @@ public class ProductVO {
 		this.price = price;
 	}
 	 
-	public void display(){
-		System.out.println("- Name : " + model + "\t- Maker : " + maker +
-				"\t -Price : " + price);
-	}
+
 	 
 }

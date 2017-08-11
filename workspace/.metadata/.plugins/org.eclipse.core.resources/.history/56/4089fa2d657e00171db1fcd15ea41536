@@ -1,0 +1,11 @@
+package reference.service;
+import reference.vo.ProductVO;
+
+public class ProductService {
+	ProductVO product;
+	
+	public void display(){
+		System.out.println("- Name : " + model + "\t- Maker : " + maker +
+				"\t -Price : " + price);
+	}
+}

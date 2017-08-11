@@ -1,0 +1,22 @@
+package reference.service;
+import reference.vo.ProductVO;
+
+public class ProductService {
+
+	
+	// 1. Display All products' name
+	public void displayAll(ProductVO[] products){
+		for(ProductVO product : products ){
+			System.out.println("");
+		}
+	}
+	// 2. RETURN total price
+	// 3. Average price for ALL products
+	// 4. Return products over average price
+	// 5. Print product(s) with specfic maker
+	
+	public void display(ProductVO product){
+		System.out.println("- Name : " + product.getModel() + "\t- Maker : " + product.getMaker() +
+				"\t -Price : " + product.getPrice());
+	}
+}
