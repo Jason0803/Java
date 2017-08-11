@@ -50,7 +50,18 @@ public class ProductService {
 			}
 
 		}
-
+		/*
+		for(ProductVO product : products){
+			if( product.getMaker().equals(maker) ){
+				temp[count] = product;
+			}
+			count++;
+		}
+		*/
+		
+		for(int i = 0; i < count; i++) {
+			System.out.println("Product With Maker [" +  maker + "] : " + temp[i].getMaker());
+		}
 	}
 	
 	public void display(ProductVO product){
