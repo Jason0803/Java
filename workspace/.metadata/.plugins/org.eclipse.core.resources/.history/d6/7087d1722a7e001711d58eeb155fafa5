@@ -19,24 +19,21 @@ public class LoopingScannerConditionTest_5 {
 			display("- 1. Deposit\n- 2. Withdraw\n- 3. Balance\n- 4. Quit");
 			display("---------------------------------------");
 			System.out.print("Choose : ");
-			int input = 0;
-			int menuSelected = sc.nextInt();
 			
-			switch(menuSelected) {
-
+			int menuSelected = sc.nextInt();
+			switch(menuSelected){
+				int input = 0;
 				case 1: {
 					System.out.print("\nDeposit : ");
 					
-					if( (input = sc.nextInt()) >= 1000 ){
-						balance += input;
-					} else display("Deposit Should be more than 1000 !");
+					if( int sc.nextInt() > 1000 ){
+						balance += sc.ne
+					}
 					break;
 				}
 				case 2: {
 					System.out.print("\nWithdraw : ");
-					if( (input = sc.nextInt()) > 0) {
-						balance -= input;
-					} else display("Withdraw should be more than 0 !");
+					balance -= sc.nextInt();
 					break;
 				}
 				case 3: {

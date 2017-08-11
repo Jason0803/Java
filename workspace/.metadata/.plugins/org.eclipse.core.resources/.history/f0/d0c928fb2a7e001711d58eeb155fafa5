@@ -34,9 +34,10 @@ public class LoopingScannerConditionTest_5 {
 				}
 				case 2: {
 					System.out.print("\nWithdraw : ");
-					if( (input = sc.nextInt()) > 0) {
+					if( (input = sc.nextInt()) < 0) {
 						balance -= input;
-					} else display("Withdraw should be more than 0 !");
+					}
+					
 					break;
 				}
 				case 3: {
