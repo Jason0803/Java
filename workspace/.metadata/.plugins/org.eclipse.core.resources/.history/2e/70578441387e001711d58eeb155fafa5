@@ -1,0 +1,30 @@
+package array.primitive.test;
+
+public class IdolFanAgeTest_3 {
+
+	public static void main(String[] args) {
+		int[] idol = {10, 20, 30, 40, 50};
+		
+		idol[1] = 60;
+		
+		for(int i = 0; i < idol.length; i++){
+			System.out.print("1st\t" + idol[i] + "\t");
+		}
+		
+		for(int i = 0; i < idol.length; i++){
+			if(idol[i] > 30){
+				System.out.print(idol[i] + "\t");
+			}
+		}
+		
+		int sum = 0;
+		int avg = 0;
+		for(int i = 0; i < idol.length; i++){
+			sum += idol[i];
+			avg++;
+		}
+		avg = sum / avg;
+		System.out.println("Average : " + avg);
+	}
+
+}

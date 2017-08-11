@@ -1,0 +1,10 @@
+package array.primitive.test1;
+
+public class ResizingArrayTest_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

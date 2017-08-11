@@ -1,0 +1,9 @@
+package array.primitive.test;
+
+public class IdolFanAgeTest_3 {
+
+	public static void main(String[] args) {
+		int[] idol = {10, 20, 30, 40, 50};
+	}
+
+}
