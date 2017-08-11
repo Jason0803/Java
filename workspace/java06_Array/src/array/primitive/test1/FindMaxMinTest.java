@@ -16,6 +16,8 @@ public class FindMaxMinTest {
 			if (score[i] > min)
 				min = score[i];
 		
+		
+
 		System.out.println("Largest value of score : " + max);
 		System.out.println("Smallest value of score : " + min);
 	}

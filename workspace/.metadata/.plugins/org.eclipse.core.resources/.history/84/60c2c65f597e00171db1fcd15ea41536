@@ -1,0 +1,9 @@
+package reference.test;
+
+public class PersonArrayTest {
+
+	public static void main(String[] args) {
+		Person[] people = new Person[3]();
+	}
+
+}

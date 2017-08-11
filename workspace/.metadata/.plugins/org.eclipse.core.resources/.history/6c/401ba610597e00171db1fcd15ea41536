@@ -1,0 +1,5 @@
+package reference.vo;
+
+public class Person {
+	private String name;
+}

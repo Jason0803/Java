@@ -1,0 +1,10 @@
+package reference.test;
+
+public class PersonArrayTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
