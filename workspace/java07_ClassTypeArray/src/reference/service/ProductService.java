@@ -53,6 +53,9 @@ public class ProductService {
 
 	}
 	
+	// 6. Most expensive product
+	
+	
 	public void display(ProductVO product){
 		System.out.println("- Name : " + product.getModel() + "\t- Maker : " + product.getMaker() +
 				"\t -Price : " + product.getPrice());

@@ -6,7 +6,7 @@ public class ProductService {
 	
 	// 1. Display All products' name
 	public void displayAll(ProductVO[] products){
-		System.out.println("============All Products============");
+		System.out.println("============ All Products ============");
 		for(ProductVO product : products ){
 			System.out.println(product.getMaker() + "\t");
 		}
@@ -21,48 +21,40 @@ public class ProductService {
 	}
 	
 	// 3. Average price for ALL products
-	public double averagePrice(ProductVO[] products){
-		int count = 0;
+	public int averagePrice(ProductVO[] products){
+		int count = products.length;
 		int sum = totalPrice(products);
-		double avg = 0;
-		
-		for(ProductVO product : products){
-			count++;
-		}
-		avg = (double)(sum / count);
+		int avg = sum / count;
 
 		return avg;
 	}
 	// 4. Return products over average price
-	public ProductVO[] getProductsOverAverage(ProductVO[] products){
-		ProductVO[] temp = new ProductVO[products.length];
+	public String getProductsOverAverage(ProductVO[] products){
 		double avg = averagePrice(products);
-				
-		int count = 0;
+		String result = "";
+		
 		for(ProductVO product : products ){
 			if(product.getPrice() >= avg){
-				temp[count] = product;
+				result = result+product.getModel()+"\t"; 
 			}
-			count++;
 		}
-		return temp;
+		return result;
 	}
 	// 5. Print product(s) with specific maker
 	public void getProductWithMaker(ProductVO[] products, String maker){
-		ProductVO[] temp = new ProductVO[products.length];
-		int count = 0;
+		System.out.println("============ Product With Maker ============");
 		
-		for(ProductVO product : products){
-			if( product.getMaker().equals(maker) ){
-				temp[count] = product;
+		for(int i = 0; i < products.length; i++){
+			if( products[i].getMaker().equals(maker) ){
+				System.out.println("Product With Maker [" +  maker + "] : " + products[i].getMaker());
 			}
-			count++;
+
 		}
-		
-		for(ProductVO product : temp){
-			System.out.println("Product with Maker [" + maker + "] : " + product.getModel() );
-		}
+
 	}
+	
+	// 6. Most expensive product
+	
 	
 	public void display(ProductVO product){
 		System.out.println("- Name : " + product.getModel() + "\t- Maker : " + product.getMaker() +
