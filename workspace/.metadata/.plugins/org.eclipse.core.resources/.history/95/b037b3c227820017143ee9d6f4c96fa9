@@ -1,0 +1,48 @@
+package com.store.test;
+
+import com.store.service.OutletStoreService;
+import com.store.util.MyDate;
+import com.store.vo.*;
+
+public class OutletServiceTest {
+	public static void main(String[] args){
+		// 1. Two customers
+		Customer[] customers = {
+			new Customer(111, "Jason", "강남"),
+			new Customer(222, "Sunny", "노원")
+		};
+		
+		// 2. Products
+		Product[] products = {
+				new Product(123, "CJ", "Soap", 1200, new MyDate(2015,4,5) ),
+				new Product(133, "동원", "ABC", 13000, new MyDate(2017,4,5) ),
+				new Product(143, "LG", "Stick", 1400, new MyDate(2017,3,3) ),
+				new Product(153, "Apple", "Roll", 1500, new MyDate(2016,11,2) ),
+				new Product(163, "SK", "TV", 16000, new MyDate(2017,4,5) )
+		};
+		
+		Product[] products_2 = {
+				new Product(123, "CJ", "ABC", 12000, new MyDate(2016,4,5) ),
+				new Product(123, "CK", "DA", 1200, new MyDate(2016,4,5) )
+		};
+		
+		
+		OutletStoreService service = new OutletStoreService();
+		
+		customers[0].setProducts(products);
+		customers[1].setProducts(products_2);
+		
+		service.printAllProductNamesByCustomer(customers[0], products);
+		service.printAllCustomers(customers);
+		
+		for(int i = 0; i < customers.length; i++){
+			Product[] temp = service.getAllProductsOfCustomer(customers[i]);
+			System.out.println(" ========== Prices over 10000 of " + customers[i].getCustomerName() + " ========== ");
+			for(Product product : temp) {
+				if(product.getPrice() >= 10000)
+					System.out.println("-Product : " + product.getModel() + 
+										"\n-Price : " + product.getPrice() );
+			}
+		}
+	}
+}

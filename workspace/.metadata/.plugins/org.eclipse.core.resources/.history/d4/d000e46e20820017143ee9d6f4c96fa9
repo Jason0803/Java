@@ -1,0 +1,10 @@
+package com.store.test;
+
+import com.store.vo.*;
+
+public class OutletServiceTest {
+	public static void main(String[] args){
+		// 1. Two customers
+		
+	}
+}

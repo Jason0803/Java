@@ -1,0 +1,8 @@
+package com.store.service;
+
+public class OutletStoreService {
+	// 1. Print all names of products sold to customer
+	public void printProductNamesByCustomer() {
+		
+	}
+}

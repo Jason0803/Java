@@ -1,0 +1,10 @@
+package com.store.vo;
+import com.store.util.MyDate;
+
+public class Product {
+	private String maker;
+	private String model;
+	private int serialNo;
+	private int price;
+	private MyDate startDate;
+}

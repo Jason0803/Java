@@ -1,0 +1,28 @@
+package com.store.test;
+
+import com.store.util.MyDate;
+import com.store.vo.*;
+
+public class OutletServiceTest {
+	public static void main(String[] args){
+		// 1. Two customers
+		Customer[] customers = {
+			new Customer(111, "Jason", "강남"),
+			new Customer(222, "Sunny", "노원")
+		};
+		
+		// 2. Products
+		Product[] products = {
+				new Product(123, "CJ", "Soap", 1200, new MyDate(2015,4,5) ),
+				new Product(133, "동원", "Soap", 1300, new MyDate(2017,4,5) ),
+				new Product(143, "LG", "Soap", 1400, new MyDate(2017,3,3) ),
+				new Product(153, "Apple", "Soap", 1500, new MyDate(2016,11,2) ),
+				new Product(163, "SK", "Soap", 1600, new MyDate(2017,4,5) )
+		};
+		
+		Product[] products_2 = {
+				new Product(123, "CJ", "Soap", 1200, new MyDate(2016,4,5) ),
+				new Product(123, "CJ", "Soap", 1200, new MyDate(2016,4,5) ),
+		}
+	}
+}

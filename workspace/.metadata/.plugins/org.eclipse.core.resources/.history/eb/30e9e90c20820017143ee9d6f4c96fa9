@@ -1,0 +1,12 @@
+package com.store.service;
+
+import com.store.vo.Customer;
+import com.store.vo.Product;
+
+public class OutletStoreService {
+	// 1. Print all names of products sold to customer
+	public void printProductNamesByCustomer(Customer customer, Product[] products) {
+		System.out.println(" ========== Product names of " + customer.getCustomerName() + " bought" );
+		for()
+	}
+}

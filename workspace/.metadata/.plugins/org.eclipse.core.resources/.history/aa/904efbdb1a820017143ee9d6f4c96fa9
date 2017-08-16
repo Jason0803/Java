@@ -1,0 +1,7 @@
+package com.store.vo;
+
+public class Customer {
+	int ssn;
+	String name;
+	
+}
