@@ -18,6 +18,34 @@ public class ManageService {
 		// (1 ~ 10) --> %3 0,1,2
 		// Math.Random() * 10 +1 --> 1 ~ 10 
 		// 
-		
 	}
+	// 2nd Method
+	public String countAttendance(Student student){
+		int attendCount = 0;
+		int lateCount = 0;
+		int absentCount = 0;
+		int[] temp = student.getAttendances();
+		
+		for(int i = 0; i < 30; i++){
+			switch(temp[i]) {
+				case Student.ATTEND: {
+					attendCount++;
+					break;
+				}
+				case Student.LATE: {
+					lateCount++;
+					break;
+				}
+				case Student.ABSENT: {
+					absentCount++;
+					break;
+				}
+			}
+		}
+		
+		return "-Attendence : " + attendCount +
+				"\n-Late : " + lateCount +
+				"\n-Absent : " + absentCount;
+	}
+	
 }

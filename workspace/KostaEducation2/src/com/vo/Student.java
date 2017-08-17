@@ -4,10 +4,8 @@ public class Student {
 	private String name;
 	private int age;
 	private String address;
-	private int[] attendances;
+	private int[] attendances; //30
 	private int attendCount;
-	
-
 
 	public static final int ATTEND = 0;
 	public static final int LATE = 1;
