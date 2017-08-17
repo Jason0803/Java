@@ -6,12 +6,16 @@ public class Student {
 	private String address;
 	private int[] attendances;
 	
-	public Student(String name, int age, String address, int[] attendances) {
+	public static final int ATTEND = 0;
+	public static final int LATE = 1;
+	public static final int ABSENT = 2;
+	
+	public Student(String name, int age, String address) {
 		super();
 		this.name = name;
 		this.age = age;
 		this.address = address;
-		this.attendances = attendances;
+		this.attendances = new int[30];
 	}
 
 	public String getName() {
@@ -45,6 +49,7 @@ public class Student {
 	public void setAttendances(int[] attendances) {
 		this.attendances = attendances;
 	}
+	
 	
 	
 }

@@ -1,0 +1,11 @@
+package com.service;
+import com.vo.Student;
+
+public class ManageService {
+	void inputRandomAttendance(Student[] students){
+		// (1 ~ 10) --> %3 0,1,2
+		// Math.Random() * 10 +1 --> 1 ~ 10 
+		// 
+		
+	}
+}
