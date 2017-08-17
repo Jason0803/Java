@@ -48,4 +48,34 @@ public class ManageService {
 				"\n-Absent : " + absentCount;
 	}
 	
+	// 3rd Method
+	public String bestAttendance(Student[] students){
+		int count;
+		int temp[] = new int[30];
+		for(int i = 0; i < students.length; i++){
+			count = 0;
+			temp = students[i].getAttendances();
+			for(int j = 0; j < 30; j++){
+				switch(temp[j]){
+					case Student.ATTEND: case Student.LATE: {
+						count++;
+						break;
+					}
+					default : break;
+				}
+			}
+			students[i].setAttendCount(count);
+		}
+		
+		// compare
+		Student tempStudent = students[0];
+		for(int i = 1; i <students.length; i++){
+			if(tempStudent.getAttendCount() < students[i].getAttendCount() ){
+				tempStudent = students[i];
+			}
+		}
+		
+		return "Student with Best Attendance : " + tempStudent.getName() + "\n";
+	}
+	
 }

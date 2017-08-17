@@ -1,0 +1,67 @@
+package com.vo;
+
+public class Student {
+	private String name;
+	private int age;
+	private String address;
+	private int[] attendances; //30
+	private int attendCount;
+
+	public static final int ATTEND = 0;
+	public static final int LATE = 1;
+	public static final int ABSENT = 2;
+	
+	public Student(String name, int age, String address) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.address = address;
+		this.attendances = new int[30];
+	}
+	
+	public Student(String name, int age){
+		super();
+		
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public int[] getAttendances() {
+		return attendances;
+	}
+
+	public void setAttendances(int[] attendances) {
+		this.attendances = attendances;
+	}
+	
+	public int getAttendCount() {
+		return attendCount;
+	}
+
+	public void setAttendCount(int attendCount) {
+		this.attendCount = attendCount;
+	}
+	
+}

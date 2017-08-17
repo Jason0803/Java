@@ -18,6 +18,7 @@ public class Student {
 		this.address = address;
 		this.attendances = new int[30];
 	}
+	
 
 	public String getName() {
 		return name;
