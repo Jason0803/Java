@@ -1,0 +1,7 @@
+package test;
+
+public class EmplyoeeAppTest {
+	public static void main(String[] args){
+		
+	}
+}

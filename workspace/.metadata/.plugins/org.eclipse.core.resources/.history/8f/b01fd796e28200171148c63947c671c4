@@ -1,0 +1,7 @@
+package vo.child;
+
+import vo.parent.Employee;
+
+public class Secretary extends Employee{
+	private boolean hasBoss;
+}

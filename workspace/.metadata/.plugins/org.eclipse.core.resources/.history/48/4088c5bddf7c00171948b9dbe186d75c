@@ -1,8 +1,0 @@
-package kosta.banking.test;
-
-import kosta.banking.*;
-
-public class KostaBankingTest {
-	
-
-}

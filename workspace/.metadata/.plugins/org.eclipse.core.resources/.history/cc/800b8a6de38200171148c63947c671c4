@@ -1,0 +1,15 @@
+package test;
+
+import util.MyDate;
+import vo.parent.Employee;
+
+
+// 1. Employee class 
+// 2. Manager class
+// 3. Print employee info
+// 4. Print manager info
+public class EmplyoeeAppTest {
+	public static void main(String[] args){
+		E
+	}
+}

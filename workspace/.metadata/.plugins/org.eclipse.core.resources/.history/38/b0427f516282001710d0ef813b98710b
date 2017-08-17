@@ -1,0 +1,14 @@
+package vo.parent;
+
+import util.MyDate;
+
+public class Employee {
+	private String ssn;
+	private String name;
+	private MyDate birthDate;
+	
+	
+	public String getDetails(){
+		return ssn + "\t" + birthDate;
+	}
+}

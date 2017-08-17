@@ -3,4 +3,10 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="reference.service.ProductService"/>
+<fullyQualifiedTypeName name="com.store.vo.Customer"/>
+<fullyQualifiedTypeName name="com.store.util.MyDate"/>
+<fullyQualifiedTypeName name="java.security.Provider.Service"/>
+<fullyQualifiedTypeName name="com.store.service.OutletStoreService"/>
+<fullyQualifiedTypeName name="vo.parent.Employee"/>
+<fullyQualifiedTypeName name="util.MyDate"/>
 </qualifiedTypeNameHistroy>
