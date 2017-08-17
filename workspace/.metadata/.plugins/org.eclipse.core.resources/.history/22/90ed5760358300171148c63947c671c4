@@ -31,7 +31,6 @@ public class StudentAttendanceTest {
 					"\n" + temp.countAttendance(std[i]) + "\n");
 		
 		System.out.println(temp.bestAttendance(std));
-		System.out.println(temp.worstAttendance(std));
 	}
 
 	
