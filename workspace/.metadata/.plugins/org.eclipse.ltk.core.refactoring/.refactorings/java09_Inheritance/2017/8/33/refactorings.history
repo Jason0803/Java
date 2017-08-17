@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 packages to &apos;java10_OverLoading/src&apos;&#x0A;- Original project: &apos;java09_Inheritance&apos;&#x0A;- Destination element: &apos;java10_OverLoading/src&apos;&#x0A;- Original elements:&#x0A;     java09_Inheritance/src/test&#x0A;     java09_Inheritance/src/vo.child&#x0A;     java09_Inheritance/src/util&#x0A;     java09_Inheritance/src/vo.parent" description="Copy packages" destination="=java10_OverLoading/src" element1="/src&lt;test" element2="/src&lt;vo.child" element3="/src&lt;util" element4="/src&lt;vo.parent" flags="589830" fragments="4" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1502937300184" version="1.0"/>
+</session>
