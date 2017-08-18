@@ -8,7 +8,10 @@ public class ProductBuyerTest {
 		Computer com = new Computer();
 		ProductBuyer buyer = new ProductBuyer();
 		
-
+		buyer.buyComputer(com);
+		buyer.buyTV(tv);
+		System.out.println("Balance : " + buyer.money);
+		System.out.println("Bonus : " + buyer.bonusPoint);
 	}
 
 }

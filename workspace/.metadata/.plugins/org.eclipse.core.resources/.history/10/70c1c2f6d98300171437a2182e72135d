@@ -8,7 +8,10 @@ public class ProductBuyerTest {
 		Computer com = new Computer();
 		ProductBuyer buyer = new ProductBuyer();
 		
-
+		buyer.buyComputer(com);
+		buyer.buyTV(tv);
+		System.out.println("Balance : " + buyer.money);
+		System.out.println("Bonus : " + buyer.bonusPoint);
 	}
 
 }
@@ -68,24 +71,35 @@ class Audio extends Product {
 	public String toString() {
 		return "Audio";
 	}
-} // Audio
+} // Computer
 
 
 //--------- ProductBuyer : Service ---------- //
 class ProductBuyer{
 	int money = 1000;
 	int bonusPoint = 0;
-	Product[] items = new Product[10];
-	int index = 0;
+	public void buyTV(TV tv){
+		if(tv.price <= this.money){
+			this.money -= tv.price;
+			this.bonusPoint += tv.bonusPoint;
+		} else {
+			System.out.println("Cannot buy the product !");
+			return;
+		}
+		
+		System.out.println("TV Price : " + tv.price + "\nTV Bonus Point : " + tv.bonusPoint);
+	}
 	
-	public void buyProduct(Product product){
-		 if(product.price >= money){
-			 System.out.println("Cannot Buy !");
-			 return;
-		 } else {
-			 items[index] = product;
-			 index++;
-		 }
+	public void buyComputer(Computer com){
+		if(com.price <= this.money){
+			this.money -= com.price;
+			this.bonusPoint += com.bonusPoint;
+		} else {
+			System.out.println("Cannot buy the product !");
+			return;
+		}
+		
+		System.out.println("Computer Price : " + com.price + "\nComputer Bonus Point : " + com.bonusPoint);
 	}
 	
 }
