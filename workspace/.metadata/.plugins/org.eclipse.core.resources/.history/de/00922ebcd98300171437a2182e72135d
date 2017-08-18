@@ -66,8 +66,7 @@ public class EmployeeService {
 		return result;
 	}
 	
-	// 2-2.Address find (array) 
-	// Still have some errors
+	// 2-2.Address find (array)
 	public Employee[] findEmployeesByAddress(Employee[] ea, String addr){
 		Employee[] temp = new Employee[ea.length];
 		Employee[] result = null;
