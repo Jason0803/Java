@@ -21,6 +21,17 @@ public class Student extends Person {
 		this.attendance = attendance;
 		this.grade = grade;
 	}
+	
+	
+
+	public Student(String name, String personId, String address, String phoneNumber) {
+		super(name, personId, address, phoneNumber);
+		this.document = document;
+		this.attendance = attendance;
+		this.grade = grade;
+	}
+
+
 
 	public boolean[] getDocument() {
 		return document;
