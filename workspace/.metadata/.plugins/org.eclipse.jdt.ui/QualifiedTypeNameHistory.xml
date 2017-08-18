@@ -9,4 +9,8 @@
 <fullyQualifiedTypeName name="com.store.service.OutletStoreService"/>
 <fullyQualifiedTypeName name="vo.parent.Employee"/>
 <fullyQualifiedTypeName name="util.MyDate"/>
+<fullyQualifiedTypeName name="poly.service.EmployeeService"/>
+<fullyQualifiedTypeName name="poly.parent.Employee"/>
+<fullyQualifiedTypeName name="poly.child.Manager"/>
+<fullyQualifiedTypeName name="poly.child.Engineer"/>
 </qualifiedTypeNameHistroy>

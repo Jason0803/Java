@@ -1,0 +1,58 @@
+package poly.arg.step1;
+
+//--------- Test : Main ----------------------- //
+public class ProductBuyerTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+// --------- Product : Super ----------------- //
+class Product{
+	int price;
+	int bonusPoint;
+	
+	// Initial Price !
+	Product(int price){
+		this.price = price;
+		this.bonusPoint = (int)(price * 0.1);
+	}
+} // Product Class
+
+// --------- Product : TV & Computer ---------- //
+class TV extends Product {
+	TV(){
+		super(150);
+	}
+	
+	@Override
+	public String toString() {
+		return "TV";
+	}
+} // TV
+
+class Computer extends Product {
+	Computer(){
+		super(100);
+	}
+	
+	@Override
+	public String toString() {
+		return "Computer";
+	}
+} // Computer
+
+//--------- ProductBuyer : Service ---------- //
+class ProductBuyer{
+	int money = 1000;
+	int bonusPoint = 0;
+	public void buyTV(){
+		
+	}
+}
+
+
+

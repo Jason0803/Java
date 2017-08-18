@@ -1,8 +1,0 @@
-package com.service;
-import com.vo.Student;
-
-public class ManageService {
-	void inputRandomAttendance(){
-		
-	}
-}

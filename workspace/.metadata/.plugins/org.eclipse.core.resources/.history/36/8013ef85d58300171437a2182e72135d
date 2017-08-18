@@ -1,0 +1,21 @@
+package poly.arg.step1;
+
+public class ProductBuyerTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+class Product{
+	int price;
+	int bonusPoint;
+	
+	// Initial Price !
+	Product(int price){
+		this.price = price;
+		this.bonusPoint = (int)price * 0.9;
+	}
+}

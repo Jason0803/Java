@@ -19,6 +19,7 @@ public class ManageService {
 		// Math.Random() * 10 +1 --> 1 ~ 10 
 		// 
 	}
+	
 	// 2nd Method
 	public String countAttendance(Student student){
 		int attendCount = 0;
@@ -79,35 +80,33 @@ public class ManageService {
 	}
 	
 	// 4th Method
-			public String worstAttendance(Student[] students){
-				int count;
-				int temp[] = new int[30];
-				for(int i = 0; i < students.length; i++){
-					count = 0;
-					temp = students[i].getAttendances();
-					for(int j = 0; j < 30; j++){
-						switch(temp[j]){
-							case Student.ATTEND: case Student.LATE: {
-								count++;
-								break;
-							}
-							default : break;
-						}
+	public String worstAttendance(Student[] students){
+		int count;
+		int temp[] = new int[30];
+		for(int i = 0; i < students.length; i++){
+			count = 0;
+			temp = students[i].getAttendances();
+			for(int j = 0; j < 30; j++){
+				switch(temp[j]){
+					case Student.ATTEND: case Student.LATE: {
+						count++;
+						break;
 					}
-					students[i].setAttendCount(count);
+					default : break;
 				}
-				
-				// compare
-				Student tempStudent = students[0];
-				for(int i = 1; i <students.length; i++){
-					if(tempStudent.getAttendCount() > students[i].getAttendCount() ){
-						tempStudent = students[i];
-					}
-				}
-				
-				return "Student with worst Attendance : " + tempStudent.getName() + "\n";
 			}
-
-	
+			students[i].setAttendCount(count);
+		}
+				
+		// compare
+		Student tempStudent = students[0];
+		for(int i = 1; i <students.length; i++){
+			if(tempStudent.getAttendCount() > students[i].getAttendCount() ){
+				tempStudent = students[i];
+			}
+		}
+			
+		return "Student with worst Attendance : " + tempStudent.getName() + "\n";
+	}
 	
 }
