@@ -1,11 +1,14 @@
 package poly.service;
 
+import java.util.Scanner;
+
 import poly.child.Student;
 import poly.course.Course;
 import poly.parent.Person;
 
 public class ManagerService {
-	// 선생님, 학생 추가--김민영
+
+// ------------------------------ 학생추가 (보경) [OK]  ----------------------------- //
 		public void addPerson(Person[] people, Person person) {
 			int count = 0;
 			for (int i = 0; i < people.length; i++) {
@@ -19,7 +22,7 @@ public class ManagerService {
 			System.out.println(people + "이(가) 성공적으로 추가되었습니다.");
 		}
 
-		// 선생님, 학생 삭제--김보경
+// ------------------------------ 학생삭제 (보경) [OK]  ----------------------------- //
 		public void deletePerson(Person[] people, Person person) {
 			int index = 0;
 
@@ -36,19 +39,21 @@ public class ManagerService {
 
 		}
 
-	 // course추가--박세진
-	public void createCourse(Course[] courses, Course course) {
-	  int count = 0;
-	  for (int i = 0; i < courses.length; i++) {
-	   if (courses[i].equals(null)) {
-	    continue;
-	   } else {
-	    count++;
-	   }
-	  }
-	  courses[count] = course;
-	  System.out.println("강좌"+ course +"이(가) 성공적으로 등록되었습니다.");
+// ------------------------------ 코스추가 (세진) [OK]  ----------------------------- //
+		public void createCourse(Course[] courses, Course course) {
+		 int count = 0;
+		 for (int i = 0; i < courses.length; i++) {
+		  if (courses[i].getTitle().equals("")) {
+		   continue;
+		  } else {
+		   count++;
+		  }
+		 }
+		 courses[count] = course;
+		 System.out.println("강좌"+ course.getTitle() +"이(가) 성공적으로 등록되었습니다.");
 	 }
+
+// ----------------------------- 코스삭제 (기쁨) [OK]  ------------------------------- //
 	 public void deleteCourse(Course[] courses, Course course) {
 	  int index = 0 ;
 	  for (int i = 0; i < courses.length; i++) {
@@ -63,36 +68,37 @@ public class ManagerService {
 	  System.out.println("강좌" + course +"이(가) 성공적으로 삭제되었습니다.");
 	 }
 
+// ----------------------- Manager : findPerson 3가지 [NOK]  ----------------------- //
 
-
-	// id�� Ư������� ã�Ƽ� Person�� ����--��� ����
 	public Person findPerson(String personId) {
 		return null;
 	}
 
-	// Ư������� ������� ã�Ƽ� Person[]�� ����--��� ����
 	public Person[] findPerson(char grade) {
 		return null;
 	}
 
-	// �ش� ���¸� ��� �л�, ��簭�縦 ����--��� ����
 	public Person[] findPerson(Course course) {
 		return null;
 	}
 
-	Course[] c;
+	Course[] c; // ? 이거 뭐지
 
-	// course�߰�--�ڼ���
-	public void createCourse(Course course) {
 
-	}
-
-	// ������û--����
+// --------------------------- Manager : 수강신청 수락 [NOK]  --------------------------- //
 	public void approveCourseApply(Student student, Course course) {
-
+	  // 학생의 수강신청을 승인하는 기능 (Y/N)
+	  Scanner scan = new Scanner(System.in);
+	  System.out.println(student.getName()+"의 "+course.getTitle()+" 강좌 수강신청을 승인하시겠습니까? (y/n)\n>>");
+		 if(scan.nextLine().equals("y")) {
+		  student.setCourse(course);
+		  System.out.println("승인되었습니다.");
+		  return;
+		 }
+		 System.out.println("거절되었습니다.");
 	}
 
-	
+// --------------------------- 학생 : 출결 기록 -- 수영 [OK]  --------------------------- //
 	public void inputRandomAttendance(Student[] students){
 		int randomIndex = 0;
 		int temp[] = new int[30];
@@ -105,10 +111,7 @@ public class ManagerService {
 			students[i].setAttendance(temp);
 		}
 	}
-	// ������ ���� �⼮,����,����,�Ἦ-�ּ���
-	
-
-	// 출력용
+	// ------------------------------------ 출력용 ------------------------------------ //
 	public void countAttendance(Student student) {
 		int attendCount = 0;
 		int lateCount = 0;
@@ -138,24 +141,24 @@ public class ManagerService {
 				"\n-Absent : " + absentCount +"\n");
 	}
 	
-
+	// ------------------------------------ 본 메소드 ------------------------------------ //
 	public void manageAttendance(Student[] students) throws InterruptedException{
-		
 		int attendCount;
 		int lateCount;
 		System.out.println("학생 출결 정보 기입 중...");
 
 		//학생들에게 정보 기입 
 		inputRandomAttendance(students);
+		
+		// 3초있다가 표현
 		Thread.sleep(3000);
+
 		
-		// 출력용 (필요하다면 주석 제거 시 전체 학생 출결 사항도 확인 가능)
-		
-			for(Student student : students)
-				countAttendance(student);
+		for(Student student : students)
+			countAttendance(student);
 		
 		
-		// 제적 기준 : 출석률 70%미만
+		// 제적 기준 : 출석률 70%미만 ( ** scanner 로 수정 예정 ** ) //
 		System.out.println("\n제적 될 학생 목록 입니다..");
 		for(Student stu : students){
 			int[] temp = stu.getAttendance();
@@ -175,6 +178,6 @@ public class ManagerService {
 			}
 		}
 	}
-	
+// --------------------------- 학생 : 출결 기록 -- 수영 [OK]  --------------------------- //	
 
 }

@@ -10,6 +10,10 @@ public class Course {
 		this.classHourPerDay = classHourPerDay;
 	}
 
+	public Course() {
+		super();
+	}
+
 	public String getTitle() {
 		return title;
 	}
