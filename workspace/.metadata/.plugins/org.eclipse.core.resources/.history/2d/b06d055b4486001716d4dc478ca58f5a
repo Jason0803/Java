@@ -1,0 +1,13 @@
+package parse.manager;
+
+import parse.Parseable;
+
+public class ParserManager {
+	public static Parseable getParser(String type) {
+		if(type.equals("XML")) {
+			return new XMLParser;
+		}
+		
+		return null;
+	}
+}

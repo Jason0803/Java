@@ -1,0 +1,12 @@
+package parse.test;
+
+import parse.manager.ParserManager;
+
+public class ParseTest {
+
+	public static void main(String[] args) {
+		Parseable parser = ParserManager.getParser("XML")
+
+	}
+
+}
