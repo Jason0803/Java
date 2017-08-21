@@ -1,0 +1,13 @@
+package kosta.service.dice.test;
+
+import kosta.service.dice.pkg.Player_1;
+
+public class DiceTestApp {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in;)
+		Player_1 player_1 = new Player_1();
+		
+	}
+
+}

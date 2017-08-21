@@ -1,0 +1,10 @@
+package kosta.service.dice.test;
+
+public class DiceTestApp {
+
+	public static void main(String[] args) {
+		Player_1 player_1 = new Play();
+
+	}
+
+}

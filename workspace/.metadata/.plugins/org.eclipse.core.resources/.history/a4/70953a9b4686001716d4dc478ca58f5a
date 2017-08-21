@@ -1,0 +1,12 @@
+package kosta.service.dice.pkg;
+
+import kosta.service.dice.Dice;
+
+public class Player_1 {
+	private Dice a = new Dice();
+	private int tatalValue;
+	
+	public void playDice(int count) {
+		
+	}
+}
