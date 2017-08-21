@@ -1,0 +1,5 @@
+package fly;
+
+public interface Flyer {
+	void fly();
+}

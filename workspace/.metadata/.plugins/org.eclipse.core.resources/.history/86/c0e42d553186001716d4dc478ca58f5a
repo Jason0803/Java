@@ -1,0 +1,7 @@
+package fly.impl;
+
+import fly.Flyer;
+
+public class Bird implements Flyer{
+
+}

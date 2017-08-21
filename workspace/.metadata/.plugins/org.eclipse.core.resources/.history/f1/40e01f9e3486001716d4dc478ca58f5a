@@ -1,0 +1,14 @@
+package fly.test;
+
+import fly.Flyer;
+import fly.impl.Bird;
+
+public class FlyerAppTest {
+
+	public static void main(String[] args) {
+		Flyer bird = new Bird(); 
+		Flyer superman = new Superman();
+		
+	}
+
+}

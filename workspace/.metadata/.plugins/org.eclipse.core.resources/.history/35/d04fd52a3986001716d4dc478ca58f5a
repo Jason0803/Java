@@ -1,0 +1,12 @@
+package fly;
+
+public interface Flyer {
+	// All fields in Interface is 'public static final'
+	/* public static final int */char color = 'B'; 
+	public static final int DEFAULT_SPEED = 1024;
+	
+	// All methods in Interface is 'public abstract'
+	void fly();
+	void takeOff();
+	void land(); // 
+}

@@ -1,0 +1,9 @@
+package fly;
+
+public interface Flyer {
+	char color = 'B'; // 'public static final' is embedded
+	// All methods in Interface is 'public abstract'
+	void fly();
+	void takeOff();
+	void land(); // 
+}

@@ -1,0 +1,20 @@
+package fly.test;
+
+import fly.Flyer;
+import fly.impl.Airplane;
+import fly.impl.Bird;
+import fly.impl.Superman;
+
+public class FlyerAppTest {
+
+	public static void main(String[] args) {
+		Flyer bird = new Bird(); 
+		Flyer superman = new Superman();
+		Flyer airplane = new Airplane();
+		
+		bird.fly();
+		superman.fly();
+		airplane.fly();
+	}
+
+}
