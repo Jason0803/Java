@@ -1,0 +1,7 @@
+package pizza.child;
+
+import pizza.parent.Pizza;
+
+public class HawaianPizza extends Pizza{
+
+}

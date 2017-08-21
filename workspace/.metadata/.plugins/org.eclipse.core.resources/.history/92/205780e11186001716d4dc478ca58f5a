@@ -1,0 +1,18 @@
+package pizza.parent;
+
+public class Pizza {
+	private int price;
+	private String storeName;
+	
+	public Pizza() {
+		super();
+	}
+
+	public Pizza(int price, String storeName) {
+		super();
+		this.price = price;
+		this.storeName = storeName;
+	}
+	
+	
+}

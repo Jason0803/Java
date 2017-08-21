@@ -1,0 +1,19 @@
+package pizza.child;
+
+import pizza.parent.Pizza;
+
+
+/*
+ * "Abstract methd" SHOULD BE IMPLEMENTED on child class
+ * 
+ */
+public class PotatoPizza extends Pizza {
+
+	
+	
+	@Override
+	public void topping() {
+		System.out.println("Potato Topping Pizza...");
+	}
+
+}

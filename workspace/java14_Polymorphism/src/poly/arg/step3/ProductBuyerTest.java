@@ -3,7 +3,7 @@ package poly.arg.step3;
 import java.util.Vector;
 
 //--------- Test : Main ----------------------- //
-public class ProductBuyerTest {
+abstract class ProductBuyerTest {
 
 	public static void main(String[] args) {
 		

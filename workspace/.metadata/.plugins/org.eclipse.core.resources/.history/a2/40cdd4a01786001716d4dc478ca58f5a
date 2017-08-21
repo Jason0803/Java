@@ -1,0 +1,10 @@
+package pizza.test;
+
+public class PizzaServiceTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
