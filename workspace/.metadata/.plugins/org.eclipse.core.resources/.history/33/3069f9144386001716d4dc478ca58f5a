@@ -1,0 +1,7 @@
+package fight.child;
+
+import fight.parent.Unit;
+
+public class Fighter extends Unit {
+
+}

@@ -1,0 +1,16 @@
+package fight.test;
+
+import fight.child.Fighter;
+import fight.parent.Unit;
+
+public class FighterTest {
+
+	public static void main(String[] args) {
+		Fighter fighter = new Fighter();
+		
+		if(fighter instanceof Unit) {
+			
+		}
+	}
+
+}
