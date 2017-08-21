@@ -14,7 +14,7 @@ public class DiceTestApp {
 		
 		player_1.playDice(round);
 		
-		System.out.print("\nTotal Value of " + round + " rounds " + 
+		System.out.print("\nTotal Value of" + round + " rounds " + 
 				" : " + player_1.getTatalValue());
 	}
 
