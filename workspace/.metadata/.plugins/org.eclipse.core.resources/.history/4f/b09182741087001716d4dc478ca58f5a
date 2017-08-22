@@ -6,7 +6,6 @@ class SunCompany {
 	private SunCompany() {
 		companyName = "Sun Microsystems";
 		System.out.println("Company Name :: " + companyName);
-
 	}
 	public static SunCompany getInstance() {
 		return sun;
