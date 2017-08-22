@@ -1,0 +1,14 @@
+package step1.test;
+
+public class StaticExamTest {
+
+class Member {
+	String name = "Jason";
+};
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

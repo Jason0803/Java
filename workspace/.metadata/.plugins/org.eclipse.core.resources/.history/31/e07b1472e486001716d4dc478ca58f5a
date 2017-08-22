@@ -1,0 +1,14 @@
+package step4.test;
+
+class Car {
+	int serialNumber = 0;
+	static int counter;
+}
+public class StaticExamTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

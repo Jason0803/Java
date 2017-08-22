@@ -1,0 +1,14 @@
+package step5.test;
+
+class SunCompany {
+	private String companyName;
+}
+
+public class SingletonTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

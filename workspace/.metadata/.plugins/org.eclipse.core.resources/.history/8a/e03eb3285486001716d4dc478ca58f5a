@@ -1,0 +1,7 @@
+package kosta.service.dice;
+
+public interface DiceInterface {
+	void selectedNumber();
+
+	int getValue();
+}

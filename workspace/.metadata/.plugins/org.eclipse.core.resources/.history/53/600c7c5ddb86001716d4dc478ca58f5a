@@ -1,0 +1,15 @@
+package step1.test;
+
+public class StaticExamTest {
+
+class Member {
+	static String name = "Jason";
+	static int age = 50;
+};
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
