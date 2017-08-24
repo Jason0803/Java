@@ -1,0 +1,11 @@
+package props.test;
+
+public class HashMapTest_1130 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		import java.util.*;
+		
+	}
+
+}
