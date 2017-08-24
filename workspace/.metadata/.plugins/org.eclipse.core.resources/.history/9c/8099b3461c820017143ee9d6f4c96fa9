@@ -1,9 +1,0 @@
-package com.store.vo;
-
-public class Customer {
-	private int ssn;
-	private String customerName;
-	private Product[] products;
-
-	
-}

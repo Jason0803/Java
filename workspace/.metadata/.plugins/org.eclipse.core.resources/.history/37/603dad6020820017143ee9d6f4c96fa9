@@ -1,7 +1,0 @@
-package com.store.test;
-
-public class OutletServiceTest {
-	public static void main(String[] args){
-		
-	}
-}

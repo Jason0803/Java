@@ -1,0 +1,17 @@
+package props.test;
+
+import java.util.Properties;
+
+public class PropertiesTest {
+
+	public static void main(String[] args) {
+		System.getProperties properties = new System.getProperties();
+		for(Properties p : System.getProperties()) {
+			
+		}
+		
+			//
+
+	}
+
+}

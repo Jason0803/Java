@@ -1,0 +1,18 @@
+package user.exception;
+
+class Account {
+	int balance;
+	
+	Account(int balance) {
+		this.balance = balance;
+	}
+}
+
+public class BankAccountExceptionTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

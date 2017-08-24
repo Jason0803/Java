@@ -1,0 +1,17 @@
+package props.test;
+
+import java.util.Enumeration;
+import java.util.Properties;
+
+public class PropertiesTest {
+
+	public static void main(String[] args) {
+		Properties p = System.getProperties();
+		Enumeration en = p.propertyNames();
+		
+		//System.out.println(p.toString());
+		
+
+	}
+
+}
