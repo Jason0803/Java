@@ -1,0 +1,16 @@
+package props.test;
+
+import java.util.HashMap;
+
+public class HashMapTest {
+// ** Wrapper Class ** //
+/*
+ * Character, Short, Integer, ...
+ *  
+ */
+	public static void main(String[] args) {
+		HashMap<String, Integer> studentGrades = new HashMap<String, Integer>();
+		
+	}
+
+}
