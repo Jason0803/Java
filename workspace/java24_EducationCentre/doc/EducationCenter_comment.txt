@@ -1,0 +1,15 @@
+===============PersonManager 작성 요건====================
+
+1. addPerson() ::  추가하려는 사람이 있으면
+                   DuplicateTelException 발생
+
+2. deletePerson() ::  삭제하려는 사람이 없으면
+		      RecordNotFoundException 발생
+
+3. updatePerson() ::  수정하려는 사람이 없으면
+		      RecordNotFoundException 발생
+
+4. findPerson(String name)
+   findPerson(int tel)
+   :: Overloading 기법을 이용...이때 리턴타입은 다르게하자
+		   

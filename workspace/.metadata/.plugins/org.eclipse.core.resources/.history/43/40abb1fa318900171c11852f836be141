@@ -1,0 +1,10 @@
+package collection.step2.test;
+
+public class CustomerMapTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,7 @@
+package com.jason.MyStack;
+
+import java.util.Vector;
+
+public class MyStack extends Vector {
+	
+}

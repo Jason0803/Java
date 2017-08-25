@@ -1,0 +1,7 @@
+package collection.step2.vo;
+
+public class Customer {
+	private int cusId; // PK
+	private String name;
+	private int age;
+}
