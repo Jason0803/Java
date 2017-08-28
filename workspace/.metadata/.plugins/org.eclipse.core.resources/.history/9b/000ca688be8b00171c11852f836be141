@@ -1,0 +1,12 @@
+package io.console.test;
+
+import java.io.*;
+
+public class FileReadingTest_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

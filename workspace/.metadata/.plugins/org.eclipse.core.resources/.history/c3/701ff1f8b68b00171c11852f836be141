@@ -1,0 +1,54 @@
+package step4.self;
+public class StringProb2 {
+	public static final String SPACE = " ";
+	
+	public static void main(String[] args) {
+		System.out.println(spaceTrim("Java  Program        Language"));
+		System.out.println(spaceTrim("Structured Query     Language"));
+		System.out.println(spaceTrim("Servlet & JSP"));
+		
+		System.out.println(spaceTrim_2("Java  Program        Language"));
+		System.out.println(spaceTrim_2("Structured Query     Language"));
+		System.out.println(spaceTrim_2("Servlet & JSP"));
+	}
+
+	private static char[] spaceTrim(String string) {
+		// Java Program Language
+		String temp = string.replaceAll("\\s+", " ");
+		
+		char[] result = temp.toCharArray();
+		
+		/*
+		String[] temp = string.split(SPACE);	
+
+		int index = 0;
+		for(String s : temp) {
+			if(!s.equals(SPACE)) {
+				for(int i = 0; i < s.length(); i++) {
+					result[index++] = s.charAt(i);
+				}
+			}
+		}
+		*/
+		
+		return result;
+	}
+	
+	private static char[] spaceTrim_2(String string) {
+		char[] result;
+		String temp = "";
+		String[] tempArr = string.split(SPACE);
+		
+		for(String s : tempArr) {
+			if(!s.contains(SPACE)) {
+				temp = temp.concat(s);
+			} else {
+				
+			}
+		}
+
+
+		result = temp.toCharArray();
+		return result;
+	}
+}
