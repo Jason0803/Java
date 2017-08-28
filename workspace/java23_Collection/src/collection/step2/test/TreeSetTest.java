@@ -13,6 +13,8 @@ public class TreeSetTest {
 		set.add("Kim");
 		
 		System.out.println(set);
+		String s = "hello";
+		String s2 = "hello";
 	}
 
 }
