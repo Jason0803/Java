@@ -1,5 +1,0 @@
-package fight;
-
-public interface Attackable {
-	public abstract attack(Unit u);
-}

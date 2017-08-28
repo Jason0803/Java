@@ -1,7 +1,0 @@
-package vo.parent;
-
-public class Employee {
-	private String ssn;
-	private MyDate birthDate;
-	
-}

@@ -4,15 +4,20 @@ import java.io.*;
 
 public class FileReadingTest_1 {
 
-	public static void main(String[] args) throws FileNotFoundException {
-		File poem = new File("src/poem.txt");
-		FileReader fr = new FileReader(poem);
-		FileWriter fw = new FileWriter();
+	public static void main(String[] args) throws IOException {
+		String inputFile = "src/poem.txt";
+		String outputFile = "src/result.txt";
+		
+		BufferedReader br = new BufferedReader(new FileReader(inputFile));
+		PrintWriter pw = new PrintWriter(new FileWriter(outputFile));
+		System.out.println("result.txt file has been created..");
 		
 		String line;
-		while( ) {
-			
+		while( (line = br.readLine() ) != null ) {
+			pw.println(line);
 		}
+		
+		br.close();
+		pw.close();
 	}
-
 }

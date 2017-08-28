@@ -1,7 +1,0 @@
-package parse.manager;
-
-public class ParserManager {
-	public static Parseable getParser(String type) {
-		
-	}
-}

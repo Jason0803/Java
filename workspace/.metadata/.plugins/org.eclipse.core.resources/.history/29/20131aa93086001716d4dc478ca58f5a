@@ -1,9 +1,0 @@
-package fly;
-
-public interface Flyer {
-	
-	// All methods in Interface is 'public abstract'
-	void fly();
-	void takeOff();
-	void land(); // 
-}

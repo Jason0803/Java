@@ -30,8 +30,9 @@ public class StringProb2 {
 	}
 	
 	private static char[] spaceTrim_2(String string) {
-		char[] result = new char[string.length()];
-	
+		char[] result;
+		String temp = string.replaceAll("\\s+", " ");
+		result = temp.toCharArray();
 		return result;
 	}
 }

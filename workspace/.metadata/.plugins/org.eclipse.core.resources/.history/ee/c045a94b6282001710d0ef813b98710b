@@ -1,7 +1,0 @@
-package vo.child;
-
-import vo.parent.Employee;
-
-public class Manager extends Employee {
-	
-}

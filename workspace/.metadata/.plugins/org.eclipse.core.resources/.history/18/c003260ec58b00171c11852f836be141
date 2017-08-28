@@ -1,0 +1,18 @@
+package io.console.test;
+
+import java.io.*;
+
+public class FileReadingTest_1 {
+
+	public static void main(String[] args) throws IOException {
+		File inputFile = new File("src/poem.txt");
+		FileReader fr = new FileReader(poem);
+		BufferedReader br = new BufferedReader(fr);
+		
+		String line;
+		while( (line = br.readLine() ) != null ) {
+			System.out.println(line);
+		}
+	}
+
+}

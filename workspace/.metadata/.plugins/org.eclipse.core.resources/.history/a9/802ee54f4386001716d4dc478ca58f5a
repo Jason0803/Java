@@ -1,9 +1,0 @@
-package fight.test;
-
-public class FighterTest {
-
-	public static void main(String[] args) {
-		Fighter fighter = new Fighter();
-	}
-
-}
