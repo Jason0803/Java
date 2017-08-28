@@ -1,0 +1,12 @@
+package string.step1.test;
+
+public class StringExamTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str = "ABC";
+		System.out.print("Length of str : " + str.length());
+		
+	}
+
+}

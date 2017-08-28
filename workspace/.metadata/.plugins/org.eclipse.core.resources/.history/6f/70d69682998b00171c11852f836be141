@@ -1,0 +1,20 @@
+package string.step1.test;
+
+import java.util.Scanner;
+
+public class StringAdvancedTest {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		String[] files = {
+			"Begin Again.avi",
+			"StringTest1.java",
+			"August Rush.mp3",
+			"루시.avi",
+			"rt.jar"
+		};
+		
+		String stars = "박보영 박형식 아이유 박보영 클라라 아이유 전도연";
+		
+	}
+}
