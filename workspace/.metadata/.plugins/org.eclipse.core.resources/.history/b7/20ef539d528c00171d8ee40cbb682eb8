@@ -1,0 +1,22 @@
+package io.file2.test;
+
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class BinaryDataReadTest {
+
+	public static void main(String[] args) throws IOException {
+		String fileName = "src/io/file2/test/watermelon.png";
+		String outFileName = "src/io/file2/test/melon.png";
+		
+		// 1. Streams
+		DataInputStream dis = new DataInputStream(new FileInputStream(fileName));
+		DataOutputStream dos = new DataOutputStream(new FileOutputStream(outFileName));
+		
+		// 2. readInt()
+		
+		// 3. outFile 
+	}
+
+}

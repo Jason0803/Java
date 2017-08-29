@@ -1,0 +1,24 @@
+package io.file3.self.test;
+
+import java.io.*;
+public class IOProb2 {
+	public static void main(String[] args) throws Exception {
+		String fileName = "";
+		System.out.println("<< world �� ����ִ� ���� >>");
+		searchWord(fileName, "world");
+		System.out.println("<< you �� ����ִ� ���� >>");
+		searchWord(fileName, "you");
+	}
+
+	private static void searchWord(String fileName, String searchKeyword) throws Exception{
+		
+		InputStreamReader is = new InputStreamReader(new FileInputStream(fileName), "UTF-8");
+		BufferedReader br = new BufferedReader(is);
+		
+		OutputStreamWriter sw = new OutputStreamWriter(new FileOutputStream(fileName, true));
+		
+
+
+
+	}
+}

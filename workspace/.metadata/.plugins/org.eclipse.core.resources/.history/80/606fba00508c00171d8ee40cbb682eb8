@@ -1,0 +1,24 @@
+package io.console.test;
+
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+public class FileStreamTest_5 {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		String filenName = "src/hello.txt";
+		String fileName2 = "src/hello2.txt";
+		
+		FileInputStream fis = new FileInputStream(filenName);
+		DataInputStream dis = new DataInputStream(fis);
+		
+		FileOutputStream fos = new FileOutputStream(fileName2);
+		DataOutputStream dos = new DataOutputStream(fos);
+		
+		
+	}
+
+}

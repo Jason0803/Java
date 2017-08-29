@@ -1,0 +1,13 @@
+package io.console.test;
+
+public class FileStreamTest_5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String filenName = "src/hello.txt";
+		
+		FileInputStream fis = new FileInputStream(fileName);
+		DataInputStream dis = new DataInputStream(fis);
+	}
+
+}
