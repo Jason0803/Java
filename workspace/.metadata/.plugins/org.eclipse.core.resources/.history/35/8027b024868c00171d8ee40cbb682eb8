@@ -1,0 +1,12 @@
+package object.step4.test;
+
+public class PersonObjectInputTest {
+
+	public static void main(String[] args) {
+		String fileName = "src/objFile/person.obj";
+		
+		FileInputStream fis = new FileInputStream(fileName);
+
+	}
+
+}

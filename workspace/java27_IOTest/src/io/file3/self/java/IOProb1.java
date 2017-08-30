@@ -13,7 +13,7 @@ public class IOProb1{
 		
 		
 		/* Read all the lines from given file */
-		int lineCount = 1;
+		int lineCount = 0;
 		int sum = 0;
 		double avg = 0.0;
 		
@@ -28,13 +28,19 @@ public class IOProb1{
 			line = br.readLine();
 		}
 		
+		System.out.println(scores);
+		
+		
 		for(int score : scores) {
 			sum += score;
 		}
-		avg = sum / lineCount;
+		
+		avg = (sum/lineCount);
+		
 		sw.write("\n총점 : " + sum);
 		sw.write("\n평균 : " + avg);
-	
+		
+		
 		sw.close();
 	}
 }  

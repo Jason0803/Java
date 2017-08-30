@@ -1,0 +1,47 @@
+package com.stack.service;
+
+import java.util.Stack;
+
+public class PostfixCalculator {
+	Stack<Integer> stack = new Stack<Integer>();
+	
+	public int precendent(char op) {
+		switch(op) {
+	        case '(' : case ')' : return 0;
+	        case '+' : case '-' : return 1;
+	        case '*' : case '/' : return 2;
+		}
+		return -1;
+	}
+	
+	public boolean isOperator(char c) {
+		if(c == '(' || c == ')'
+			|| c == '+' || c == '-' 
+			|| c == '*' || c == '/' ) {
+			return true;
+		} else return false;
+	}
+	public void infixToPostfix(String equiv) {
+		char c;
+		int op;
+		double val;
+		
+		for(int i = 0; i < equiv.length(); i++) {
+			c = equiv.charAt(i);
+			if(isOperator(c)) { // 연산자
+				
+			} else if ( c == '(') {
+				stack.push((int)c);
+			} else if ( c == ')') {
+				while( !stack.isEmpty() ) {
+					op = stack.pop();
+					if(op == '(') break;
+					else System.out.println(op);
+				}
+			} else { // 숫
+				
+			}
+		}
+	}
+	
+}

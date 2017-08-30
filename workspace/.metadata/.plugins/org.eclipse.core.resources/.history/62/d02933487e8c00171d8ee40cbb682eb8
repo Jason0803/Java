@@ -1,0 +1,37 @@
+package jason_StackExample;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class StackTest {
+
+	public static void main(String[] args) {
+		Stack<String> stack = new Stack<String>();
+		Scanner sc = new Scanner(System.in);
+		
+		String input = "";
+		String value = "";
+		while(true) {
+			System.out.println("-1. push()");
+			System.out.println("-2. pop()");
+			System.out.println("-3. peek()");
+			System.out.println("-4. isEmpty()");
+			System.out.println("-5. Display Stack contents");
+			System.out.println("-Q. Exit Programme..");
+			
+			System.out.print("Select Menu : ");
+			input = sc.nextLine();
+			
+			if(input.equalsIgnoreCase("Q")) break;
+			else {
+				switch (Integer.parseInt(input)) {
+					case 1:{
+						System.out.print("Enter Value : ");
+						
+					}
+				}
+			}
+		}
+	}
+
+}

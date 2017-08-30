@@ -1,0 +1,10 @@
+package thread.step1.test;
+
+public class GoComeThreadTest_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

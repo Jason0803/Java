@@ -23,8 +23,6 @@ public class IOProb2 {
 		double avg = 0.0;
 		
 		String line; 
-		String temp = "";
-		ArrayList<Integer> scores = new ArrayList<Integer>();
 		
 		while( (line = br.readLine()) != null ){
 			lineCount++;

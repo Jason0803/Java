@@ -1,0 +1,13 @@
+package com.stack.service;
+
+public class PostfixCalculator {
+	public int precendent(char op) {
+		switch(op) {
+	        case '(' : case ')' : return 0;
+	        case '+' : case '-' : return 1;
+	        case '*' : case '/' : return 2;
+		}
+		return -1;
+	}
+	
+}
