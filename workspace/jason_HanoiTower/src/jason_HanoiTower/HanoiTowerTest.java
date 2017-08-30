@@ -4,7 +4,7 @@ public class HanoiTowerTest {
 	static int totalMoves = 0;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		hanoiTower(3,'A','B','C');
+		hanoiTower(10,'A','B','C');
 		System.out.println("Total Moves : " + totalMoves);
 	}
 	public static void hanoiTower(int n, char from, char tmp, char to) {

@@ -1,0 +1,35 @@
+package thread.step3.test;
+
+import javax.swing.JOptionPane;
+
+class CountThread implements Runnable {
+
+	@Override
+	public void run() {
+		for(int i = 10; i > 0; i--) {
+			System.out.println(i);
+			try {
+				Thread.sleep(500);
+			} catch(InterruptedException e) { }
+		}
+	}
+	
+}
+
+public class InputThreadTest_3 {
+
+	public static void main(String[] args) {
+		
+		CountThread t1 = new CountThread();
+		Thread t = new Thread(t1);
+		
+		t.start();
+		
+		
+		String password = JOptionPane.showInputDialog("비번 입력 : ");
+		System.out.println("Password : " + password);
+
+
+	}
+
+}

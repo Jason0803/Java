@@ -1,0 +1,27 @@
+package thread.step2.test;
+
+import java.awt.Toolkit;
+
+class BThread extends Thread {
+	for (int i = 0; i < 5; i++) {
+		
+	}
+}
+
+public class BeepThreadTest_2 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		
+		
+		Toolkit tk = Toolkit.getDefaultToolkit();
+		for(int i = 0; i < 5; i++) {
+			tk.beep();
+			Thread.sleep(200);
+		}
+		
+
+	}
+
+}

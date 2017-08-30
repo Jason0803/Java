@@ -1,0 +1,12 @@
+package thread.step2.test;
+
+import java.awt.Toolkit;
+
+public class BeepThreadTest_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Toolkil tk = Toolkit.getDefaultToolkit();
+	}
+
+}
