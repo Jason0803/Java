@@ -17,7 +17,7 @@ public class DBConnectionTest_1 {
 			
 			Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			System.out.println("DB Connected !!");
-			
+
 		} catch (ClassNotFoundException e) {
 			System.out.println("Failed to load DRIVER !");
 		} catch (SQLException e) {

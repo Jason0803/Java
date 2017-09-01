@@ -1,0 +1,10 @@
+package jdbc.step2.test;
+
+public class JDBC4StepTest_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
