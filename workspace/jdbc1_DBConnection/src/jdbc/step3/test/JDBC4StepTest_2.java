@@ -36,7 +36,7 @@ public class JDBC4StepTest_2 {
 			}
 			
 			
-			System.out.println("hi");
+			// System.out.println("hi");
 			ResultSet rs = st.executeQuery(queries[4]);
 			
 			while(rs.next()) {

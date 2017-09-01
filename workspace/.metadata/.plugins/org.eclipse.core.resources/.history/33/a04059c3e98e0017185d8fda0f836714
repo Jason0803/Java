@@ -1,0 +1,24 @@
+package jdbc.step3.test;
+/*
+
+CREATE TABLE member (
+	id varchar2(20) PRIMARY KEY,
+	name varchar2(30) NOT NULL,
+	pass varchar2(30) NOT NULL,
+	tel varchar(30) NOT NULL);
+
+1) 컬럼명 추가	:	ALTER TABLE member ADD(address varchar2(10));
+2) 컬럼속성변경	:	ALTER TABLE member MODIFY(address varchar2(50));
+3) 컬럼이름변경	:	ALTER TABLE member RENAME COLUMN pass TO password;
+4) 컬럼명삭제	:	ALTER TABLE member DROP COLUMN tel;
+
+ */
+
+public class JDBC4StepTest_1 {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
