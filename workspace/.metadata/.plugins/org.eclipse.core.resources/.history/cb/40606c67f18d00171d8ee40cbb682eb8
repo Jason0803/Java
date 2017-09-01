@@ -1,0 +1,15 @@
+package chatting.client.step1;
+
+import java.io.IOException;
+import java.net.Socket;
+
+public class ChatClient {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		
+		Socket socket = new Socket();
+		socket.connect(null, 5500);
+	}
+
+}

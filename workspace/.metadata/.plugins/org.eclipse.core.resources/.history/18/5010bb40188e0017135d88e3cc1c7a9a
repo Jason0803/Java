@@ -1,0 +1,90 @@
+package chatting.server.step3;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+
+
+class ServerThread extends Thread {
+	private Socket socket;
+	private BufferedReader br;
+	private PrintWriter pw;
+	
+	public ServerThread (Socket socket) {
+		this.socket = socket;
+		try {
+			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			pw = new PrintWriter(socket.getOutputStream());
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void sendMessage(String msg) {
+		
+	}
+	
+	public Socket getSocket() {
+		return this.socket;
+	}
+	
+	
+	@Override
+	public void run() {
+		
+		
+	}
+	
+}
+
+public class ChatServer {
+	ServerSocket server;
+	Socket socket;
+	ArrayList<ServerThread> ths; // = 
+	ArrayList<Integer> ints = new ArrayList<Integer>();
+	
+	public ChatServer() {
+		ths = new ArrayList<ServerThread>();
+	}
+	
+	public void addThread(ServerThread st) {
+		ths.add(st);
+	}
+	public void net() throws Exception {
+		server = new ServerSocket(60000);
+		System.out.println("Server Open..");
+		
+		while(true) {
+			socket = server.accept();
+			ServerThread thread = new ServerThread(socket);
+		}
+		
+		System.out.println("Client Connection : " + s.getInetAddress());
+			
+		String line;
+		// br = new BufferedReader(new InputStreamReader(s.getInputStream() ));
+		// pw = new PrintWriter(s.getOutputStream(), true);
+			
+		/*
+			while( (line = br.readLine()) != null ) {
+				pw.println("Server : " + line);
+			}
+		*/
+		
+	}
+	
+	
+		
+	public static void main(String[] args) throws Exception {
+		ChatServer cs = new ChatServer();
+		cs.net();
+			
+	}
+}

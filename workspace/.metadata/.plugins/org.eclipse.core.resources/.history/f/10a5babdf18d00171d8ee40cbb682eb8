@@ -1,0 +1,22 @@
+package chatting.client.step1;
+
+import java.io.IOException;
+import java.net.Socket;
+
+public class ChatClient {
+	Socket socket;
+	
+	
+	public void net() {
+		socket = new Socket("127.0.0.1", 5500);
+		socket.
+	}
+	
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		
+		ChatClient cClient = new ChatClient();
+		cClient.net();
+	}
+
+}

@@ -59,14 +59,16 @@
 	</section>
 	<section name="FatJarPackageWizard">
 		<item value="/Users/Jason/Documents/Development/Java/workspace" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
-		<item value="HangeulPostpositionTypoFinderView - TypeDetector" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
-		<item value="/Users/Jason/Desktop/TypeDetector.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
+		<item value="StackTest - jason_StackExample" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
+		<item value="/Users/Jason/Desktop/StackTest.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
 		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
-		<item value="1" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
+		<item value="2" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="/Users/Jason/Desktop/StackTest.jar"/>
 			<item value="/Users/Jason/Desktop/TypeDetector.jar"/>
 		</list>
 		<list key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION_HISTORY">
+			<item value="/Users/Jason/Documents/Development/Java/workspace.xml"/>
 			<item value=".xml"/>
 		</list>
 	</section>
@@ -84,6 +86,8 @@
 	</section>
 	<section name="AddUnimplementedConstructorsDialog">
 		<item value="false" key="OmitCallToSuper"/>
+	</section>
+	<section name="RenameInformationPopup">
 	</section>
 	<section name="DialogBounds_AddUnimplementedConstructorsDialog">
 		<item value="508" key="DIALOG_WIDTH"/>
