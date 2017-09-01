@@ -1,0 +1,83 @@
+package jdbc.step3.test;
+/*
+
+CREATE TABLE member (
+	id varchar2(20) PRIMARY KEY,
+	name varchar2(30) NOT NULL,
+	pass varchar2(30) NOT NULL,
+	tel varchar(30) NOT NULL);
+
+1) 컬럼명 추가	:	ALTER TABLE member ADD(address varchar2(10));
+2) 컬럼속성변경	:	ALTER TABLE member MODIFY(address varchar2(50));
+3) 컬럼이름변경	:	ALTER TABLE member RENAME COLUMN pass TO password;
+4) 컬럼명삭제	:	ALTER TABLE member DROP COLUMN tel;
+
+ */
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+import config.DBConfig;
+
+public class JDBC4StepTest_1 {
+
+	public JDBC4StepTest_1() {
+		Scanner sc = new Scanner(System.in);
+		
+		try {
+			// --------------------------- 	DB Connection	 --------------------------- //
+			Class.forName(DBConfig.DRIVER);
+			System.out.println("Driver Loaded Successfully !");
+			
+			Connection conn = 
+					DriverManager.getConnection(DBConfig.URL, DBConfig.USER, DBConfig.PASSWORD);
+			System.out.println("DB Connnected!");
+			
+			PreparedStatement st = 
+					conn.prepareStatement("INSERT INTO member VALUES(?,?,?,?)");
+			// --------------------------- INSERT From Console --------------------------- //
+			System.out.println("INSERT Statement Creating...");
+			
+			String id = "";
+			String name = "";;
+			String pw = "";;
+			String address = "";;
+			System.out.print("ID : ");
+			id = sc.nextLine();
+			st.setString(1,id);
+			
+			
+			
+			System.out.print("NAME : ");
+			name = sc.nextLine();
+			st.setString(2, name);
+			
+			System.out.print("PW : ");
+			pw = sc.nextLine();
+			st.setString(3, pw);
+			
+			System.out.print("ADDR : ");
+			address = sc.nextLine();
+			st.setString(4, address);
+			
+			st.executeUpdate();
+			// -------------------------- Close opened ones -------------------------- //
+			st.close();
+			conn.close();
+			
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver Load Failed !");
+		} catch (SQLException e) {
+			System.out.println("DB Connection Failed !");
+			e.printStackTrace();
+		} 
+	}
+	public static void main(String[] args) {
+		new JDBC4StepTest_1();
+	}
+
+}
