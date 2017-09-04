@@ -1,0 +1,20 @@
+package jdbc.step1.simple;
+
+/*
+CREATE TABLE customer (
+  name varchar2(20) PRIMARY KEY,
+  age number(3),
+  height number(3),
+  weight number(3),
+  gender char(5));
+ 
+ */
+
+public class SimpleCustomerDAOTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("JDBC Simple DAO Test...");
+	}
+
+}

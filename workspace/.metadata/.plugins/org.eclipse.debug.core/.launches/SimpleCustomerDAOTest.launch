@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/JDBC2_DBConnection/src/jdbc/step1/simple/SimpleCustomerDAOTest.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="jdbc.step1.simple.SimpleCustomerDAOTest"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="JDBC2_DBConnection"/>
+</launchConfiguration>
