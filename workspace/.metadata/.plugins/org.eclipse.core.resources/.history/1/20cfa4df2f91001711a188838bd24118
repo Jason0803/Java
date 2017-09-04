@@ -1,0 +1,8 @@
+package jdbc.step2.vo;
+
+public class Member {
+	private String id;
+	private String name;
+	private String password;
+	private String address;
+}

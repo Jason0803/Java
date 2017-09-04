@@ -1,0 +1,45 @@
+package jdbc.step2.dao;
+/*
+ * DAO = Database Access Object
+ */
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import config.DBConfig;
+import jdbc.step2.vo.Member;
+
+public class MemberDAO {
+	private static MemberDAO dao = new MemberDAO();
+	private MemberDAO() {
+		
+	}
+	// ---------------------------------- for connection ----------------------------------//
+	public Connection connection() {
+		Connection conn = null;
+		try {
+			conn = 
+				DriverManager.getConnection(DBConfig.URL, DBConfig.USER, DBConfig.PASSWORD);
+				// System.out.println("DB Connnected!");
+		} catch (SQLException e) {
+			System.out.println("DB Disconnected !");
+		}
+	
+		return conn;
+	}
+	// ---------------------------------- for INSERT ----------------------------------//
+	public void addMember(Member member) throws SQLException{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		
+	}
+	
+	public static getInstance() {
+	
+	
+	
+	
+}

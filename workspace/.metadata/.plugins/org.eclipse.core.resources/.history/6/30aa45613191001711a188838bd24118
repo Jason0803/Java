@@ -1,0 +1,23 @@
+package jdbc.step2.test;
+
+import config.DBConfig;
+import jdbc.step2.vo.Member;
+
+public class MemberDAOTest {
+
+	public static void main(String[] args) {
+		MemberDAO dao = new MemberDAO();
+
+	}
+	
+	static {
+		try {
+			Class.forName(DBConfig.DRIVER);
+			System.out.println("Driver Loaded !");
+		} catch(ClassNotFoundException e) {
+			System.out.println("Driver Not Loaded !");
+		}
+	
+	}
+
+}

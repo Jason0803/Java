@@ -1,0 +1,5 @@
+package jdbc.step2.dao;
+
+public class MemberDAO {
+
+}

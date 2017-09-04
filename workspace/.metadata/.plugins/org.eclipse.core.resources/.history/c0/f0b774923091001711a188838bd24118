@@ -1,0 +1,8 @@
+package jdbc.step2.dao;
+/*
+ * DAO = Database Access Object
+ */
+
+public class MemberDAO {
+
+}

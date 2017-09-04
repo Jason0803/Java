@@ -1,0 +1,5 @@
+package jdbc.step2.vo;
+
+public class Member {
+
+}
