@@ -59,7 +59,7 @@ public class SimpleCustomerDAOTest {
 			conn.close();
 			
 		} catch (SQLException e) {
-			System.out.println("SQL Exception while INSERT !");
+			System.out.println(" >> SQL Exception while INSERT !");
 		}
 		
 		System.out.println("INSERT DONE for " + name);
@@ -79,10 +79,35 @@ public class SimpleCustomerDAOTest {
 			conn.close();
 			System.out.println("DELETE DONE for " + name);
 		} catch (SQLException e) {
-			System.out.println("SQL Exception while DELETE !");
+			System.out.println(" >> SQL Exception while DELETE !");
 		}
 	}
- 	
+	// ---------------------------------- for UPDATE --------------------------------------//
+		public void updateCustomer(String name, int age, int height, int weight, String gender) {
+			Connection conn = connection();
+			try {
+				PreparedStatement st_UPDATE =
+						conn.prepareStatement("UPDATE customer "
+								+ "SET age = ?, height = ?, weight = ?, gender = ?"
+								+ "WHERE name = ?");
+				
+				
+				st_UPDATE.setInt(1, age);
+				st_UPDATE.setInt(2, height);
+				st_UPDATE.setInt(3, weight);
+				st_UPDATE.setString(4, gender);
+				st_UPDATE.setString(5, name);
+				
+				st_UPDATE.executeUpdate();
+				
+				st_UPDATE.close();
+				conn.close();
+				System.out.println("UPDATE DONE for " + name);
+			} catch (SQLException e) {
+				System.out.println(" >> SQL Exception while UPDATE !");
+			}
+		}
+	
 	// ------------------------------------- MAIN ------------------------------------- //
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -92,6 +117,7 @@ public class SimpleCustomerDAOTest {
 		dao.insertCustomer("Gosling", 25, 173, 73, "M");
 		dao.insertCustomer("Sunny", 28, 161, 53, "F");
 		dao.deleteCustomer("Jason");
+		dao.updateCustomer("Sunny", 29, 161, 54, "F");
 		
 	} // main
 
