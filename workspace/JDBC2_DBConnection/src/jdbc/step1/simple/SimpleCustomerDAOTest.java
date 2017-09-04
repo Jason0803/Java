@@ -25,7 +25,7 @@ public class SimpleCustomerDAOTest {
 		try {
 			conn = 
 				DriverManager.getConnection(DBConfig.URL, DBConfig.USER, DBConfig.PASSWORD);
-				System.out.println("DB Connnected!");
+				// System.out.println("DB Connnected!");
 		} catch (SQLException e) {
 			System.out.println("DB Disconnected !");
 		}
@@ -42,11 +42,12 @@ public class SimpleCustomerDAOTest {
 		 * executeUpdate
 		 * close
 		 */
+		Connection conn = connection();
 		System.out.println("INSERT Statement Creating...");
 		try {
-			PreparedStatement st_INSERT = 
-					connection().prepareStatement("INSERT INTO customer VALUES(?,?,?,?,?)");
 			
+			PreparedStatement st_INSERT = 
+					conn.prepareStatement("INSERT INTO customer VALUES(?,?,?,?,?)");
 			
 			st_INSERT.setString(1, name);
 			st_INSERT.setInt(2, age);
@@ -55,7 +56,7 @@ public class SimpleCustomerDAOTest {
 			st_INSERT.setString(5, gender);
 			st_INSERT.executeUpdate();
 			st_INSERT.close();
-			connection().close();
+			conn.close();
 			
 		} catch (SQLException e) {
 			System.out.println("SQL Exception while INSERT !");
@@ -66,15 +67,16 @@ public class SimpleCustomerDAOTest {
 	
 	// ---------------------------------- for DELETE --------------------------------------//
 	public void deleteCustomer(String name) {
+		Connection conn = connection();
 		try {
 			PreparedStatement st_DELETE =
-					connection().prepareStatement("DELETE FROM customer WHERE name = ?");
+					conn.prepareStatement("DELETE FROM customer WHERE name = ?");
 			
 			st_DELETE.setString(1, name);
 			st_DELETE.executeUpdate();
 			
 			st_DELETE.close();
-			connection().close();
+			conn.close();
 			System.out.println("DELETE DONE for " + name);
 		} catch (SQLException e) {
 			System.out.println("SQL Exception while DELETE !");
@@ -87,6 +89,8 @@ public class SimpleCustomerDAOTest {
 		System.out.println("JDBC Simple DAO Test...");
 		SimpleCustomerDAOTest dao = new SimpleCustomerDAOTest();
 		dao.insertCustomer("Jason", 24, 171, 63, "M");
+		dao.insertCustomer("Gosling", 25, 173, 73, "M");
+		dao.insertCustomer("Sunny", 28, 161, 53, "F");
 		dao.deleteCustomer("Jason");
 		
 	} // main
