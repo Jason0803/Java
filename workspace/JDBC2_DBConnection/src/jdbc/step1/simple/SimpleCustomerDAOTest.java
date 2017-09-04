@@ -3,6 +3,7 @@ package jdbc.step1.simple;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import config.DBConfig;
@@ -83,33 +84,74 @@ public class SimpleCustomerDAOTest {
 		}
 	}
 	// ---------------------------------- for UPDATE --------------------------------------//
-		public void updateCustomer(String name, int age, int height, int weight, String gender) {
-			Connection conn = connection();
-			try {
-				PreparedStatement st_UPDATE =
-						conn.prepareStatement("UPDATE customer "
-								+ "SET age = ?, height = ?, weight = ?, gender = ?"
-								+ "WHERE name = ?");
+	public void updateCustomer(String name, int age, int height, int weight, String gender) {
+		Connection conn = connection();
+		try {
+			PreparedStatement st_UPDATE =
+					conn.prepareStatement("UPDATE customer "
+							+ "SET age = ?, height = ?, weight = ?, gender = ?"
+							+ "WHERE name = ?");
+			
 				
+			st_UPDATE.setInt(1, age);
+			st_UPDATE.setInt(2, height);
+			st_UPDATE.setInt(3, weight);
+			st_UPDATE.setString(4, gender);
+			st_UPDATE.setString(5, name);
 				
-				st_UPDATE.setInt(1, age);
-				st_UPDATE.setInt(2, height);
-				st_UPDATE.setInt(3, weight);
-				st_UPDATE.setString(4, gender);
-				st_UPDATE.setString(5, name);
+			st_UPDATE.executeUpdate();
 				
-				st_UPDATE.executeUpdate();
-				
-				st_UPDATE.close();
-				conn.close();
-				System.out.println("UPDATE DONE for " + name);
-			} catch (SQLException e) {
-				System.out.println(" >> SQL Exception while UPDATE !");
-			}
+			st_UPDATE.close();
+			conn.close();
+			System.out.println("UPDATE DONE for " + name);
+		} catch (SQLException e) {
+			System.out.println(" >> SQL Exception while UPDATE !");
 		}
-	
-	// ------------------------------------- MAIN ------------------------------------- //
-	public static void main(String[] args) {
+	}
+	// ------------------------------- for displayAll -----------------------------------//
+	public void printAllCustomer() throws SQLException {
+		Connection conn = connection();
+		PreparedStatement ps = conn.prepareStatement("SELECT * FROM customer");
+		ResultSet rs = ps.executeQuery();
+		
+		System.out.println("\n[Display all Customers ...]");
+		System.out.println("Name\tHeight\tWeight\tGender");
+		while(rs.next()) {
+			System.out.println(rs.getString("name") + "\t"
+					+ rs.getInt("height") + "\t"
+					+ rs.getInt("weight") + "\t"
+					+ rs.getString("gender"));
+			
+		}
+		
+		ps.close();
+		conn.close();
+	}
+	// ------------------------------- for display --------------------------------------//
+	public void printCustomer(String name) throws SQLException {
+		Connection conn = connection();
+		PreparedStatement ps = 
+				conn.prepareStatement("SELECT * FROM customer"
+									+ "WHERE name = ?");
+		
+		ps.setString(1, name);
+		ResultSet rs = ps.executeQuery();
+		
+		System.out.println("Display Customer : " + name);
+		System.out.println("Name\tHeight\tWeight\tGender");
+		
+		if(rs.next()) {
+			System.out.println(rs.getString("name") + "\t"
+							+ rs.getInt("height") + "\t"
+							+ rs.getInt("weight") + "\t"
+							+ rs.getString("gender"));
+		}
+		
+		ps.close();
+		conn.close();
+	}
+	// ------------------------------------- MAIN -------------------------------------- //
+	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		System.out.println("JDBC Simple DAO Test...");
 		SimpleCustomerDAOTest dao = new SimpleCustomerDAOTest();
@@ -118,6 +160,9 @@ public class SimpleCustomerDAOTest {
 		dao.insertCustomer("Sunny", 28, 161, 53, "F");
 		dao.deleteCustomer("Jason");
 		dao.updateCustomer("Sunny", 29, 161, 54, "F");
+		
+		dao.printAllCustomer();
+		dao.printCustomer("Sunny");
 		
 	} // main
 
