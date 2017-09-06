@@ -1,0 +1,15 @@
+package book.dao;
+import config.DBConfig;
+
+public class BookDAO {
+	private static BookDAO dao = new BookDAO();
+	private BookDAO () { 
+		try {
+			
+		}
+	}
+	
+	public static BookDAO getInstance() {
+		return dao;
+	}
+}

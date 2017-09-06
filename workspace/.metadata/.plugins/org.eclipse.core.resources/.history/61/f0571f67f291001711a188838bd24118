@@ -1,0 +1,10 @@
+package book.test;
+
+public class BookDAOTest {
+
+	public static void main(String[] args) {
+		// dao = BookDAO.getInstance();
+
+	}
+
+}

@@ -1,0 +1,10 @@
+package book.exception;
+
+public class DuplicateIsbnException extends Exception {
+	public DuplicateIsbnException() {
+		
+	}
+	public DuplicateIsbnException(String msg) {
+		
+	}
+}

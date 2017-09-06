@@ -1,0 +1,29 @@
+package book.dao;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import config.DBConfig;
+
+public class BookDAO {
+	private static BookDAO dao = new BookDAO();
+	private BookDAO () { 
+		try {
+			Class.forName(DBConfig.DRIVER);
+			System.out.println("Driver Successfully Loaded !");
+			
+		} catch(ClassNotFoundException e) {
+			System.out.println("Driver Loading Failed !");
+		}
+	}
+	
+	public static BookDAO getInstance() {
+		return dao;
+	}
+	
+	public Connection getConnect() throws SQLException {
+		System.out.println("DB Connected !");
+		
+		return DriverManager.getConnection(DBConfig.URL, DBConfig.USER, DBConfig.PASSWORD);
+	}
+}

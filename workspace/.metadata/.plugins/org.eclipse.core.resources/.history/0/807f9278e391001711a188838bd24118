@@ -1,0 +1,19 @@
+package book.dao;
+import config.DBConfig;
+
+public class BookDAO {
+	private static BookDAO dao = new BookDAO();
+	private BookDAO () { 
+		try {
+			Class.forName(DBConfig.DRIVER);
+			System.out.println("Driver Successfully Loaded !");
+			
+		} catch(ClassNotFoundException e) {
+			System.out.println("Driver Loading Failed !");
+		}
+	}
+	
+	public static BookDAO getInstance() {
+		return dao;
+	}
+}

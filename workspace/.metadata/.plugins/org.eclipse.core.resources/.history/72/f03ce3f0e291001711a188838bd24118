@@ -1,0 +1,10 @@
+package book.dao;
+
+public class BookDAO {
+	private static BookDAO dao = new BookDAO();
+	private BookDAO () { }
+	
+	public static BookDAO getInstance() {
+		
+	}
+}

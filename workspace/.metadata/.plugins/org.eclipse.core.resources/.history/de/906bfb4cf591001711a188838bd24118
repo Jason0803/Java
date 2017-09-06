@@ -1,0 +1,27 @@
+package book.test;
+
+import java.sql.SQLException;
+
+import book.dao.BookDAO;
+import book.exception.DuplicateIsbnException;
+import book.vo.Book;
+
+public class BookDAOTest {
+
+	public static void main(String[] args) {
+		// dao = BookDAO.getInstance();
+		try {
+			String isbn = "4D4";
+			// find 
+			System.out.println(BookDAO.getInstance().doesExist(isbn));
+			
+			// resister
+			BookDAO.getInstance().resisterBook(new Book("6F6", "Mann", "Jason", "masan", 27000));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (DuplicateIsbnException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+}

@@ -1,0 +1,5 @@
+package jdbc.exception;
+
+public class DuplicateIdException {
+
+}

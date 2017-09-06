@@ -1,0 +1,18 @@
+package book.test;
+
+import java.sql.SQLException;
+
+import book.dao.BookDAO;
+
+public class BookDAOTest {
+
+	public static void main(String[] args) {
+		// dao = BookDAO.getInstance();
+		try {
+			System.out.println(BookDAO.getInstance().doesExist("3C3"));
+		} catch (SQLException e) {
+			System.out.println("Error !");
+		}
+	}
+
+}
