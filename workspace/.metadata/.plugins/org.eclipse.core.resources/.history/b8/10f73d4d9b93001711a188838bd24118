@@ -1,0 +1,17 @@
+package broker.three.server;
+
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ProtocolHandler extends Thread {
+	ServerSocket server;
+	Socket s;
+	JuryThread jury;
+	Database db;
+	
+	public static final int MIDDLE_PORT = 60000;
+	
+	public static void main(String[] args) {
+		
+	}
+}

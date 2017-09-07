@@ -1,0 +1,9 @@
+package broker.three.shares;
+
+import java.util.ArrayList;
+
+public class Result extends ArrayList {
+	public Result() {
+		super(1);
+	}
+}

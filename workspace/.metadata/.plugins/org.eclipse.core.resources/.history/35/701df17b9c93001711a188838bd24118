@@ -1,0 +1,23 @@
+package broker.three.server;
+
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
+import broker.three.shares.Command;
+
+public class JuryThread extends Thread {
+	private Socket s;
+	private Database db;
+	private Command cmd;
+	private ObjectInputStream ois;
+	private ObjectOutputStream oos;
+	
+	public JuryThread(Socket s, Database db) {
+		
+	}
+
+	public void run() {
+		
+	}
+}

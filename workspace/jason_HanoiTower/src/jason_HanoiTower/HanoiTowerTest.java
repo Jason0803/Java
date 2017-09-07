@@ -9,7 +9,7 @@ public class HanoiTowerTest {
 	}
 	public static void hanoiTower(int n, char from, char tmp, char to) {
 		if(n == 1) {
-			System.out.println("[1] : From [" + from + "] To [" + to + "]");
+			System.out.println("[1] : From [" + from + "] To : [" + to + "]");
 			totalMoves++;
 		} else {
 			hanoiTower(n-1, from, to, tmp);

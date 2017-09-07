@@ -1,0 +1,25 @@
+package broker.twotier.vo;
+
+public class SharesRec {
+	private String ssn;
+	private String symbol;
+	private int quantity;
+	
+	public SharesRec(String ssn, String symbol, int quantity) {
+		super();
+		this.ssn = ssn;
+		this.symbol = symbol;
+		this.quantity = quantity;
+	}
+	
+	public SharesRec(String ssn) {
+		this(ssn, " ", 0);
+	}
+
+	public SharesRec() {
+		this(" ", " ", 0);
+	}
+	
+	
+	
+}

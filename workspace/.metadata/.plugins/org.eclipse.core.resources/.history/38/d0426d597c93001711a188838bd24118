@@ -1,0 +1,74 @@
+package broker.three.cllient;
+
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import broker.three.exception.DuplicateSSNException;
+import broker.three.exception.InvalidTransactionException;
+import broker.three.exception.RecordNotFoundException;
+import broker.three.shares.Command;
+import broker.three.vo.CustomerRec;
+import broker.three.vo.StockRec;
+import broker.three.vo.SharesRec;
+
+
+public class Protocol {
+	private Socket s;
+	private ObjectInputStream ois;
+	private ObjectOutputStream oos;
+	private Command cmd;
+	
+	private static final int MIDDLE_PORT = 60000;
+	
+	public Protocol(String serverIp) throws Exception {
+		s = new Socket(serverIp, MIDDLE_PORT);
+		System.out.println("Client Socket Creating..");
+		
+		oos = new ObjectOutputStream(s.getOutputStream());
+		ois = new ObjectInputStream(s.getInputStream());
+	}
+	
+	public void buyShares(String ssn, String symbol, int quantity) throws SQLException {
+		// 1. Pack
+		cmd = new Comman(Command.BUY_SHARES);
+		
+		// cmd.setArgs();
+		// 2. Deliver
+		
+		// 3. Receive
+		// 4. Unpack
+	}
+	public void sellShares(String ssn, String symbol, int quantity) throws RecordNotFoundException, InvalidTransactionException {
+		
+	}
+	public ArrayList<StockRec> getALlStocks() {
+		
+		return null;
+	}
+	public float getStockPrice(String symbol) {
+		
+		return (Float) null;
+	}
+	public void addCustomer(CustomerRec cust) throws SQLException, DuplicateSSNException {
+		
+	}
+	public void deleteCustomer(String ssn) throws SQLException, RecordNotFoundException {
+		
+	}
+	public void updateCustomer(CustomerRec cust) throws SQLException, RecordNotFoundException {
+		
+	}
+	public Vector<SharesRec> getPortfolio(String ssn)  throws SQLException {
+		return null;
+	}
+	public CustomerRec getCustomer(String ssn) throws SQLException {
+		return null;
+	}
+	public ArrayList<CustomerRec> getAllCustomers() throws SQLException {
+		return null;
+	}
+}

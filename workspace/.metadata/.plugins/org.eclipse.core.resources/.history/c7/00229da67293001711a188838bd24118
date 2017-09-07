@@ -1,0 +1,10 @@
+package broker.three.shares;
+
+import java.io.Serializable;
+
+public class Command implements Serializable {
+	public static  final int BUY_SHARES = 10;
+	public static  final int SELL_SHARES = 20;
+	public static  final int GET_ALL_STOCK = 20;
+	public static  final int SELLSHARES = 20;
+}

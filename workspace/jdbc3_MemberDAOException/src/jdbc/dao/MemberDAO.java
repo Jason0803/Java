@@ -64,7 +64,7 @@ public class MemberDAO {
 		
 		try {
 			conn = connection();
-			if( !doesExist(member.getId(), conn)  {
+			if( !doesExist(member.getId(), conn) {
 				conn = connection();
 				ps = conn.prepareStatement("INSERT INTO member VALUES(?,?,?,?)");
 				

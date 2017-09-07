@@ -1,0 +1,14 @@
+package broker.twotier.dao;
+
+import config.DBConfig;
+
+public class Database {
+	public Database(String server) throws ClassNotFoundException {
+		Class.forName(DBConfig.DRIVER);
+		
+	}
+	
+	public Connection getConnect() throws SQLException {
+		
+	}
+}

@@ -1,0 +1,21 @@
+package broker.twotier.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import config.DBConfig;
+
+public class Database {
+	public Database(String server) throws ClassNotFoundException {
+		Class.forName(DBConfig.DRIVER);
+		
+	}
+	
+	public Connection getConnect() throws SQLException {
+		Connection conn = DriverManager.getConnection(DBConfig.URL, DBConfig.USER, DBConfig.PASSWORD);
+		
+		return null;
+		
+	}
+}
