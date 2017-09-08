@@ -37,6 +37,7 @@ public class JuryThread extends Thread {
 		while(true) {
 			try {
 				cmd = (Command)ois.readObject();
+			} catch (Exception e) {}
 				int value = cmd.getCommanValue();
 				String[] args = cmd.getArgs();
 				Result r = cmd.getResults();
@@ -75,6 +76,7 @@ public class JuryThread extends Thread {
 						} catch (Exception e) {
 							System.out.println(e.getMessage());
 						}
+						break;
 					}
 					case Command.GET_ALL_STOCK : {
 						try {
@@ -87,9 +89,11 @@ public class JuryThread extends Thread {
 					case Command.GET_STOCK_PRICE : {
 						try {
 							float price = db.getStockPrice(args[0]);
+							r.add(price);
+							r.setStatus(0);
 						} catch (RecordNotFoundException e) {
 							System.out.println("No Such Record Found !");
-						}
+						} catch (Exception e) {}
 						break;
 					}
 					case Command.GET_CUSTOMER : {
@@ -100,9 +104,16 @@ public class JuryThread extends Thread {
 						} catch (Exception e) { 
 							System.out.println(e.getMessage());
 						}
+						break;
 					}
 					case Command.ADD_CUSTOMER : {
-						CustomerRec cr = new CustomerRec(args[0], args[1], args[2]);
+						
+						try {
+							db.addCustomer(new CustomerRec(args[0], args[1], args[2]));
+							r.setStatus(0);
+						} catch (DuplicateSSNException e) {
+							r.setStatus(-3);
+						} catch (Exception e) {}
 						break;
 					}
 					case Command.DELETE_CUSTOMER : {
@@ -110,36 +121,28 @@ public class JuryThread extends Thread {
 							db.deleteCustomer(args[0]);
 							r.setStatus(0);
 						} catch(RecordNotFoundException e) {
-							r.setStatus(-2);
-						}
+							r.setStatus(-1);
+						} catch(Exception e) {}
+						break;
 					}
 					case Command.UPDATE_CUSTOMER : {
 						try {
-							db.updateCustomer(new CustomerRec(args[0], args[1], args[2]));
+							db.updateCustomer(new CustomerRec(args[0], args[1], args[2]) );
+							r.setStatus(0);
 						} catch (RecordNotFoundException e) {
+							r.setStatus(-1);
 							System.out.println("No such Record Found !");
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
+						break;
 					}
-				}
+				} // switch
 				try {
 					oos.writeObject(cmd);
 				} catch (Exception e ) { 
 					
 				}
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}
-
-	}
-}
+		} // while
+	} // run
+} // class
