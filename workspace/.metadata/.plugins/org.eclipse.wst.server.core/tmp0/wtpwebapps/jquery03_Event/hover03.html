@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hover</title>
+<style type="text/css">
+	.reverse {
+		background: blue;
+		color: white;
+	}
+</style>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('h2').hover(
+				function() {
+					$(this).addClass('reverse');
+				}, 
+				function() {
+					$(this).removeClass('reverse');
+				}
+			);
+		});
+		
+		
+		// $('h2').click(fu)
+		
+	</script>
+</head>
+<body>
+	<h2>11111</h2>
+	<h2>22222</h2>
+	<h2>33333</h2>
+</body>
+</html>

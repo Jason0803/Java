@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	table {
+		border: 3px solid magenta;
+		width: 550px;
+	}
+	tbody>tr {
+		text-align: center;
+	}
+	td, th {
+		border: 1px dotted blue;
+		font-family: Arial;
+	}
+	h1, table {
+		margin : 0px auto;
+	}
+</style>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			
+		});
+	</script>
+</head>
+<body>
+<h1>Hover Test...</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th><th>Job</th><th>Address</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Jason</td><td>null</td><td>Gangnam-gu</td>
+		</tr>
+		<tr>
+			<td>Sunny</td><td>null</td><td>Nowon-gu</td>
+		</tr>
+		<tr>
+			<td>jws</td><td>Actor</td><td>Gangnam</td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

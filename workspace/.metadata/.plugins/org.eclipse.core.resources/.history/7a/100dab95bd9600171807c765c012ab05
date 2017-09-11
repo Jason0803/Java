@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>IMAGE</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#imageView').hide();
+			
+			$('#mouseIn').css({
+				'background':'yellow',
+				'font-size':'1.2em',
+				'margin':'200px';
+			});
+			
+			$('#mouseIn').mouseenter(function() {
+				$('#imageView').show(3000);
+			});
+			
+			$('#mousein').mouseleave(function() {
+				$('#imageView').hide(3000);
+			});
+		});
+	</script>
+</head>
+<body>
+<span id="mousein"> Show Picture </span>
+<p>
+<p>
+<div id="imageView"><img src="./image/rol_1.jpg" width="300" height="400"></div>
+</body>
+</html>
