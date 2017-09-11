@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+	 $(function () {
+		$('body').css('color','red'); // 테그의 값지정 
+
+		//class 속성의 값이 hell인 선택자를 지정 ...
+		$('.hello').css('background', 'yellow');
+
+		//id 속성의 값이 good 인 선택자를 지정 ...method 중첩 
+		$('#good').css('color','blue').css('background','magenta');
+		});
+	</script>
+</head>
+<body>
+	<h3>ID is kosta</h3>
+	<h2>Class is 174th</h2>
+	<div class="hello">div tag class is hello</div>
+</body>
+</html>

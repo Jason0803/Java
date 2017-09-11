@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>ID is kosta</h3>
+	<h2>Class is 174th</h2>
+	<div class="hello">div tag class is hello</div>
+</body>
+</html>

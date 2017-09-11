@@ -1,5 +1,0 @@
-package broker.twotier.dao;
-
-public class Database {
-
-}

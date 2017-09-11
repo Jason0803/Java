@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tag : 'div' and 'span'</title>
+
+<!--  File direct Connect..  -->
+<script type="text/javascript" src = "/Users/Jason/Documents/Development/jQuery/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+				
+		})
+	</script>
+
+</head>
+<body>
+	<p class="myParagraph">jQuery Selector Test</p>
+
+</body>
+</html>

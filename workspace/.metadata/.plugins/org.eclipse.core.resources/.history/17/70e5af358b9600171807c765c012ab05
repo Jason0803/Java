@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body {
+	}
+</style>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('div')
+			.append('<span>1.Append</span>')
+			.prepend('<span>2.Prepend</span>')
+			.before('<span>3.Before</span>')
+			.after('<span>4.After</span>');
+		});
+	</script>
+</head>
+<body>
+	<div>
+	jQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Library. Whether you're building highly interactive web applications or you just need to add a date picker to a form control, jQuery UI is the perfect choice.
+	</div>
+</body>
+</html>

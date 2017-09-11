@@ -1,6 +1,0 @@
-package collection.step2.vo;
-
-public class Customer {
-	private int cusId;
-	
-}

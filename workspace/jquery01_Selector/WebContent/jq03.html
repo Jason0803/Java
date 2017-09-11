@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			// 1. 'p' tag and 'h1' tag  --> orange color
+			$('p,h1').css('color','orange');
+			
+			// 2. h1 --> bgcolor : cyan
+			$('#wrap>h1').css('background','cyan');
+			
+			// 3. id = wrap of div tag
+			$('div#wrap').css('background', 'grey');
+		});
+	</script>
+</head>
+<body>
+	<p>jQuery Test !</p>
+	<h1>Friday</h1>
+	<div id="wrap">
+		<div id="tt">
+			<h1>sunny</h1>
+		</div>
+	</div>
+	<h1>hi !</h1>
+	<div>BootStrap : Next week</div>
+</body>
+</html>

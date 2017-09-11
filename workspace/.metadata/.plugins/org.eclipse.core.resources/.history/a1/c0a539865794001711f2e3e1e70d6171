@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tag : 'div' and 'span'</title>
+
+<!--  File direct Connect..  -->
+<script type="text/javascript" src = "/Users/Jason/Documents/Development/jQuery/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+				$(#'span').css('color','green');
+		})
+	</script>
+
+</head>
+<body>
+	<p class="myParagraph">jQuery Selector Test</p>
+	<div>
+		<div id="content1">div tag with ID : content 1</div>
+		<div id="content2">div tag with ID : content 2</div>
+	</div>
+	<span>span</span>
+	<span class="my">my span scope</span>
+</body>
+</html>

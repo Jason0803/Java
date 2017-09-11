@@ -1,5 +1,0 @@
-package object.step4;
-
-public class Person implements Serializable {
-	
-}

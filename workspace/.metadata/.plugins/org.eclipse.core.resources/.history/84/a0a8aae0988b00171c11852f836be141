@@ -1,7 +1,0 @@
-package string.step1.test;
-
-public class StringAdvancedTest {
-	public static void main(String[] args) {
-		
-	}
-}

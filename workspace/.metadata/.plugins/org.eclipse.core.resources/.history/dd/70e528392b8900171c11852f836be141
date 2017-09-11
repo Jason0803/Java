@@ -1,7 +1,0 @@
-package collection.step2.vo;
-
-public class Person {
-	private String name;
-	private int age;
-	private String address;
-}

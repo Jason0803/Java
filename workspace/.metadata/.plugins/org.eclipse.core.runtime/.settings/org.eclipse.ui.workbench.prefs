@@ -1,4 +1,5 @@
 //org.eclipse.ui.commands/state/org.eclipse.ui.navigator.resources.nested.changeProjectPresentation/org.eclipse.ui.commands.radioState=false
+//org.eclipse.ui.commands/state/org.eclipse.wst.xml.views.XPathView.processor.xpathprocessor/org.eclipse.ui.commands.radioState=xpath10
 ACTIVE_HYPERLINK_COLOR=138,201,242
 CONFLICTING_COLOR=240,15,66
 CONTENT_ASSIST_BACKGROUND_COLOR=52,57,61
