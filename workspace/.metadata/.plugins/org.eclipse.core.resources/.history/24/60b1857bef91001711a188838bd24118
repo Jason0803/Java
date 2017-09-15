@@ -1,5 +1,0 @@
-package book.exception;
-
-public class DuplicateIsbnException {
-
-}

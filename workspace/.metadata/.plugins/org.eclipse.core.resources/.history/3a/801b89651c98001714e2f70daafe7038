@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#selectSite').click(function() {
+				$('a[href^="https"]').click(function() {
+					return confirm($(this).text() +" ?");
+				});'
+			});
+		});
+	</script>
+</head>
+<body>
+	<input type="button" value="Choice" id="selectSite"><p>
+	<a href="http://www.jquery.com">jQuery</a>
+	<a href="http://www.google.com">Google</a>
+	<a href="http://www.daum.net">Daum</a>
+	<a href="https://twitter.com">Twitter</a>
+	
+	
+</body>
+</html>

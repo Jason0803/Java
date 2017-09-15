@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#createE').click(function() {
+				$('#nth').html($('select').val());
+			});
+		});
+	</script>
+</head>
+<body>
+<input type="button" value="Dynamic Button" id="createE">
+<select>
+	<option>174th</option>
+	<option>175th</option>
+	<option>176th</option>
+	<option>177th</option>
+	<option>178th</option>
+</select>
+
+<div id="nth"></div>
+
+</body>
+</html>

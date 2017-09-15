@@ -1,0 +1,7 @@
+#Tomcat publish data
+#Fri Sep 15 16:04:45 KST 2017
+org.eclipse.jst.jee.server\:web03_HttpServlet=/Library/Tomcat/apache-tomcat-7.0.81/webapps/web03_HttpServlet
+org.eclipse.jst.jee.server\:web05_HttpHeader=/Library/Tomcat/apache-tomcat-7.0.81/webapps/web05_HttpHeader
+org.eclipse.jst.jee.server\:web01_FirstHttpServlet=/Library/Tomcat/apache-tomcat-7.0.81/webapps/web01_FirstHttpServlet
+org.eclipse.jst.jee.server\:web02_HttpServlet_Annotation=/Library/Tomcat/apache-tomcat-7.0.81/webapps/web02_HttpServlet_Annotation
+org.eclipse.jst.jee.server\:web04_FormServlet=/Library/Tomcat/apache-tomcat-7.0.81/webapps/web04_FormServlet

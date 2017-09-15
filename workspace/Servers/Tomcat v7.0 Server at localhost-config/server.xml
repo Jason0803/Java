@@ -62,7 +62,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8888" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector URIEncoding="utf-8" connectionTimeout="20000" port="8888" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -126,7 +126,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="jquery02_Appender" path="/jquery02_Appender" reloadable="true" source="org.eclipse.jst.jee.server:jquery02_Appender"/><Context docBase="jquery03_Event" path="/jquery03_Event" reloadable="true" source="org.eclipse.jst.jee.server:jquery03_Event"/></Host>
+      <Context docBase="web01_FirstHttpServlet" path="/web01_FirstHttpServlet" reloadable="true" source="org.eclipse.jst.jee.server:web01_FirstHttpServlet"/><Context docBase="web02_HttpServlet_Annotation" path="/web02_HttpServlet_Annotation" reloadable="true" source="org.eclipse.jst.jee.server:web02_HttpServlet_Annotation"/><Context docBase="web03_HttpServlet" path="/web03_HttpServlet" reloadable="true" source="org.eclipse.jst.jee.server:web03_HttpServlet"/><Context docBase="web04_FormServlet" path="/web04_FormServlet" reloadable="true" source="org.eclipse.jst.jee.server:web04_FormServlet"/><Context docBase="web05_HttpHeader" path="/web05_HttpHeader" reloadable="true" source="org.eclipse.jst.jee.server:web05_HttpHeader"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;image&apos; to &apos;WebContent&apos;&#x0A;- Original project: &apos;jquery03_Event&apos;&#x0A;- Destination element: &apos;WebContent&apos;&#x0A;- Original element: &apos;image&apos;" description="Copy folder" element1="WebContent/image" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1505183720968" target="/jquery04_SlidingEvent/WebContent" units="0" version="1.0"/>
+</session>

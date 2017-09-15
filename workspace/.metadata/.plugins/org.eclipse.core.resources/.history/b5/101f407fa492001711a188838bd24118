@@ -1,9 +1,0 @@
-package broker.twotier.vo;
-
-public class CustomerRec {
-	private String ssn;
-	private String name;
-	private String address;
-	
-	
-}

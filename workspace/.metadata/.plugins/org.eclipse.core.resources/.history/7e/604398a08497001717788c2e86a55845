@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			
+		});
+	</script>
+</head>
+<body>
+<div id="container">
+	<h2>Text Sliding Animation</h2>
+	<div id="switcher">
+		<div class="label"></div>
+		<button id="switcher-default"></button>
+		<button id="switcher-large"></button>
+		<button id="switcher-small"></button>	
+	</div>
+	<div class="speech">
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+	</div>
+	
+</div>
+
+</body>
+</html>

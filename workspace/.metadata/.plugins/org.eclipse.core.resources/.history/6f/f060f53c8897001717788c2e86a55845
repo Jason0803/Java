@@ -1,0 +1,9 @@
+$(function() {
+	var secondP = $('p:eq(1)');
+	$('a.more').click(function name() {
+		if(secondP.is(':hidden')) {
+			secondP.slideToggle('slow');
+			$(this).html('read less');
+		}
+	});
+});

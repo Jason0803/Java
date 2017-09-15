@@ -1,7 +1,0 @@
-package broker.three.server;
-
-public class ProtocolHandler {
-	public static void main(String[] args) {
-		
-	}
-}

@@ -1,0 +1,8 @@
+$(function() {
+	var secondP = $('p:eq(1)');
+	$('a.more').click(function name() {
+		if(secondP.is(':hidden')) {
+			
+		}
+	});
+});

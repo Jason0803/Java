@@ -1,0 +1,5 @@
+package servlet.generic.exam;
+
+public class FirstGenericServlet {
+
+}
