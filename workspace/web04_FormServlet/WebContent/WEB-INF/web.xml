@@ -29,4 +29,14 @@
     <servlet-name>SelectServlet2</servlet-name>
     <url-pattern>/SelectServlet2</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MultiFormServlet5</display-name>
+    <servlet-name>MultiFormServlet5</servlet-name>
+    <servlet-class>form.servlet.MultiFormServlet5</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MultiFormServlet5</servlet-name>
+    <url-pattern>/MFT5</url-pattern>
+  </servlet-mapping>
 </web-app>

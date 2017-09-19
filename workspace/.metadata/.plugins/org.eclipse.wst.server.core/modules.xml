@@ -8,6 +8,7 @@
   <module moduleId="org.eclipse.jst.jee.server:web01_FirstHttpServlet" serverId="Tomcat v7.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:web02_HttpServlet_Annotation" serverId="Tomcat v7.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:jquery07_UI" serverId="Tomcat v7.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:Kostudent" serverId="Tomcat v7.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:jquery03_Event" serverId="Tomcat v7.0 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:web04_FormServlet" serverId="Tomcat v7.0 Server at localhost"/>
 </modules>

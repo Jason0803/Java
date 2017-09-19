@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>KOStudent</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="./css/home.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./js/chattingScript.js"></script>
+  <script type="text/javascript" src="./js/signUp.js"></script>
+</head>
+<body>
+<img src="./image/background_image.png" id="bg" alt="">
+<!-- For Navigation Bar ... -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">KOStudent</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="notice.html">Notice</a></li>
+          <li><a href="#">Discussion</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <!-- <li><a id="kakao-login-btn">Kakao</a></li> -->
+          <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+          <li><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_SignIn"><span class="glyphicon glyphicon-log-in"></span> Login</button></li> 
+       </ul>
+       <marquee bgcolor="white" scrollamount="15"><h2>Notice : </h2></marquee>
+      </div>
+      
+  </nav>
+<!-- For Navigation Bar ... -->
+
+
+<div class="container" style="margin-top:100px">
+  <div class="jumbotron">
+    <h1>KOStudent</h1> <hr>
+    <p>This is a community web-site for students @KOSTA.</p> 
+    <p>Contace me on : +82-10-2616-6795<br>@Kakao : Jasonchoi93</p>
+    <p><a href="#" data-toggle="collapse" data-target="#demo">오늘의 식단(미래에셋)</a></p> 
+    <div id="demo" class="collapse">
+      <img src="./image/meal_1.jpeg">
+    </div>
+
+    
+  </div>
+
+  <div class="jumbotron">
+    <h1>My Class    
+      <a href="#" id="refresh_class">
+            <span class="glyphicon glyphicon-refresh"></span>
+      </a> 
+    </h1>
+    <hr>
+    <!-- Messages go top-down way thread -->
+    <div class="msgs" id="myClass">
+    <p>(174) 최수영 : 저 내일 못와요ㅠ (17.09.18)</p> 
+    <p>(174) 김인수 : 네 말씀드리겠습니다~ (17.09.18)</p> 
+    </div>
+
+    <br><br><p>Message : <input type="text" id="inputMsg_1"> 
+    <button type="button" class="btn btn-primary" id="sendMsg_1">Send</button></p>
+
+  </div>
+
+  <div class="jumbotron">
+    <h1>All Classes</h1> 
+
+    <div clas="msgs" id="allClass">
+	    <p>(174) 최수영 : 청소기 미리 예약점; (17.09.18)</p> 
+	    <p>(172) 아무개 : ㄴㄴ (17.09.18)</p> 
+    </div>
+
+	<br><br><p>Message : <input type="text" id="inputMsg_2"> 
+	<button type="button" class="btn btn-primary" id="sendMsg_2">Send</button></p>
+
+  </div>
+
+    <div class="jumbotron">
+    <h1>Live Thread</h1> 
+    <p>1. ddd</p> 
+    <p>2. ddd</p> 
+    <p>3. ddd</p> 
+  </div>
+
+<div id="footer" align="center"><b>KOStudent by Jason Choi.</b></div>
+</div>
+
+<!-- Modal for Sign-in -->
+<div class="modal fade" id="modal_SignIn" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Log-In Anonymously</h4>
+      </div>
+      <div class="modal-body">
+        <p>Name : <input type="text" name="id"></p>
+        <p>Password : <input type="password" name="pw"></p>
+        <!-- Hidden should be here to send IP address-->
+      </div>
+      <div class="modal-footer">
+        <input type="submit" value="Log In" data-dismiss="modal">
+
+      </div>
+    </div>
+  </div>
+</div> 
+<!-- Modal -->
+
+
+</body>
+</html>

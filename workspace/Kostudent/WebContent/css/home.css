@@ -1,0 +1,19 @@
+#bg {
+	width: 100%;
+	position: fixed;
+	z-index: -100;
+	left: 0px;
+	top: 0px;
+	min-height:100%;
+	min-width:1040px;
+}
+
+#footer{
+  	position:relative;
+  	clear:both;
+  	height:40px;
+  	background-color:#ffffff;
+  	font-family: "Arial";
+	color: #000000;
+	font-size: 23px;
+}

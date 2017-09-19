@@ -1,4 +1,7 @@
 #Tomcat publish data
-#Mon Sep 18 15:55:53 KST 2017
+#Tue Sep 19 18:52:41 KST 2017
+org.eclipse.jst.jee.server\:web07_ServletConfig=/Library/Tomcat/apache-tomcat-7.0.81/webapps/web07_ServletConfig
+org.eclipse.jst.jee.server\:web08_Javascript=/Library/Tomcat/apache-tomcat-7.0.81/webapps/web08_Javascript
+org.eclipse.jst.jee.server\:Kostudent=/Library/Tomcat/apache-tomcat-7.0.81/webapps/Kostudent
 org.eclipse.jst.jee.server\:web06_LifeCycle=/Library/Tomcat/apache-tomcat-7.0.81/webapps/web06_LifeCycle
 org.eclipse.jst.jee.server\:web04_FormServlet=/Library/Tomcat/apache-tomcat-7.0.81/webapps/web04_FormServlet

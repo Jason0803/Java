@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			
+		});
+	</script>
+</head>
+<body>
+<input type="button" value="test1" onclick="test1()">
+<input type="button" value="test2" onclick="test2('우윳빛깔', '아이유')">
+
+</body>
+</html>
