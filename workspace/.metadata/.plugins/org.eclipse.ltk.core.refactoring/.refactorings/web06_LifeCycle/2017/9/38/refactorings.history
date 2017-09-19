@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;servlet.life.step22&apos; to &apos;web06_LifeCycle/src/servlet.life.step22&apos;&#x0A;- Original project: &apos;web06_LifeCycle&apos;&#x0A;- Destination element: &apos;web06_LifeCycle/src/servlet.life.step22&apos;&#x0A;- Original element: &apos;web06_LifeCycle/src/servlet.life.step22&apos;" description="Copy package" destination="/src&lt;servlet.life.step22" element1="/src&lt;servlet.life.step22" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1505705032903" version="1.0"/>
+</session>

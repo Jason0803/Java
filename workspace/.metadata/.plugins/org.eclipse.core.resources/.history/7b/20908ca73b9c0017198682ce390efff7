@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2 align="center">Select Form Test...</h2>
+	<form action="SelectServlet2">
+		ID : <input type="text" name ="myId">
+	</form>
+</body>
+</html>

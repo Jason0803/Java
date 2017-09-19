@@ -19,4 +19,14 @@
     <servlet-name>FS</servlet-name>
     <url-pattern>/FS</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectServlet2</display-name>
+    <servlet-name>SelectServlet2</servlet-name>
+    <servlet-class>form.servlet.SelectServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectServlet2</servlet-name>
+    <url-pattern>/SelectServlet2</url-pattern>
+  </servlet-mapping>
 </web-app>
