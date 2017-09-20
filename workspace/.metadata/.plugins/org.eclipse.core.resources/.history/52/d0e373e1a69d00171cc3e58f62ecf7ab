@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+<h2 align="center">Communication Between Servlets within Container</h2>
+<form action="SC1" method="post">
+USER ID  :: <input type="text" name="userId" required="required"><br><br>
+Password :: <input type="password" name="pw" required="required"><br><br>
+UserName :: <input type="text" name="userName" required="required"><br><br>
+</form>
+
+
+</body>
+</html>

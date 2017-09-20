@@ -1,3 +1,18 @@
+commentBorder=\#626262 | null | false | false | false | false
+commentText=\#626262 | null | false | false | false | false
+declBoder=\#A7EC21 | null | false | false | false | false
+doctypeExternalId=\#cf96eb | null | false | false | false | false
+doctypeExternalPubref=\#f0a253 | null | false | false | false | false
+doctypeExtrenalSysref=\#fbd153 | null | false | false | false | false
+doctypeName=\#fea88f | null | false | false | false | false
 eclipse.preferences.version=1
+entityReference=\#DD2867 | null | null | null | null | null
 newFileTemplateName=GoslingTemplate
 org.eclipse.wst.sse.ui.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates><template autoinsert\="true" context\="html_new" deleted\="false" description\="jQuery html template" enabled\="true" name\="GoslingTemplate">&lt;\!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n&lt;meta charset\="UTF-8"&gt;\n&lt;title&gt;Insert title here&lt;/title&gt;\n&lt;script type\="text/javascript" src \= "http\://code.jquery.com/jquery-3.2.1.js"&gt;&lt;/script&gt;\n\t&lt;script type\="text/javascript"&gt;\n\t\t$$(function() {\n\t\t\t\n\t\t});\n\t&lt;/script&gt;\n&lt;/head&gt;\n&lt;body&gt;\nHello HTML \!\n\n&lt;/body&gt;\n&lt;/html&gt;</template></templates>
+overriddenByCSS=,commentBorder,commentText,declBoder,doctypeExternalId,doctypeExternalPubref,doctypeExtrenalSysref,doctypeName,entityReference,tagAttributeEquals,tagAttributeName,tagAttributeValue,tagBorder,tagName,xmlContent,
+tagAttributeEquals=\#52ca11 | null | false | false | false | false
+tagAttributeName=\#a7ec21 | null | false | false | false | false
+tagAttributeValue=\#17C6A3 | null | null | true | null | null
+tagBorder=\#0080ff | null | false | false | false | false
+tagName=\#03a8d8 | null | true | false | false | false
+xmlContent=\#D9E8F7 | null | null | null | null | null

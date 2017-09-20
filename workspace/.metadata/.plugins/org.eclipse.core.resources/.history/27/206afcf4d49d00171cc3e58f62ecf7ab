@@ -1,0 +1,19 @@
+package vo;
+
+public class Student {
+	private int userClass;
+	private String name;
+	private String password;
+	
+	public Student(int userClass, String name, String password) {
+		super();
+		this.userClass = userClass;
+		this.name = name;
+		this.password = password;
+	}
+	
+	public Student() { }
+	
+	
+	
+}

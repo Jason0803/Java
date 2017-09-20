@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <context-param>
+      <param-name>NAME</param-name>
+      <param-value>Jason</param-value>
+  </context-param> 
+  <context-param>  
+      <param-name>JOB</param-name>
+      <param-value>Programmer</param-value>
+  </context-param>
+  <context-param>
+      <param-name>EMAIL</param-name>
+      <param-value>c3171700@uon.edu.au</param-value>
+  </context-param>
+  <context-param>
+      <param-name>user-File</param-name>
+      <param-value>WEB-INF/member.txt</param-value>
+  </context-param>
+  
+  <display-name>web09_ServletContext</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ServletContextWriting</display-name>
+    <servlet-name>ServletContextWriting</servlet-name>
+    <servlet-class>servlet.context.ServletContextWriting</servlet-class>
+    	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextWriting</servlet-name>
+    <url-pattern>/SC1</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description></description>
+    <display-name>ServletContextReading</display-name>
+    <servlet-name>ServletContextReading</servlet-name>
+    <servlet-class>servlet.context.ServletContextReading</servlet-class>
+        <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextReading</servlet-name>
+    <url-pattern>/SC2</url-pattern>
+  </servlet-mapping>
+</web-app>

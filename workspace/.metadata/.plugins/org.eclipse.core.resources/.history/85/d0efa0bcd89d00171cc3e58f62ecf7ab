@@ -1,0 +1,39 @@
+package servlet.context;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import vo.Student;
+
+/**
+ * Servlet implementation class ServletContextReading
+ */
+public class ServletContextReading extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private ServletContext cont;
+	private Student user;
+	
+	public void init() throws ServletException {
+		cont = getServletContext();
+		
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		
+		PrintWriter out = response.getWriter();
+		user = (Student)cont.getAttribute("user");
+
+		
+		out.close();
+	}
+
+}

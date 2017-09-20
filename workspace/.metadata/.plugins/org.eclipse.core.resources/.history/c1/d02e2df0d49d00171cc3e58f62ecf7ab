@@ -1,0 +1,9 @@
+package vo;
+
+public class Student {
+	private int userClass;
+	private String name;
+	private String password;
+	
+	
+}

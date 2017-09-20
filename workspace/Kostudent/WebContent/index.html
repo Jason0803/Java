@@ -10,7 +10,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="./js/chattingScript.js"></script>
-  <script type="text/javascript" src="./js/signUp.js"></script>
+  <script type="text/javascript">
+  	$(function () {
+  		$('#frm').serialize();
+  	});
+  </script>
 </head>
 <body>
 <img src="./image/background_image.png" id="bg" alt="">
@@ -148,15 +152,21 @@
         <h4 class="modal-title">Log-In Anonymously</h4>
       </div>
       <div class="modal-body">
-		<form>
+		<form action="SC_Login" method="get" id="frm">
+			Class : 
+			<select name="userClass" id="selectClass" class="s">
+				<option value="174">174</option>
+				<option value="173">173</option>
+				<option value="172">172</option>
+			</select>
 			<div class="form-group">
 			  <label for="usr">Name:</label>
-			  <input type="text" class="form-control" id="usr">
+			  <input type="text" class="form-control" name="usr" required="required">
 			</div>
 			<div class="form-group">
 	   			<label for="pwd">Password:</label>
-	   			<input type="password" class="form-control" id="pwd">
-	  </div>
+	   			<input type="password" class="form-control" name="pwd" required="required">
+	  		</div>
 		  <div class="checkbox">
 		    <label><input type="checkbox"> Remember me</label>
 		  </div>

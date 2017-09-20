@@ -1,0 +1,41 @@
+package listener;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+public class MyServletListener implements ServletContextListener {
+	private ServletContext cont;
+	
+	
+	@Override
+	public void contextDestroyed(ServletContextEvent arg0) {
+		System.out.println("contextDestroyed Called...");
+		
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent arg0) {
+		System.out.println("contextInitialized Called...");
+		
+		cont = arg0.getServletContext();
+		String fileName = cont.getInitParameter("userFile");
+		
+		System.out.println("File Name : " + fileName);
+		
+		InputStream is = null;
+		BufferedReader br = null;
+		try {
+			cont.getResourceAsStream(fileName);
+		} catch(Exception e) {
+			
+		}
+	}
+	/*
+	 * ServletContextEvent listen.
+	 * ServletContextEvent created on readomg context-param from ServletContext
+	 */
+}

@@ -1,0 +1,8 @@
+package listener;
+
+public class MyServletListener {
+	/*
+	 * ServletContextEvent listen.
+	 * ServletContextEvent created on readomg context-param from ServletContext
+	 */
+}

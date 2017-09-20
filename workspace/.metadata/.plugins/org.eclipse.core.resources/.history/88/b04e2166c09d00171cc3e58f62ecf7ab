@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="./css/home.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script type="text/javascript">
+	  $("a.splashIn").click(function(){
+		    $(this).fadeOut();
+		});
+  </script>
+</head>
+<body>
+<a href="index.html" id="splashIn"><img src="./image/background_image.png" id="bg" alt="" ></a>
+
+</body>
+</html>

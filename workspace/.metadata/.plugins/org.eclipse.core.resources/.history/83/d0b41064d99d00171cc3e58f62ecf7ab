@@ -1,0 +1,47 @@
+package vo;
+
+public class Student {
+	private int userClass;
+	private String name;
+	private String password;
+	private boolean match;
+	
+	public Student(int userClass, String name, String password) {
+		super();
+		this.userClass = userClass;
+		this.name = name;
+		this.password = password;
+	}
+	
+	public Student() { }
+
+	public int getUserClass() {
+		return userClass;
+	}
+
+	public void setUserClass(int userClass) {
+		this.userClass = userClass;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void setMatch(boolean match) {
+		this.match = math;
+	}
+	
+	
+}
