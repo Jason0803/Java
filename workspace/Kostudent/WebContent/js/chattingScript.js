@@ -11,12 +11,13 @@ $(function() {
 			case 'sendMsg_1': {
     			str = $('#inputMsg_1').val();
     			if(str == "") break;
+    			
         		$('#myClass').append('<div class="media">' +
         				  '<div class="media-left">'
         				  + '<img src="./image/img_avatar1.png" class="media-object" style="width:60px">'
         				  + '</div>'
         				  + '<div class="media-body"><h4 class="media-heading">(174) 최수영</h4>'
-        				  + '<p>' +str + ' (17.09.18)</p></div></div>');
+        				  + '<p>' + str + ' (17.09.22)</p></div></div>');
         		break;
     		}
     		case 'sendMsg_2' : {
