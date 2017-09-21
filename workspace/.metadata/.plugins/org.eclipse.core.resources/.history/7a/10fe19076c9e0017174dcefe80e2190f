@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Kostudent</display-name>
+ 
+  <context-param>
+    <param-name>ODriver</param-name>
+    <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+  </context-param>
+  <context-param>
+      <param-name>ODriverUserName</param-name>
+      <param-value>hr</param-value>
+  </context-param>
+  <listener>
+    <listener-class>servlet.listener.LoginListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>userFile</param-name>
+    <param-value>WEB-INF/member.txt</param-value>
+  </context-param>
+  <servlet>
+    <description></description>
+    <display-name>ServletContextWriting</display-name>
+    <servlet-name>ServletContextWriting</servlet-name>
+    <servlet-class>servlet.context.login.ServletContextWriting</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextWriting</servlet-name>
+    <url-pattern>/SC_Login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletContextReading</display-name>
+    <servlet-name>ServletContextReading</servlet-name>
+    <servlet-class>servlet.context.login.ServletContextReading</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextReading</servlet-name>
+    <url-pattern>/SC_checkLogin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletContextReadSignUp</display-name>
+    <servlet-name>ServletContextReadSignUp</servlet-name>
+    <servlet-class>servlet.signup.ServletContextReadSignUp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextReadSignUp</servlet-name>
+    <url-pattern>/SC_SignUp</url-pattern>
+  </servlet-mapping>
+</web-app>

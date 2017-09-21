@@ -1,0 +1,32 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import config.DBConfig;
+import vo.Student;;
+
+public class StudentDAO {
+	// ---------------------------------- for singleton  ----------------------------------//
+	private static StudentDAO dao = new StudentDAO();
+	private StudentDAO() {
+		// do nothing 
+	}
+	public static StudentDAO getInstance() {
+		return dao;
+	}
+	// ---------------------------------- for connection ----------------------------------//
+	public Connection connection() {
+		Connection conn = null;
+		try {
+			conn = 
+				DriverManager.getConnection(DBConfig.URL, DBConfig.USER, DBConfig.PASSWORD);
+				// System.out.println("DB Connnected!");
+		} catch (SQLException e) {
+			System.out.println("DB Disconnected !");
+		}
+	
+		return conn;
+	}
+}

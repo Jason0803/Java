@@ -14,6 +14,8 @@ import config.DBConfig;
 import jdbc.exception.DuplicateIdException;
 import jdbc.vo.Member;
 
+
+
 public class MemberDAO {
 	// ---------------------------------- for singleton  ----------------------------------//
 	private static MemberDAO dao = new MemberDAO();
@@ -27,11 +29,15 @@ public class MemberDAO {
 	public Connection connection() {
 		Connection conn = null;
 		try {
+			Class.forName(DBConfig.DRIVER);
 			conn = 
 				DriverManager.getConnection(DBConfig.URL, DBConfig.USER, DBConfig.PASSWORD);
 				// System.out.println("DB Connnected!");
 		} catch (SQLException e) {
 			System.out.println("DB Disconnected !");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	
 		return conn;
@@ -58,13 +64,13 @@ public class MemberDAO {
 	}
 	
 	// ---------------------------------- for INSERT ---------------------------------- //
-	public void addMember(Member member) throws SQLException, DuplicateIdException{
+	public void addMember(Member member) throws SQLException, DuplicateIdException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		
 		try {
 			conn = connection();
-			if( !doesExist(member.getId(), conn) {
+			if( !doesExist(member.getId(), conn) ){
 				conn = connection();
 				ps = conn.prepareStatement("INSERT INTO member VALUES(?,?,?,?)");
 				
@@ -78,6 +84,7 @@ public class MemberDAO {
 		} finally {
 			closeAll(ps, conn);
 		}
+		
 	}
 	// ---------------------------------- for DELETE  ----------------------------------//
 		public void delelteMember(Member member) throws SQLException{

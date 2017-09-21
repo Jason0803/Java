@@ -1,7 +1,0 @@
-package servlet.listener;
-
-import javax.servlet.ServletContextListener;
-
-public class LoginListener implements ServletContextListener{
-
-}

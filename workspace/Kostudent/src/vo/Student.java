@@ -1,9 +1,16 @@
 package vo;
 
 public class Student {
+	// Contants for Log-In
 	public static final int LOGIN_SUCCESS = 0;
 	public static final int INCORRECT_PASSWORD = -1;
 	public static final int NO_SUCH_USER_FOUND = -2;
+	
+	// Constants for Sign-up
+	public static final int VALUD_SIGN_UP = 0;
+	public static final int DUPLICATED_USER_ID = -10;		// when input already exists in DB
+	public static final int NOT_VALID_ID_FORMAT = -20;		// blank and/or incorrect format
+	public static final int NOT_VALID_PASSWORD_FORMAT = 30; // blank and/or incorrect format
 	
 	private int userClass;
 	private String name;

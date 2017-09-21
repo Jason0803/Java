@@ -1,0 +1,15 @@
+package dao;
+
+import jdbc.dao.MemberDAO;
+
+public class StudentDAO {
+	// ---------------------------------- for singleton  ----------------------------------//
+	private static MemberDAO dao = new MemberDAO();
+	private MemberDAO() {
+		
+	}
+	public static MemberDAO getInstance() {
+		return dao;
+	}
+	// ---------------------------------- for connection ----------------------------------//
+}
