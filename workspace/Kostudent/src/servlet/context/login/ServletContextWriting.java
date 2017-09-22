@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -20,6 +21,7 @@ public class ServletContextWriting extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Student user;
 	private ServletContext cont;
+	private RequestDispatcher rd;
 	
 	public void init() throws ServletException {
 		cont = getServletContext();
@@ -37,12 +39,8 @@ public class ServletContextWriting extends HttpServlet {
 
 		cont.setAttribute("user", user);
 		
-		PrintWriter out = response.getWriter();
-		
-		out.println("<html><body bgcolor=blue> "
-				+ "<b>============ The Communication Servlets ============ "
-				+ "User Information has been binded on ServletContext "
-				+ "<a href='SC_checkLogin'>User List</a>");
+		rd = request.getRequestDispatcher("SC_checkLogin");
+		rd.include(request, response);
 	}
 	
 

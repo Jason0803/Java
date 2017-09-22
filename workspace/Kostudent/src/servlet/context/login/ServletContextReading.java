@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,13 +21,13 @@ public class ServletContextReading extends HttpServlet {
 	private ServletContext cont;
 	private Student user;
 	private ArrayList<Student> users;
+	private RequestDispatcher rd;
 	
 	public void init() throws ServletException {
 		cont = getServletContext();
 		
 	}
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
@@ -53,22 +54,28 @@ public class ServletContextReading extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		out.println("<html><body bgcolor=yellow>");
-			switch(user.getMatching() ) {
-				case Student.LOGIN_SUCCESS: {
-					out.println("Login Success !");
-					break;
-				}
-				case Student.INCORRECT_PASSWORD : {
-					out.println("Incorrect Password !");
-					break;
-				}
-				case Student.NO_SUCH_USER_FOUND : {
-					out.println("No Such User Found !");
-					break;
-				}	
+		switch(user.getMatching() ) {
+			case Student.LOGIN_SUCCESS: {
+				out.println("Login Success !");
+				break;
 			}
-		out.println("<a href='index.html'></a>");
+			case Student.INCORRECT_PASSWORD : {
+				out.println("Incorrect Password !");
+				break;
+			}
+			case Student.NO_SUCH_USER_FOUND : {
+				out.println("No Such User Found !");
+				break;
+			}	
+		}
+
+		
+		out.println("<hr><a href='index.html'>Go Back to Home</a>");
 		out.println("</body></html>");
 		out.close();
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
 	}
 }

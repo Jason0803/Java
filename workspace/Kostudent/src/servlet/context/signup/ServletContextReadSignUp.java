@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +30,9 @@ public class ServletContextReadSignUp extends HttpServlet {
 	private Connection conn;
 	private PreparedStatement ps;
 	private StudentDAO dao;
+	private boolean isSuccesSignUp = false;
+
+	
 	public void init() throws ServletException {
 		cont = getServletContext();
 	}
@@ -40,11 +44,7 @@ public class ServletContextReadSignUp extends HttpServlet {
 		user = (Student)cont.getAttribute("user");
 		ArrayList<Student> studentDB = (ArrayList<Student>)cont.getAttribute("studentDB");
 		users = studentDB;
-		
-		for(int i = 0; i < users.size(); i++) {
-			users.get(i).toString();
-		}
-		
+
 		for(int i = 0; i < users.size(); i++) {
 			if(user.getName().trim().equals(null)) {
 				// when incorrect format entered on userID
@@ -86,8 +86,8 @@ public class ServletContextReadSignUp extends HttpServlet {
 					dao = StudentDAO.getInstance();
 					dao.addMember(user);
 					
-					
 					out.println("<h1><font color='red'>Sign-UP Success for user : " + user.getName() + "</font></h1>");
+					isSuccesSignUp = true;
 					break;
 				} catch (SQLException e) {
 					System.out.println("WARNING : Connection Closed for a reason !");
@@ -96,7 +96,11 @@ public class ServletContextReadSignUp extends HttpServlet {
 				}
 			}
 		}// switch
-		out.println("<a href='index.html'>Go Back</a>");
+
+		System.out.println("Sign-Up Trial ===" + " "
+				+ "\nSucess ?" + isSuccesSignUp
+				+ "\n-ID : " + user.getName() + "\n-Password : " + user.getPassword() + "\n-Class : " + user.getUserClass());
+		out.println("<br><br><a href='index.html'>Go Back</a>");
 		out.println("</body></html>");
 			
 	}
