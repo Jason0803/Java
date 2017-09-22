@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
-import config.DBConfig;
 import dao.StudentDAO;
 import jdbc.exception.DuplicateIdException;
 import vo.Student;

@@ -9035,3 +9035,9 @@ org.xml.sax.SAXException: FWK005 parse may not be called while parsing.
 
 !ENTRY com.android.ide.eclipse.adt 2 0 2017-09-22 09:50:41.834
 !MESSAGE No projects found for [/Users/Jason/Documents/Development/Java/workspace/Kostudent/WebContent/WEB-INF/web.xml]
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2017-09-22 10:22:32.845
+!MESSAGE No valid Android XML Editor Delegate found for file /Kostudent/WebContent/WEB-INF/web.xml [Res null, type null]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2017-09-22 10:22:48.114
+!MESSAGE No projects found for [/Users/Jason/Documents/Development/Java/workspace/Kostudent/WebContent/WEB-INF/web.xml]

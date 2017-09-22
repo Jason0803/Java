@@ -11,7 +11,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import config.DBConfig;
 import jdbc.exception.DuplicateIdException;
 import jdbc.exception.RecordNotFoundException;
 
@@ -27,7 +26,7 @@ public class StudentDAO {
 			InitialContext ic = new InitialContext();
 			ds = (DataSource)ic.lookup("java:comp/env/jdbc/oracleDB");
 			System.out.println("DataSource..LookUp Success !");
-			// DataSource ds = ic.lookup(name);
+			
 		} catch (NamingException e) {
 			System.out.println("DataSource..LookUp Fail :( ");
 			e.printStackTrace();
@@ -42,9 +41,7 @@ public class StudentDAO {
 		Connection conn = null;
 		try {
 			conn = ds.getConnection();
-				//DriverManager.getConnection(DBConfig.URL, DBConfig.USER, DBConfig.PASSWORD);
-				// System.out.println("DB Connnected!");
-			System.out.println("Hello, DB Connected ");
+			System.out.println("Hello, DB Connected w/ DataSource ");
 		} catch (SQLException e) {
 			System.out.println("DB Disconnected !");
 		}

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import vo.Student;
 
 /**
- * Servlet implementation class ServletContextWriting
+ * Servlet implementation class ServletContextWriting for Log-In
  */
 public class ServletContextWriting extends HttpServlet {
 	private static final long serialVersionUID = 1L;

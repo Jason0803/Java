@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>KOStudent</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="./css/home.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./js/chattingScript.js"></script>
+  <script type="text/javascript" src="./js/signUp.js"></script>
+</head>
+<body>
+<img src="./image/background_image.png" id="bg" alt="">
+<div class="container">
+<!-- For Navigation Bar ... -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="splash.html">KOStudent</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="notice.html">Notice</a></li>
+          <li><a href="#">Discussion</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" data-toggle="modal" data-target="#modal_SignUP"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+     	<li><a href="#" data-toggle="modal" data-target="#modal_SignIn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+       </ul>
+      </div>
+  </nav>
+<!-- For Navigation Bar ... -->
+
+  <div class="jumbotron" style="margin-top:100px">
+    <h1>Notice</h1> 
+    <p>Class : ~12/29</p>
+  </div>
+
+<div id="footer" align="center"><b>KOStudent by Jason Choi.</b></div>
+</body>
+</html>

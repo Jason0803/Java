@@ -30,18 +30,8 @@ public class ServletContextReading extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		
 		user = (Student)cont.getAttribute("user");
-		ArrayList<Student> attribute = (ArrayList<Student>)cont.getAttribute("users");
-		users = attribute;
-		
-		/*
-		if(users.contains(user)) {
-			user.setMatch(Student.LOGIN_SUCCESS);
-		} else {
-			user.setMatch(Student.NO_SUCH_USER_FOUND);
-		}
-		*/
+		users = (ArrayList<Student>)cont.getAttribute("studentDB");
 		
 		for(int i = 0; i < users.size(); i++){
 			if(user.getUserClass() == users.get(i).getUserClass()) {
@@ -77,60 +67,8 @@ public class ServletContextReading extends HttpServlet {
 					break;
 				}	
 			}
-	
-		out.print("</body></html>");
+		out.println("<a href='index.html'></a>");
+		out.println("</body></html>");
 		out.close();
 	}
 }
-/*
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		
-		
-		user = (Student)cont.getAttribute("user");
-		users = (ArrayList<Student>) cont.getAttribute("users");
-		
-		for(int i = 0; i < users.size(); i++ ){
-			if(user.getUserClass() == users.get(0).getUserClass() && user.getName().equals(users.get(0).getName())) {
-				// when user exists in users
-				if(user.getPassword().equals(users.get(0).getPassword())) {
-					// Password matches
-					user.setMatch(Student.LOGIN_SUCCESS);
-					break;
-				} else {
-					// Password not matching
-					user.setMatch(Student.INCORRECT_PASSWORD);
-					break;
-				} 
-			} else {
-				user.setMatch(Student.NO_SUCH_USER_FOUND);
-				break;
-			} 
-		} // for
-	
-		out = response.getWriter();
-		out.println("<html><body bgcolor=yellow>");
-		
-			switch(user.getMatching() ) {
-				case Student.LOGIN_SUCCESS: {
-					out.println("Login Success !");
-					break;
-				}
-				case Student.INCORRECT_PASSWORD : {
-					out.println("Incorrect Password !");
-					break;
-				}
-				case Student.NO_SUCH_USER_FOUND : {
-					out.println("No Such User Found !");
-					break;
-				}	
-			}
-	
-		out.print("</body></html>");
-		out.close();
-	}
-		
-*/
-
-

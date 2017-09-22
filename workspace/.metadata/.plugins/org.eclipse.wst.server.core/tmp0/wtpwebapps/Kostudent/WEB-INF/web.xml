@@ -21,13 +21,6 @@
     <param-value>hr</param-value>
   </context-param>
   
-  <listener>
-    <listener-class>servlet.listener.LoginListener</listener-class>
-  </listener>
-  <context-param>
-    <param-name>userFile</param-name>
-    <param-value>WEB-INF/member.txt</param-value>
-  </context-param>
   <servlet>
     <description></description>
     <display-name>ServletContextWriting</display-name>
