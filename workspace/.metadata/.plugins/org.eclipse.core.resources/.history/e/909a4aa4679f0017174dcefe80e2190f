@@ -2,7 +2,6 @@ package vo;
 
 public class Student {
 	// Contants for Log-In
-	public static final int DEFAULT = 100;
 	public static final int LOGIN_SUCCESS = 0;
 	public static final int INCORRECT_PASSWORD = -1;
 	public static final int NO_SUCH_USER_FOUND = -2;
@@ -23,7 +22,7 @@ public class Student {
 		this.userClass = userClass;
 		this.name = name;
 		this.password = password;
-		this.match = DEFAULT;
+		this.match = 0;
 	}
 	
 	public Student() { }

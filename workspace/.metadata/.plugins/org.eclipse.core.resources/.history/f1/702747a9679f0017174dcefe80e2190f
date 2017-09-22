@@ -23,7 +23,7 @@ public class Student {
 		this.userClass = userClass;
 		this.name = name;
 		this.password = password;
-		this.match = DEFAULT;
+		this.match = 0;
 	}
 	
 	public Student() { }
