@@ -1,3 +1,0 @@
-#Tomcat publish data
-#Thu Sep 21 14:57:14 KST 2017
-org.eclipse.jst.jee.server\:Kostudent=/Library/Tomcat/apache-tomcat-7.0.81/webapps/Kostudent
