@@ -42,9 +42,17 @@ public class ServletContextReadSignUp extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		
 		user = (Student)cont.getAttribute("user");
-		ArrayList<Student> studentDB = (ArrayList<Student>)cont.getAttribute("studentDB");
-		users = studentDB;
+		ArrayList<Student> studentDB;
+		
+		try {
+			studentDB = dao.getAllStudent();
+			users = studentDB;
+		} catch (SQLException e) {
+			System.out.println("WARNING :: SQLEXCEPTION ");
+			e.printStackTrace();
+		}
 
+		
 		for(int i = 0; i < users.size(); i++) {
 			if(user.getName().trim().equals(null)) {
 				// when incorrect format entered on userID

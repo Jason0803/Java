@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import vo.Student;
 
@@ -22,6 +23,7 @@ public class ServletContextReading extends HttpServlet {
 	private Student user;
 	private ArrayList<Student> users;
 	private RequestDispatcher rd;
+	HttpSession session;
 	
 	public void init() throws ServletException {
 		cont = getServletContext();
@@ -51,8 +53,10 @@ public class ServletContextReading extends HttpServlet {
 			} else user.setMatch(Student.NO_SUCH_USER_FOUND);
 		} // for
 		
-		
 		PrintWriter out = response.getWriter();
+		
+		// Previous Version //
+		/* 
 		out.println("<html><body bgcolor=yellow>");
 		switch(user.getMatching() ) {
 			case Student.LOGIN_SUCCESS: {
@@ -68,7 +72,18 @@ public class ServletContextReading extends HttpServlet {
 				break;
 			}	
 		}
-
+		*/
+		
+		session = request.getSession(true);
+		System.out.println("Log-In JSESSION ID : " + session.getId());
+		
+		session.setAttribute("login_result", user.getMatching() + " ");
+		session.setAttribute("name", user.getName());
+		
+		System.out.println("Login Result : " + session.getAttribute("login_result"));
+		System.out.println("Login Name : " + session.getAttribute("name"));
+		request.getRequestDispatcher("login_check.jsp").forward(request, response);
+		
 		
 		out.println("<hr><a href='index.html'>Go Back to Home</a>");
 		out.println("</body></html>");
