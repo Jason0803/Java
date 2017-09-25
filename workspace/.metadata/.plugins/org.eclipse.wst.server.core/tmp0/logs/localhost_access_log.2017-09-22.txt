@@ -126,3 +126,11 @@
 192.168.0.103 - - [22/Sep/2017:16:41:14 +0900] "GET /Kostudent/js/signUp.js HTTP/1.1" 404 995
 0:0:0:0:0:0:0:1 - - [22/Sep/2017:16:58:55 +0900] "GET / HTTP/1.1" 404 951
 192.168.0.103 - - [22/Sep/2017:17:11:22 +0900] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [22/Sep/2017:19:33:44 +0900] "GET /Kostudent/image/meal_1.jpeg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2017:19:33:44 +0900] "GET /Kostudent/css/home.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2017:19:33:44 +0900] "GET /Kostudent/js/chattingScript.js HTTP/1.1" 200 959
+0:0:0:0:0:0:0:1 - - [22/Sep/2017:19:33:44 +0900] "GET /Kostudent/image/img_avatar2.png HTTP/1.1" 200 10744
+0:0:0:0:0:0:0:1 - - [22/Sep/2017:19:33:44 +0900] "GET /Kostudent/index.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2017:19:33:44 +0900] "GET /Kostudent/image/background_image.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2017:19:33:56 +0900] "GET /Kostudent/SC_Login?userClass=174&usr=jason&pwd=1234 HTTP/1.1" 200 104
+0:0:0:0:0:0:0:1 - - [22/Sep/2017:22:36:15 +0900] "GET / HTTP/1.1" 404 951

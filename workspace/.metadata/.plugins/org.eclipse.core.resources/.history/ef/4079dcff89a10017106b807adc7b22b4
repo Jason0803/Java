@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2 align="center"><b>Finding Member...By id</b></h2><p>
+<form action="FMS" method="get" name="findForm">
+	ID : <input type="text" name="id" required="required">
+	<input type="submit" value="Search">
+	<img alt="고아라" src="img/go.jpg" width="10%" height="20%" align="bottom">					
+
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

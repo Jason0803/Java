@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.Stack"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
-<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
-<fullyQualifiedTypeName name="java.io.FileInputStream"/>
-<fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
-<fullyQualifiedTypeName name="object.step4.Person"/>
 <fullyQualifiedTypeName name="java.util.Queue"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
@@ -17,15 +10,12 @@
 <fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
 <fullyQualifiedTypeName name="jdbc.step2.vo.Member"/>
 <fullyQualifiedTypeName name="jdbc.step2.dao.MemberDAO"/>
-<fullyQualifiedTypeName name="jdbc.exception.DuplicateIdException"/>
 <fullyQualifiedTypeName name="book.exception.DuplicateIsbnException"/>
 <fullyQualifiedTypeName name="book.exception.InvalidInputException"/>
 <fullyQualifiedTypeName name="book.dao.BookDAO"/>
 <fullyQualifiedTypeName name="java.awt.print.Book"/>
 <fullyQualifiedTypeName name="book.vo.Book"/>
 <fullyQualifiedTypeName name="book.exception.RecordNotFoundException"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="java.sql.DriverManager"/>
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="broker.twotier.vo.CustomerRec"/>
@@ -48,7 +38,6 @@
 <fullyQualifiedTypeName name="broker.three.exception.InvalidTransactionException"/>
 <fullyQualifiedTypeName name="broker.three.vo.CustomerRec"/>
 <fullyQualifiedTypeName name="broker.three.exception.DuplicateSSNException"/>
-<fullyQualifiedTypeName name="config.DBConfig"/>
 <fullyQualifiedTypeName name="broker.three.shares.Result"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.servlet.GenericServlet"/>
@@ -59,5 +48,16 @@
 <fullyQualifiedTypeName name="java.util.Enumeration"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+<fullyQualifiedTypeName name="servlet.vo.PersonVO"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="org.apache.jasper.tagplugins.jstl.core.Out"/>
 <fullyQualifiedTypeName name="vo.Student"/>
+<fullyQualifiedTypeName name="jdbc.exception.DuplicateIdException"/>
+<fullyQualifiedTypeName name="jdbc.exception.RecordNotFoundException"/>
+<fullyQualifiedTypeName name="dao.StudentDAO"/>
+<fullyQualifiedTypeName name="config.DBConfig"/>
+<fullyQualifiedTypeName name="javax.naming.InitialContext"/>
+<fullyQualifiedTypeName name="javax.sql.DataSource"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 </qualifiedTypeNameHistroy>
