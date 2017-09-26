@@ -3,3 +3,9 @@
 1506321677539	Delete element
 1506326573327	Move 'signOut.jsp' to 'WebContent'
 1506329309794	Delete element
+1506392782656	Convert local variable 'userName' to field
+1506404974807	Delete element
+1506405028247	Convert local variable 'userClass' to field
+1506405031280	Convert local variable 'userName' to field
+1506405033914	Convert local variable 'pw' to field
+1506409737263	Convert local variable 'updateResult' to field

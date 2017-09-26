@@ -74,4 +74,14 @@
     <servlet-name>ServletLogOut</servlet-name>
     <url-pattern>/LogOut</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletContextWriting_EditProfile</display-name>
+    <servlet-name>ServletContextWriting_EditProfile</servlet-name>
+    <servlet-class>servlet.context.editProfile.ServletContextWriting_EditProfile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextWriting_EditProfile</servlet-name>
+    <url-pattern>/EditProfile</url-pattern>
+  </servlet-mapping>
 </web-app>

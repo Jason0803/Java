@@ -102,8 +102,8 @@ public class MemberDAO {
 		Connection conn = connection();
 		PreparedStatement ps =
 				conn.prepareStatement("UPDATE FROM member"
-									+ "SET id = ?, name = ?, password = ?, address = ?"
-									+ "WHERE id = ?");
+									+ " SET id = ?, name = ?, password = ?, address = ?"
+									+ " WHERE id = ?");
 		
 		ps.setString(1, member.getId());
 		ps.setString(2, member.getName());

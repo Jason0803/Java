@@ -19,7 +19,6 @@ public class ServletContextReading extends HttpServlet {
 	private ServletContext cont;
 	private Student user;
 	private ArrayList<Student> users;
-	private RequestDispatcher rd;
 	HttpSession session;
 	
 	public void init() throws ServletException {
@@ -62,6 +61,7 @@ public class ServletContextReading extends HttpServlet {
 		
 		session.setAttribute("login_result", user.getMatching() + " ");
 		session.setAttribute("name", user.getName());
+		cont.setAttribute("user", user);
 		
 		System.out.println("Login Result : " + session.getAttribute("login_result"));
 		System.out.println("Login Name : " + session.getAttribute("name"));
