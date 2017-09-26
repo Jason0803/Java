@@ -25,24 +25,24 @@ public class ServletContextWriteSignUp extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
-		
+
 	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
-		rd = request.getRequestDispatcher("SC_checkSignUp");
-		
-		
+		System.out.println("Fetching Sign-Up data from form..");
+
 		int userClass = Integer.parseInt(request.getParameter("userClass"));
 		String userName = request.getParameter("usr").toLowerCase();
 		String pw = request.getParameter("pwd");
 
-		
+		System.out.println(">>Fetching Successfully done !" );
 		user = new Student(userClass, userName, pw);
 
 		cont.setAttribute("user", user);
-		
+		rd = request.getRequestDispatcher("SC_checkSignUp");
 		rd.forward(request, response);
 	}
 

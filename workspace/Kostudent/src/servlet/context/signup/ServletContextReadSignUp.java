@@ -27,8 +27,6 @@ public class ServletContextReadSignUp extends HttpServlet {
 	private ServletContext cont;
 	private Student user;
 	private ArrayList<Student> users;
-	private Connection conn;
-	private PreparedStatement ps;
 	private StudentDAO dao;
 	private boolean isSuccesSignUp = false;
 
@@ -38,20 +36,15 @@ public class ServletContextReadSignUp extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
 		user = (Student)cont.getAttribute("user");
-		ArrayList<Student> studentDB;
-		
-		try {
-			studentDB = dao.getAllStudent();
-			users = studentDB;
-		} catch (SQLException e) {
-			System.out.println("WARNING :: SQLEXCEPTION ");
-			e.printStackTrace();
-		}
-
+		users = (ArrayList<Student>)cont.getAttribute("studentDB");
 		
 		for(int i = 0; i < users.size(); i++) {
 			if(user.getName().trim().equals(null)) {
@@ -92,7 +85,12 @@ public class ServletContextReadSignUp extends HttpServlet {
 				// Store the user data into the database
 				try {
 					dao = StudentDAO.getInstance();
+					// Save to DB
 					dao.addMember(user);
+					
+					// Save to Context
+					users.add(user);
+					cont.setAttribute("studentDB", users);
 					
 					out.println("<h1><font color='red'>Sign-UP Success for user : " + user.getName() + "</font></h1>");
 					isSuccesSignUp = true;
@@ -105,9 +103,10 @@ public class ServletContextReadSignUp extends HttpServlet {
 			}
 		}// switch
 
-		System.out.println("Sign-Up Trial ===" + " "
-				+ "\nSucess ?" + isSuccesSignUp
+		System.out.println("== Sign-Up Trial ===" + " "
+				+ "\nSucess ? :" + isSuccesSignUp
 				+ "\n-ID : " + user.getName() + "\n-Password : " + user.getPassword() + "\n-Class : " + user.getUserClass());
+		
 		out.println("<br><br><a href='index.html'>Go Back</a>");
 		out.println("</body></html>");
 			

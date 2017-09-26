@@ -10,7 +10,7 @@
   </context-param>
   <context-param>
     <param-name>ODriverURL</param-name>
-    <param-value>jdbc:oracle:thin:@192.168.30.182:1521:xe</param-value>
+    <param-value>jdbc:oracle:thin:@192.168.30.184:1521:xe</param-value>
   </context-param>
   <context-param>
     <param-name>ODriverUserName</param-name>

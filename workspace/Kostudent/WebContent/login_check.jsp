@@ -38,7 +38,9 @@
 	     	<li><a href="LogOut" ><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li><%
 
 		} else { %>
-			<% request.getRequestDispatcher("index.html").forward(request, response); 
+		    <li><a href="#" data-toggle="modal" data-target="#modal_SignUP"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+     		<li><a href="#" data-toggle="modal" data-target="#modal_SignIn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			<% //request.getRequestDispatcher("index.html").forward(request, response); 
 	    }
 %>
         

@@ -14,9 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import vo.Student;
 
-/**
- * Servlet implementation class ServletContextReading
- */
 public class ServletContextReading extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ServletContext cont;
@@ -29,6 +26,11 @@ public class ServletContextReading extends HttpServlet {
 		cont = getServletContext();
 		
 	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
@@ -55,25 +57,6 @@ public class ServletContextReading extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		// Previous Version //
-		/* 
-		out.println("<html><body bgcolor=yellow>");
-		switch(user.getMatching() ) {
-			case Student.LOGIN_SUCCESS: {
-				out.println("Login Success !");
-				break;
-			}
-			case Student.INCORRECT_PASSWORD : {
-				out.println("Incorrect Password !");
-				break;
-			}
-			case Student.NO_SUCH_USER_FOUND : {
-				out.println("No Such User Found !");
-				break;
-			}	
-		}
-		*/
-		
 		session = request.getSession(true);
 		System.out.println("Log-In JSESSION ID : " + session.getId());
 		
@@ -90,7 +73,5 @@ public class ServletContextReading extends HttpServlet {
 		out.close();
 	}
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
+
 }

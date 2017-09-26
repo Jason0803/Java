@@ -60,7 +60,7 @@ public class StudentDAO {
 
 	// ---------------------------------- for SELECT  ----------------------------------//
 	public ArrayList<Student> getAllStudent() throws SQLException{
-		ArrayList<Student> result = null;
+		ArrayList<Student> result = new ArrayList<Student>();
 		Connection conn = connection();
 		PreparedStatement ps = 
 				conn.prepareStatement("SELECT * FROM student");

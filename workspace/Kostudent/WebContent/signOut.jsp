@@ -14,7 +14,7 @@
 	    session.invalidate();
 	}
 	
-	System.out.println("Session for " + name + "has been successfully closed !");
+	System.out.println("Session for [" + name + "] has been successfully closed !");
 	
 %>
 

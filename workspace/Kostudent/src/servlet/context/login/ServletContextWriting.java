@@ -28,6 +28,10 @@ public class ServletContextWriting extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
@@ -42,6 +46,5 @@ public class ServletContextWriting extends HttpServlet {
 		rd = request.getRequestDispatcher("SC_checkLogin");
 		rd.include(request, response);
 	}
-	
 
 }
