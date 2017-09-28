@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 1. 스프링에서 제공하는 빈(컴포넌트)을 설정하는/등록하는 메타데이타 
+	 2. 내가 작성한(User Definition Component) 컴포넌트도 여기다 등록
+-->
+<!-- 	HandlerMapping을 등록 -->
+<bean id="handlerMapping" 
+class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+
+<!--  viewResolver 등록-->
+<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/view/" />
+	<property name="suffix" value=".jsp" />
+</bean>
+
+<bean name="/find.do" class="controller.FindController"/>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

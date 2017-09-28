@@ -126,8 +126,10 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Kostudent" path="/Kostudent" reloadable="true" source="org.eclipse.jst.jee.server:Kostudent">
-	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" maxActive="500" maxIdle="30" name="jdbc/oracleDB" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.30.188:1521:xe" username="hr"/>
+      <Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web29_ItemCart" path="/web29_ItemCart" reloadable="true" source="org.eclipse.jst.jee.server:web29_ItemCart">
+	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" maxActive="500" maxIdle="30" name="jdbc/oracleDB" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.30.203:1521:xe" username="hr"/>
+</Context><Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web30_ItemCart2" path="/web30_ItemCart2" reloadable="true" source="org.eclipse.jst.jee.server:web30_ItemCart2">
+	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" maxActive="500" maxIdle="30" name="jdbc/oracleDB" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.30.203:1521:xe" username="hr"/>
 </Context></Host>
     </Engine>
   </Service>

@@ -1,0 +1,5 @@
+package pattern.action;
+
+public class ActionFactory {
+	private static ActionFactory factory = new ActionFactory();
+}
