@@ -20,6 +20,7 @@ public class ServletContextReading extends HttpServlet {
 	private Student user;
 	private ArrayList<Student> users;
 	HttpSession session;
+	private String path = "index.html";
 	
 	public void init() throws ServletException {
 		cont = getServletContext();
@@ -44,6 +45,7 @@ public class ServletContextReading extends HttpServlet {
 					if(user.getPassword().equals(users.get(i).getPassword())) {
 						// Password matches
 						user.setMatch(Student.LOGIN_SUCCESS);
+						path = "login_check.jsp";
 						break;
 					} else {
 						// Password not matching
@@ -65,7 +67,7 @@ public class ServletContextReading extends HttpServlet {
 		
 		System.out.println("Login Result : " + session.getAttribute("login_result"));
 		System.out.println("Login Name : " + session.getAttribute("name"));
-		request.getRequestDispatcher("login_check.jsp").forward(request, response);
+		request.getRequestDispatcher(path).forward(request, response);
 		
 		
 		out.println("<hr><a href='index.html'>Go Back to Home</a>");

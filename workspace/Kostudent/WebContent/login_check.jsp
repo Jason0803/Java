@@ -16,6 +16,10 @@
   <script type="text/javascript" src="./js/chattingScript.js"></script>
   <script type="text/javascript">
  <% 
+ 	if(session.getAttribute("name").equals(null)) {
+ 		System.out.println("WARNING :: Abnormal Access Sensored !!");
+ 		request.getRequestDispatcher("index.html").forward(request, response);
+ 	}
  	System.out.println("Current Session with User : " + session.getAttribute("name"));
  	Student student = (Student)application.getAttribute("user");
  	String temp_PW = student.getPassword();

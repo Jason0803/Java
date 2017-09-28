@@ -44,7 +44,7 @@ public class ServletContextWriting extends HttpServlet {
 		cont.setAttribute("user", user);
 		
 		rd = request.getRequestDispatcher("SC_checkLogin");
-		rd.include(request, response);
+		rd.forward(request, response);
 	}
 
 }

@@ -1,0 +1,17 @@
+package pattern.controller;
+
+public class ProductFactory implements Factory {
+	public static ProductFactory factory = new ProductFactory();
+	private ProductFactory getFactory(){
+		return factory;
+	}
+	@Override
+	public Product createProduct(String command) {
+		Product product = null;
+		if(command.equals("findModel")) {
+			product = new NoteBookProduct();
+		}
+		return product;
+	}
+
+}

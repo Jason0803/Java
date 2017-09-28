@@ -1,0 +1,9 @@
+package pattern.model;
+
+public class MockDAO {
+	private static MockDAO dao = new MockDAO();
+	private MockDAO() {}
+	public static MockDAO getInstance() {
+		return MockDAO;
+	}
+}

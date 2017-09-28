@@ -1,0 +1,6 @@
+package pattern.model;
+
+public class NoteBook {
+	private String model;
+	
+}

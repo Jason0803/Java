@@ -1,0 +1,11 @@
+package pattern.controller;
+
+public class ProductFactory implements Factory {
+
+	@Override
+	public Product createProduct(String command) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

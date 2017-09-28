@@ -1,0 +1,5 @@
+package pattern.controller;
+
+public class Product {
+	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception;
+}
