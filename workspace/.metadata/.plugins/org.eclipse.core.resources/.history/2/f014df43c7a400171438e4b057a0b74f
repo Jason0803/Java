@@ -1,0 +1,7 @@
+package sql;
+
+public interface StringQuery {
+	String INSERT_POSTING =
+			"INSERT INTO board (no,title,writer,password,content,time_posted)+"
+			+ " VALUES(?,?,?,?,?,0,?)";
+}

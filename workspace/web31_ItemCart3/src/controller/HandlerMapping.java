@@ -9,7 +9,7 @@ public class HandlerMapping {
 	
 	public Controller createController(String command){
 		Controller controller = null;
-		if(command.equals("/itemList.do")){
+		if(command.equals("/write.jsp")){
 			controller = new ItemListController();
 			System.out.println("ItemListController 생성됨....");
 		}else if(command.equals("/itemView.do")){

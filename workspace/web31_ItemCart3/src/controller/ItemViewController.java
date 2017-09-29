@@ -19,10 +19,7 @@ public class ItemViewController implements Controller {
 		
 		Item item=ItemDao.getInstance().getItem(itemnumber);
 		System.out.println("get item...."+item);
-		
-		
-		
-		
+
 		request.setAttribute("item", item);
 		ModelAndView mv = new ModelAndView();
 		mv.setUrl("itemView.jsp");

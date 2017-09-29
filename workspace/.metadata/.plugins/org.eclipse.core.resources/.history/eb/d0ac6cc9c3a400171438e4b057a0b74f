@@ -1,0 +1,6 @@
+package model;
+
+public class DataSourceManager {
+	private Connection conn;
+	private static DataSourceManager instance = new DataSourceManager();
+}

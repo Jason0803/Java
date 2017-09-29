@@ -7,7 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+<script type="text/javascript">
+	function checkQty(name, qty) {
+		if(qty != 1) {
+			location.href="itemCartQtyDown.do?name="+name;
+		} else return;
+	}
+</script>
 
 </head>
 <body>
@@ -46,12 +52,12 @@
 	<td>${cartList.name}</td>
 	<td>${cartList.price}</td>
 	<td>
-		
-		<img alt="" src="img/up.jpg" width="15" height="15" border="0">
-		<br>
+		<a href="itemCartQtyUp.do?name=${cartList.name}">
+		<img alt="" src="img/up.jpg" width="15" height="15" border="0"></a><br>
 		${cartList.quantity}<br>
 		
-		<img alt="" src="img/down.jpg" width="15" height="15" border="0">
+		<a href="javascript:checkQty('${cartList.name}', '${cartList.quantity}')">
+		<img alt="" src="img/down.jpg" width="15" height="15" border="0"></a>
 		<br>		
 	</td>
 	<td align="center">

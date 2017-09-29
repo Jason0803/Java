@@ -1,0 +1,13 @@
+package model;
+
+public class BoardVO {
+	private int no;
+	private String title;
+	private String writer;
+	private String password;
+	private String content;
+	private int hits;
+	private String timePosted;
+	
+	
+}

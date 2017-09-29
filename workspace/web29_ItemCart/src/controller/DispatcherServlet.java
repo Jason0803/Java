@@ -13,19 +13,14 @@ public class DispatcherServlet extends HttpServlet {
 							throws ServletException, IOException {
 		
 		
-		/*
-		 * 원래는 hiddend으로 넘어온 값을 받아서 command에 할당하는 로직이 처음에 나와야 한다.
-		 * 이번에는 조금 다른 방식을 사용해 보겠다.
-		 */
-		
 		String requestURI=request.getRequestURI();
-		System.out.println("getRequestURI() :: "+requestURI);//web29_ItemCart/itemList.do
+		System.out.println("getRequestURI() :: "+requestURI);
 		
 		String contextPath=request.getContextPath();
-		System.out.println("getContextPath() ::"+contextPath);//web29_ItemCart
+		System.out.println("getContextPath() ::"+contextPath);
 		
 		String command = requestURI.substring(contextPath.length());
-		System.out.println("command ::"+command);//web29_ItemCart	
+		System.out.println("command ::"+command);
 		
 		ModelAndView mv = null;
 		Controller controller=HandlerMapping.getInstance().createController(command);
