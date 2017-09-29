@@ -11,27 +11,26 @@ public class DispatcherServlet extends HttpServlet {
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) 
 							throws ServletException, IOException {
-		
-		
+		//1.원래는 여기서 넘어온 hidden값을 받는 로직이 나왔다.
 		/*
-		 * 원래는 hiddend으로 넘어온 값을 받아서 command에 할당하는 로직이 처음에 나와야 한다.
-		 * 이번에는 조금 다른 방식을 사용해 보겠다.
+		 * hidden값에 따라서 리턴받는 Controller가 달라졌었다.
+		 * 이번엔 다른 방법을 사용해보겠다...중요
 		 */
-		
 		String requestURI=request.getRequestURI();
-		System.out.println("getRequestURI() :: "+requestURI);//web29_ItemCart/itemList.do
+		System.out.println("RequestURI :: "+requestURI);//web40_ItemCart/itemList.do
 		
 		String contextPath=request.getContextPath();
-		System.out.println("getContextPath() ::"+contextPath);//web29_ItemCart
+		System.out.println("ContextPath :: "+contextPath);//web40_ItemCart
 		
+		//itemList.do 만 추출하자...
 		String command = requestURI.substring(contextPath.length());
-		System.out.println("command ::"+command);//web29_ItemCart	
+		System.out.println(command); //itemList.do
 		
 		ModelAndView mv = null;
 		Controller controller=HandlerMapping.getInstance().createController(command);
 		
 		try{
-			mv=controller.handleRequest(request, response);
+			mv=controller.handle(request, response);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

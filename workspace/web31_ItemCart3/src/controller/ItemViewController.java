@@ -1,5 +1,6 @@
 package controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +10,7 @@ import model.ItemDao;
 public class ItemViewController implements Controller {
 
 	@Override
-	public ModelAndView handleRequest(HttpServletRequest request,
+	public ModelAndView handle(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		int itemnumber = Integer.parseInt(request.getParameter("itemnumber"));
 		
@@ -18,6 +19,9 @@ public class ItemViewController implements Controller {
 		
 		Item item=ItemDao.getInstance().getItem(itemnumber);
 		System.out.println("get item...."+item);
+		
+		
+		
 		
 		request.setAttribute("item", item);
 		ModelAndView mv = new ModelAndView();

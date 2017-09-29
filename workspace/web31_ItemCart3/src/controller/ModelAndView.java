@@ -6,23 +6,6 @@ public class ModelAndView {
 	private String url;
 	private boolean redirect; //false
 	
-	public ModelAndView(String url, boolean redirect) {
-		super();
-		this.url = url;
-		this.redirect = redirect;
-	}
-	public ModelAndView(String url) {
-		
-		this.url = url;
-		
-	}
-	
-	public ModelAndView() {
-		
-		
-		
-	}
-	
 	public String getUrl() {
 		return url;
 	}

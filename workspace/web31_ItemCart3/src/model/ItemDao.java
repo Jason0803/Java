@@ -95,7 +95,7 @@ public class ItemDao {
 			closeAll(rs, ps, conn);
 		}
 		return item;
-	}//getItem
+	}
 	
 	public boolean updateRecordCount(int itemnumber)throws SQLException{
 		Connection conn = null;
@@ -114,8 +114,7 @@ public class ItemDao {
 			closeAll(rs, ps, conn);
 		}
 		return result;
-	}//updateRecordCount
-	
+	}
 }
 
 

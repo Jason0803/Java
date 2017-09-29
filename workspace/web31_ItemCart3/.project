@@ -3,6 +3,8 @@
 	<name>web31_ItemCart3</name>
 	<comment></comment>
 	<projects>
+		<project>standard</project>
+		<project>jstl</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

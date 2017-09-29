@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Fri Sep 29 09:34:38 KST 2017
+org.eclipse.jst.j2ee.server\:jstl=WEB-INF/lib/jstl.jar
+org.eclipse.jst.j2ee.server\:standard=WEB-INF/lib/standard.jar

@@ -1,14 +1,14 @@
 package model;
 
 public class Item {
-	private int itemnumber; //item_id
-	private String name; //item_name
+	private int itemnumber; //item_id컬럼
+	private String name;
 	private int price;
-	private String description;
+	private String  description;
 	private String url;
 	private int count;
-	
-	public Item(int itemnumber, String name, int price, String description, String url, int count) {
+	public Item(int itemnumber, String name, int price, String description,
+			String url, int count) {
 		super();
 		this.itemnumber = itemnumber;
 		this.name = name;
@@ -16,6 +16,14 @@ public class Item {
 		this.description = description;
 		this.url = url;
 		this.count = count;
+	}
+	public Item() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Item(int itemnumber) {
+		super();
+		this.itemnumber = itemnumber;
 	}
 	public int getItemnumber() {
 		return itemnumber;
@@ -55,7 +63,23 @@ public class Item {
 	}
 	@Override
 	public String toString() {
-		return "Item [itemnumber=" + itemnumber + ", name=" + name + ", price=" + price + ", description=" + description
-				+ ", url=" + url + ", count=" + count + "]";
-	}	
+		return "Item [itemnumber=" + itemnumber + ", name=" + name + ", price="
+				+ price + ", description=" + description + ", url=" + url
+				+ ", count=" + count + "]";
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
