@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;web34_BoardDeleteAndUpdate&apos;&#x0A;- Original project: &apos;web34_BoardDeleteAndUpdate&apos;&#x0A;- Original elements:&#x0A;     web34_BoardDeleteAndUpdate/src/controller&#x0A;     web34_BoardDeleteAndUpdate/src/model&#x0A;     web34_BoardDeleteAndUpdate/src/servlet.filter&#x0A;     web34_BoardDeleteAndUpdate/src/sql" description="Delete elements" element1="/src&lt;sql" element2="/src&lt;servlet.filter" element3="/src&lt;servlet" element4="/src&lt;model" element5="/src&lt;controller" elements="5" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1507681323556" subPackages="false" version="1.0"/>
+</session>

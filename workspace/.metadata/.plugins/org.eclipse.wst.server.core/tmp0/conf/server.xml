@@ -133,7 +133,9 @@
 </Context><Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web31_ItemCart3" path="/web31_ItemCart3" reloadable="true" source="org.eclipse.jst.jee.server:web31_ItemCart3">
 	<Resource auth="container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" maxActive="500" maxIdle="100" name="jdbc/oracleDB" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.30.203:1521:xe" username="hr"/>
 </Context><Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web33_BoardWrite" path="/web33_BoardWrite" reloadable="true" source="org.eclipse.jst.jee.server:web33_BoardWrite">
-	<Resource auth="container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" maxActive="500" maxIdle="100" name="jdbc/oracleDB" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.30.203:1521:xe" username="hr"/>
+	<Resource auth="container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" maxActive="500" maxIdle="100" name="jdbc/oracleDB" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.30.218:1521:xe" username="hr"/>
+</Context><Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/web34_BoardDeleteAndUpdate" path="/web34_BoardDeleteAndUpdate" reloadable="true" source="org.eclipse.jst.jee.server:web34_BoardDeleteAndUpdate">
+	<Resource auth="container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" maxActive="500" maxIdle="100" name="jdbc/oracleDB" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.30.218:1521:xe" username="hr"/>
 </Context></Host>
     </Engine>
   </Service>

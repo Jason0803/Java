@@ -1,0 +1,8 @@
+package superTest;
+
+public class ChildClass extends SuperClass {
+	@Override
+	void increment() {
+		this.number += 2;
+	}
+}
