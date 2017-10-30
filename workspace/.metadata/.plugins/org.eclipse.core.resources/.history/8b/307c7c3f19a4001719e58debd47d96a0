@@ -1,5 +1,0 @@
-package cartBiz;
-
-public class CartBiz(Item item) {
-
-}

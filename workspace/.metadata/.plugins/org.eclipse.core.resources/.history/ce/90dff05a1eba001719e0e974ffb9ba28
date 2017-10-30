@@ -1,0 +1,240 @@
+package util;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+/*
+ * Date 관리용 커스텀 클래스.
+ * DB에서 Date 타입 컬럼 요청시 SELECT to_char(date, 'YYYYMMDDHH24MI') FROM table
+ * Constructor 
+ * 1) String type의 YYYYMMDDHH24MI
+ * 2) int year, int month, int day
+ * 3) Calendar 객체
+ * 
+ * 2017.10.17 / coding by K
+ * 2017.10.23 Jason Choi : compareDate 추가. 
+ */
+
+public class CocoaDate {
+	// Field 설명 추가 필요
+	private int year;								
+	private int month;
+	private int date;
+	private int startDay;
+	private int lastDate;
+	private int hour;
+	private int minute;
+	private Calendar originCal;
+	private Calendar renewCal;
+	
+	public CocoaDate() { //인자값 없이 CocoaDate 생성시 현재시간으로 생성
+		Calendar cal = Calendar.getInstance();
+		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR_OF_DAY), cal.get(cal.MINUTE));
+		setRenewCal(cal);
+	}
+	
+	public CocoaDate(Calendar cal) {
+		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR_OF_DAY), cal.get(cal.MINUTE));
+		setRenewCal(cal);
+	}
+	
+	public CocoaDate(int year, int month, int date) {
+		Calendar cal = Calendar.getInstance();
+		cal.set(year, month-1, date);
+		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR_OF_DAY), cal.get(cal.MINUTE));
+		setRenewCal(cal);
+	}
+	
+	public CocoaDate(String sql_date) {
+		//YYYYMMDDHHMM
+		//012345678901
+		int year = Integer.parseInt(sql_date.substring(0, 4));
+		int month = Integer.parseInt(sql_date.substring(4, 6));
+		int date = Integer.parseInt(sql_date.substring(6, 8));
+		int hour = Integer.parseInt(sql_date.substring(8, 10));
+		int minute = Integer.parseInt(sql_date.substring(10));
+		Calendar cal = Calendar.getInstance();
+		cal.set(year, month, date, hour, minute);
+		setDefault(year, month, date, hour, minute);
+		setRenewCal(cal);
+	}
+	
+	// #00047 : Constructor for DATE type --> CocoaDate
+	public CocoaDate(Date date) {
+		this(new SimpleDateFormat("YYYYMMddHHmm").format(date));
+	}
+	
+	private void setDefault(int year, int month, int date, int hour, int minute) {
+		this.year = year;
+		this.month = month;
+		this.date = date;
+		this.hour = hour;
+		this.minute = minute;
+	} // CocoaDate 객체 필드에 연월일분초를 할당하는 내부메소드
+	
+	public String getDateQuery() {
+		String query = "";
+		String tempMonth = ""+this.month;
+		String tempDate = ""+this.date;
+		String tempHour = ""+this.hour;
+		String tempMinute = ""+this.minute;
+		System.out.println("CocoaDate getDateQuery : "+year+"\t"+tempMonth+"\t"+tempDate+"\t"+tempHour+"\t"+tempMinute);
+		if(this.month<10) tempMonth = "0"+tempMonth;
+		if(this.date<10) tempDate = "0"+tempDate;
+		if(this.hour<10) tempHour = "0"+tempHour;
+		if(this.minute<10) tempMinute = "0"+tempMinute;
+		query = year+tempMonth+tempDate+tempHour+tempMinute;
+		return query;
+	}
+	
+	public Calendar getOriginCal() {
+		return originCal;
+	}
+
+	public void setOriginCal(Calendar originCal) {
+		this.originCal = originCal;
+	}
+
+	public Calendar getRenewCal() {
+		return renewCal;
+	}
+
+	public void setRenewCal(Calendar originCal) {
+		this.renewCal = originCal;
+		renewCal.set(Calendar.DATE, 1);
+		this.startDay = renewCal.get(renewCal.DAY_OF_WEEK);
+		this.lastDate = renewCal.getActualMaximum(renewCal.DATE);
+	} // Date연산용 temp Calendar 객체를 생성
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public void setDate(int day) {
+		this.date = day;
+	}
+
+	public int getHour() {
+		return hour;
+	}
+
+	public void setHour(int hour) {
+		this.hour = hour;
+	}
+
+	public int getMinute() {
+		return minute;
+	}
+
+	public void setMinute(int minute) {
+		this.minute = minute;
+	}
+
+	public void setStartDay(int startDay) {
+		this.startDay = startDay;
+	}
+
+	public void setEndDay(int endDay) {
+		this.lastDate = endDay;
+	}
+
+	public int getYear() {
+		return year;
+	}
+	public int getMonth() {
+		return month;
+	}
+	public int getDate() {
+		return date;
+	}
+	
+	public String getDateDD() {
+		if(date<10) return "0"+date;
+		else return date+"";
+	}
+	public int getStartDay() {
+		return startDay;
+	}
+	public int getEndDay() {
+		return lastDate;
+	}
+
+	public int getLastDate() {
+		return lastDate;
+	}
+
+	public void setLastDate(int lastDate) {
+		this.lastDate = lastDate;
+	}
+
+	public boolean compareDate(CocoaDate pDate) {
+		// sychoi : compare THIS CocoaDate and pDate
+		return this.year == pDate.getYear()
+				&& this.month == pDate.getMonth() 
+				&& this.date == pDate.getDate();
+	}
+	/*
+	 * 2017 / 04 / 02
+	 * 2018 / 07 / 03
+	 * 2019 / 03 / 02
+	 */
+	public boolean compareDate(CocoaDate srcDate, CocoaDate destDate) {
+		if(this.compareDate(srcDate) || this.compareDate(destDate)) return true;
+		/*
+		if(srcDate.getYear() == destDate.getYear())
+			if(this.year != srcDate.getYear()) return false;
+		if(srcDate.getMonth() == destDate.getMonth())
+			if(this.month != srcDate.getMonth()) return false;
+		*/
+		
+		if(IntegerRange.betweenExclusive(this.year, srcDate.getYear(), destDate.getYear())) {
+			return true;
+		} else {	// 시작일이나 종료일과 년도 같을때
+			if(this.getYear() == srcDate.getYear()) {
+				
+			} else if(this.getYear() == destDate.getYear()) {
+				
+			} else return false;
+		}
+		
+		
+		if(IntegerRange.betweenInclusive(this.year, srcDate.getYear(), destDate.getYear())) {
+			if(IntegerRange.betweenExclusive(this.year, srcDate.getYear(), destDate.getYear())) {
+				// between different year
+				if(IntegerRange.betweenInclusive(this.month, srcDate.getMonth(), destDate.getMonth())) {
+					if(IntegerRange.betweenExclusive(this.month, srcDate.getMonth(), destDate.getMonth())) {
+						// between different month
+						
+					}
+				} else {
+					// between same month
+					
+				}
+			} else {
+				// same year
+			}
+		} else {
+			return false;
+		}
+		
+		return false;
+		/*
+		return (IntegerRange.betweenInclusive(this.getYear(), srcDate.getYear(), destDate.getYear()))
+				&& (IntegerRange.betweenInclusive(this.getMonth(), srcDate.getMonth(), destDate.getMonth()))
+				&& (this.getDate() >= srcDate.getDate());
+		*/
+	}
+	
+	@Override
+	public String toString() {
+		return year + "/" + month + "/" + date + ", " + hour + ":"
+				+ minute;
+	}
+	
+	
+}

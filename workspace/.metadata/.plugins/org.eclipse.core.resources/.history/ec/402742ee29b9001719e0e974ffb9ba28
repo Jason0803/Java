@@ -1,0 +1,64 @@
+package controller.diary;
+
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import controller.Controller;
+import controller.ModelAndView;
+import model.dao.diary.DiaryDAO;
+import model.dao.member.MemberDAO;
+import model.vo.diary.Schedule;
+import model.vo.member.Member;
+import util.CocoaDate;
+
+public class WriteScheduleController implements Controller {
+
+	@Override
+	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Member vo = (Member)request.getSession().getAttribute("memberVO");
+		String id = vo.getId();
+		String title = (String)request.getParameter("title");
+		String start_date = (String)request.getParameter("start_date"); 
+		String end_date = (String)request.getParameter("end_date");
+		String content = (String)request.getParameter("content");
+		String input = ((String)request.getParameter("group_member"));
+		String[] inputMemberIds = null;
+		Vector<String> sharedMembers = new Vector<String>();
+		
+		// To check whether the given id exists.
+		if(input.contains(",")) {
+			inputMemberIds = input.split(",");
+			for(String inputMemberId : inputMemberIds) {
+				System.out.println("[WriteScheduleController] : Multiple user input !");
+				System.out.println("[WriteScheduleController] : givenMemberIds : " + inputMemberId);
+				sharedMembers.add(inputMemberId);
+			}
+		} else if(input != null){
+			System.out.println("[WriteScheduleController] : Single user input !");
+			System.out.println("[WriteScheduleController] : Member ID exist for : " + input);	
+			sharedMembers.add(input);
+		}
+		
+		System.out.println("[WriteScheduleController] : Filtered Member ids : " + sharedMembers);
+		
+		Schedule schedule = DiaryDAO.getInstance().writeDiary(new Schedule(
+									0, 															// no
+									id, 														// id
+									title, 														// title
+									content,													// content
+									inputMemberIds,												// group_member_id
+									new CocoaDate(start_date),									// start_date
+									new CocoaDate(end_date)));									// end_date
+		
+		DiaryDAO.getInstance().setSharingMembers(schedule.getNo(), sharedMembers);
+		
+		return new ModelAndView("DispatcherServlet?command=calView&"
+								+"year=" + new CocoaDate(start_date).getYear()
+								+"&month="+ new CocoaDate(start_date).getMonth()
+								+"&date="+ new CocoaDate(start_date).getDate());
+	}
+	
+}

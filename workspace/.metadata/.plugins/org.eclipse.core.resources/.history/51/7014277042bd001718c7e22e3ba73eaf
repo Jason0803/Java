@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function startRequest() {
+		var xhr = new XMLHttpRequest();
+		var id = document.idcheck.userId;
+		
+		xhr.onreadystatechange = callback;
+		xhr.open("get", "IdCheckServlet?id="+id.value,true);
+	}
+	
+	function callback() {
+		
+	}
+</script>
+</head>
+<body>
+<h2 align="center">ID 중복 체크...</h2><p>
+<form name="idcheck">
+아이디 :: <input type="text" name="userId" required="required">
+<input type="button" value="중복확인" onclick="startRequest()"><p>
+패스워드 :: <input type="password" name="userPass">
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

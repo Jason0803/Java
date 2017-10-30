@@ -1,0 +1,74 @@
+package controller.diary;
+
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import controller.Controller;
+import controller.ModelAndView;
+import model.dao.diary.DiaryDAO;
+import model.dao.member.MemberDAO;
+import model.vo.diary.Schedule;
+import model.vo.member.Member;
+import util.CocoaDate;
+
+public class WriteScheduleController implements Controller {
+
+	@Override
+	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Member vo = (Member)request.getSession().getAttribute("memberVO");
+		String id = vo.getId();
+		String title = (String)request.getParameter("title");
+		String start_date = (String)request.getParameter("start_date"); 
+		String end_date = (String)request.getParameter("end_date");
+		String content = (String)request.getParameter("content");
+		String input = ((String)request.getParameter("group_member"));
+		String[] inputMemberIds = null;
+		Vector<String> sharedMembers = new Vector<String>();
+		Schedule schedule = null;
+		
+		// To check whether the given id exists.
+		if(input.contains(",")) {
+			System.out.println("[WriteScheduleController] : Multiple user input !");
+			inputMemberIds = input.split(",");
+			for(String inputMemberId : inputMemberIds) {
+				System.out.println("[WriteScheduleController] : givenMemberId : " + inputMemberId);
+				if(MemberDAO.getInstance().doesExist(inputMemberId)) {
+					System.out.println("[WriteScheduleController] : The ID exist : " + inputMemberId);
+					sharedMembers.add(inputMemberId);
+				} else System.out.println("[WriteScheduleController] : The ID NOTd exist : " + inputMemberId);
+			}
+		} else if(input != null){
+			System.out.println("[WriteScheduleController] : Single user input !");
+			if(MemberDAO.getInstance().doesExist(input)) {
+				System.out.println("[WriteScheduleController] : Member ID exist for : " + input);	
+				sharedMembers.add(input);
+			} else {
+				System.out.println("[WriteScheduleController] : Member ID NOT exist for : " + input);	
+			}
+		}
+		sharedMembers.toArray(inputMemberIds);
+		schedule = new Schedule(0, id, title, content, inputMemberIds, new CocoaDate(start_date), new CocoaDate(end_date));
+		System.out.println("[WriteScheduleController] : Filtered Member ids : " + sharedMembers);
+		
+		 
+		System.out.println("[WriteScheduleController] : New Schedule instance created !" + schedule);
+		request.getSession().setAttribute("writtenSchedule", schedule);
+		System.out.println("[WriteScheduleController] : New Schedule passwed to session");
+		schedule = DiaryDAO.getInstance().writeDiary(schedule);
+		System.out.println("[WriteScheduleController] : writeDiary Logic passed !");
+		
+
+		DiaryDAO.getInstance().setSharingMembers(schedule.getNo(), sharedMembers);
+				
+		
+		
+		return new ModelAndView("DispatcherServlet?command=calView&"
+								+"year=" + new CocoaDate(start_date).getYear()
+								+"&month="+ new CocoaDate(start_date).getMonth()
+								+"&date="+ new CocoaDate(start_date).getDate());
+	}
+	
+}

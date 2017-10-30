@@ -1,0 +1,15 @@
+
+public class Test_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//String[] strings = {"a", "b", "c", "d"};
+		printArray();
+	}
+	public static void printArray() {
+		String[] strings = {"a", "b", "c", "d"};
+		for(String s : strings) {
+			System.out.println(s);
+		}
+	}
+}

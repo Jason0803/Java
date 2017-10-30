@@ -7,6 +7,8 @@
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 		<item value="true" key="CREATE_TOPLEVEL"/>
 		<item value="false" key="CREATE_GETTER_SETTER"/>
+		<item value="false" key="moveWizard.updateQualifiedNames"/>
+		<item value="*" key="patterns"/>
 	</section>
 	<section name="RefactoringStatusDialog">
 		<item value="800" key="DIALOG_WIDTH"/>

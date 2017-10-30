@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var xhr;
+	var id;
+	function startRequest() {
+		xhr = new XMLHttpRequest();
+		id = document.idcheck.userId;
+		
+		xhr.onreadystatechange = callback;
+		xhr.open("get", "IdCheckServlet?id="+id.value,true);
+		xhr.send(null);
+	}
+	
+	function callback() {
+		if(xhr.readyState == 4) {
+			if(xhr.status == 200) {
+				//alert("response");
+				var text = xhr.responseText;
+				if(text=="true") {
+					alert(id.value + "is not available");
+				}
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<h2 align="center">ID 중복 체크...</h2><p>
+<form name="idcheck">
+아이디 :: <input type="text" name="userId" required="required">
+<input type="button" value="중복확인" onclick="startRequest()"><p>
+패스워드 :: <input type="password" name="userPass">
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

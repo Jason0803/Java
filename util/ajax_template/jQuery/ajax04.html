@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="./js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#frm').submit(function(){//action에 연결된 페이지로 폼의 값을 다 전송...
+		//폼에 선택된 데이타들을 쿼리스트링으로 만들어서 전송하는 기능...
+		var query=$(this).serialize();
+		alert(query);
+		return false;
+	}); //submit
+});//ready()
+</script>
+</head>
+<body>
+<form action="SerializeServlet" id="frm">
+	NAME : <input type="text" name="name">
+	<input type="hidden" name="command" value="register"><p>
+	
+	<select name="tool">
+		<option value="editplus">editplus</option>
+		<option value="eclipse">eclipse</option>
+		<option value="starUML">starUML</option>
+	</select><P>
+	
+	<input type="checkbox" name="program" value="JAVA">JAVA
+	<input type="checkbox" name="program" value="Jquery">Jquery
+	<input type="checkbox" name="program" value="Spring">Spring
+	<input type="checkbox" name="program" value="JDBC">JDBC
+	<p>
+	<input type="submit" value="FormSend">
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

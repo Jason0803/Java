@@ -1,0 +1,22 @@
+1508723353610	Move compilation unit
+1508737421619	Copy compilation unit
+1508760102207	Delete element
+1508760184255	Rename package 'vo.day'
+1508760195012	Rename package 'vo.diary'
+1508760204580	Rename package 'vo.member'
+1508760219391	Rename package 'dao.diary'
+1508760230627	Rename package 'dao.member'
+1508760529405	Move compilation unit
+1508760542322	Delete element
+1508760564205	Move compilation unit
+1508760568625	Delete element
+1508760604634	Move compilation units
+1508760636070	Move compilation units
+1508760662803	Move compilation units
+1508760669003	Move compilation unit
+1508760791346	Move compilation unit
+1508804384580	Delete element
+1508812334305	Copy compilation unit
+1508821876459	Rename method 'sendMail'
+1508834702551	Delete element
+1509105899997	Rename package 'sql'

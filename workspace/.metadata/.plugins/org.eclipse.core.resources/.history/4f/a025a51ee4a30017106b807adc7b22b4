@@ -1,9 +1,0 @@
-package pattern.action;
-
-public class ActionFactory {
-	private static ActionFactory factory = new ActionFactory();
-	private ActionFactory() {}
-	public static ActionFactory getFactory() {
-		
-	}
-}
