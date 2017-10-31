@@ -10068,3 +10068,9 @@ Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to
 
 !ENTRY com.android.ide.eclipse.adt 2 0 2017-10-30 16:10:26.914
 !MESSAGE No projects found for [/Users/Jason/Documents/Development/Java/workspace/ajax01_asynch/WebContent/META-INF/Context.xml]
+
+!ENTRY com.android.ide.eclipse.adt 1 0 2017-10-30 17:15:27.571
+!MESSAGE No valid Android XML Editor Delegate found for file /ajax01_asynch/WebContent/WEB-INF/web.xml [Res null, type null]
+
+!ENTRY com.android.ide.eclipse.adt 2 0 2017-10-30 17:15:47.232
+!MESSAGE No projects found for [/Users/Jason/Documents/Development/Java/workspace/ajax01_asynch/WebContent/WEB-INF/web.xml]

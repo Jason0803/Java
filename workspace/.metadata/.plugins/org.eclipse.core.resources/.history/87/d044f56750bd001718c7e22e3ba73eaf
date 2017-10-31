@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		var xhr;
+		function startRequest() {
+			var nick = document.frm.nick;
+			xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = callback;
+			xhr.open("get", "EncodingAjaxServlet?nick="+nick.value);
+			xhr.send(null);
+		}
+		function callback() {
+			if(xhr.readyState == 4){
+				if(xhr.status == 200) {
+					var text = xhr.responseText();
+					document.getElementById("resultView").innerHTML = text;
+				}	
+			}
+				
+		}
+	</script>
+</head>
+<body>
+<h2>Encoding...</h2>
+<form name="frm">
+Nickname :: <input type="text" name='nick">
+<input type="button" value="sendNickname" onclick="startRequest()">
+<div id="resultView"></span>
+</form>
+</body>
+</html>

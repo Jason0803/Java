@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+	var xhr;
+	var count;
+	function startRequest() {
+		xhr = new XMLHttpRequest();
+
+		xhr.onreadystatechange = callback;
+
+		//xhr.open("get", "IdCheckServlet?id="+id.value,true);
+		xhr.open("post","GetCountServlet")
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
+		xhr.send("GetCountServlet?id=ajax&&pass=1234);
+		//alert(xhr.readyState);
+	}
+	
+	function callback() {
+		if(xhr.readyState == 4) {
+			if(xhr.status == 200) {
+				//alert("response");
+				var text = xhr.responseText;
+				document.getElementById("resultView").innerHTML = text;
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+<h2>get > Count !</h2>
+<input type="button" value="UpCount" onclick="startRequest()">
+<span id="resultView"></span>
+</body>
+</html>
