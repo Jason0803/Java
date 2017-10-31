@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="./js/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#jsonjBtn').click(function(){
+		$.ajax({
+			type:"post",
+			url:"JsonServlet",
+			dataType:"json",
+			
+			success:function(data){//data가 json 객체를 받았다.
+				alert(data.name);
+				$('#resultView').html(data.name+"  "+data.address).css('background','yellow');
+			}//callback
+		});//ajax
+	});//click
+});//ready()
+</script>
+</head>
+<body>
+	<input type="button" value="json-object" id="jsonjBtn">
+	<span id="resultView"></span>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -129,7 +129,7 @@
       <Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ajax02_FactoryPattern" path="/ajax02_FactoryPattern" reloadable="true" source="org.eclipse.jst.jee.server:ajax02_FactoryPattern">
 	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" maxActive="500" maxIdle="100" name="jdbc/oracleDB" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.30.172:1521:xe" username="hr"/>
 
-</Context></Host>
+</Context><Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/jqueryAjax_01" path="/jqueryAjax_01" reloadable="true" source="org.eclipse.jst.jee.server:jqueryAjax_01"/></Host>
     </Engine>
   </Service>
 </Server>

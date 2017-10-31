@@ -13,20 +13,20 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="getDate" key="selection"/>
+		<item value="Member" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="member"/>
+			<item value="update"/>
+			<item value="ㄴㄷ"/>
+			<item value="search"/>
 			<item value="getdate"/>
 			<item value="getcurrnoteno"/>
 			<item value="findsharing"/>
 			<item value="getAllSchedule"/>
-			<item value="getalldiary"/>
-			<item value="mailsender"/>
-			<item value="forgotpassword"/>
-			<item value="for"/>
 		</list>
 		<list key="replacehistory">
 			<item value=" "/>

@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 <fullyQualifiedTypeName name="pattern.model.MockDAO"/>
 <fullyQualifiedTypeName name="pattern.controller.ProductFactory"/>
 <fullyQualifiedTypeName name="pattern.controller.Product"/>
 <fullyQualifiedTypeName name="pattern.action.ActionFactory"/>
 <fullyQualifiedTypeName name="pattern.action.Action"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.Controller"/>
-<fullyQualifiedTypeName name="model.MemberDAO"/>
 <fullyQualifiedTypeName name="model.Item"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="config.DBConfig"/>
@@ -26,7 +22,6 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="java.util.Stack"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="vo.diary.Diary"/>
 <fullyQualifiedTypeName name="jdbc.exception.RecordNotFoundException"/>
@@ -49,7 +44,6 @@
 <fullyQualifiedTypeName name="javax.mail.PasswordAuthentication"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="util.CocoaDate"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="model.vo.member.Member"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
@@ -60,4 +54,10 @@
 <fullyQualifiedTypeName name="util.MailSender"/>
 <fullyQualifiedTypeName name="model.dao.diary.DiaryDAO"/>
 <fullyQualifiedTypeName name="sql.StringQuery"/>
+<fullyQualifiedTypeName name="model.MemberDAO"/>
+<fullyQualifiedTypeName name="java.net.URLDecoder"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="model.MemberVO"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
 </qualifiedTypeNameHistroy>

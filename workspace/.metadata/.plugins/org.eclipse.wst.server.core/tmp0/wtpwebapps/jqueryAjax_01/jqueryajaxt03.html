@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#name').change(function () {
+				if($(this).val() == "") {
+					alert("Select a musician !");
+					return;
+				}
+				
+				$.ajax({
+					type:"post",
+					url:"AddressServlet",
+					data:"name="+$(this).val(),
+					
+					success:function(data) {
+						$('#addressView').html(data);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+<select id="name">
+	<option value="">===== Musician =====</option>
+	<option value="이적">이적</option>
+	<option value="김동률">김동률</option>
+	<option value="김광석">김광석</option>
+	<option value="김범수">김범수</option>
+	<option value="신해철">신해철</option>
+</select>
+<span id="addressView"></span>
+</body>
+</html>

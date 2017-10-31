@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://code.jquery.com/jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#btnAjax').click(function () {
+				$.ajax( {
+					type:"get",
+					url:"HelloAjaxServlet2?userId=ajaxPro",
+							success:function(data) {
+								alert(data);	
+							}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+<input type="button" id="btnAjax" value="jQueryAjaxTest">
+</body>
+</html>
