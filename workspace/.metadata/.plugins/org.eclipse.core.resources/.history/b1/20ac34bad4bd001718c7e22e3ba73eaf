@@ -1,0 +1,35 @@
+package controller;
+
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.MemberDAO;
+import model.MemberVO;
+
+public class IdListController implements Controller {
+
+	@Override
+		public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String id = request.getParameter("id");
+		ArrayList<MemberVO> = MemberDAO.getInstance().getAllMember();
+		
+		String path = "idcheck.jsp";
+		request.setAttribute("flag", flag);
+		return new ModelAndView(path);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function input() {
+		var id = document.keyTestFrm.id.value;
+		alert(id);
+	}
+</script>
+
+</head>
+<body>
+<form name="keyTestFrm">
+Key Event - ID Input : <input type="text" name="id" onkeyup="intput()">
+
+</form>
+</body>
+</html>

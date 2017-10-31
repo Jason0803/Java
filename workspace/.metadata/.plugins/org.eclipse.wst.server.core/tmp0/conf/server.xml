@@ -126,8 +126,9 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ajax01_asynch" path="/ajax01_asynch" reloadable="true" source="org.eclipse.jst.jee.server:ajax01_asynch">
-	<Resource auth="container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" maxActive="500" maxIdle="100" name="jdbc/oracleDB" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.30.166:1521:xe" username="hr"/>
+      <Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/Users/Jason/Documents/Development/Java/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ajax02_FactoryPattern" path="/ajax02_FactoryPattern" reloadable="true" source="org.eclipse.jst.jee.server:ajax02_FactoryPattern">
+	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory" maxActive="500" maxIdle="100" name="jdbc/oracleDB" password="hr" type="javax.sql.DataSource" url="jdbc:oracle:thin:@192.168.30.172:1521:xe" username="hr"/>
+
 </Context></Host>
     </Engine>
   </Service>

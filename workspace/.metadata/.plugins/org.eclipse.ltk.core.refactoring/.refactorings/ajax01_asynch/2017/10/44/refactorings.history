@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;ajax02_FactoryPattern/src/model&apos;&#x0A;- Original project: &apos;ajax01_asynch&apos;&#x0A;- Destination element: &apos;ajax02_FactoryPattern/src/model&apos;&#x0A;- Original elements:&#x0A;     model.MemberDAO.java&#x0A;     model.MemberVO.java" description="Copy compilation units" destination="=ajax02_FactoryPattern/src&lt;model" element1="/src&lt;model{MemberDAO.java" element2="/src&lt;model{MemberVO.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1509410192762" units="2" version="1.0"/>
+</session>
